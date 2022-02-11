@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.format.enable": true
+}
