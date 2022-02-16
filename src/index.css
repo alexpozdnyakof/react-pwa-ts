@@ -35,3 +35,10 @@ code {
   .max-width\:measure\/2 {
     max-width: calc(var(--measure) / 2);
   }
+
+  :root{
+    --font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Noto, Oxygen-Sans, Ubuntu,
+    Cantrell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+
+  }

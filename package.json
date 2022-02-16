@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@doist/reactist": "^11.1.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -35,7 +36,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
+    "lint:fix": "eslint . --fix"
   },
   "eslintConfig": {
     "extends": [
