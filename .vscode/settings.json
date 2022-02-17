@@ -9,5 +9,6 @@
     "javascript",
     "typescript"
   ],
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "css.customData": ["./.vscode/custom.css-data.json"]
 }

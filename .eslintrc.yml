@@ -3,7 +3,9 @@ env:
  es2021: true
 extends:
  - 'plugin:react/recommended'
- - airbnb
+ - 'plugin:prettier/recommended'
+ - 'plugin:jsx-a11y/recommended'
+ - 'airbnb'
  - 'airbnb-typescript'
  - 'prettier'
 parser: '@typescript-eslint/parser'
@@ -16,10 +18,18 @@ parserOptions:
 plugins:
  - react
  - '@typescript-eslint'
+ - jsx-a11y
+ - prettier
 rules:
  {
   'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
   'import/prefer-default-export': 'off',
   'react/react-in-jsx-scope': 'off',
+  'baseui/deprecated-theme-api': 'warn',
+  'baseui/deprecated-component-api': 'warn',
+  'baseui/no-deep-imports': 'warn',
+  'prettier/prettier': ['error', { 'singleQuote': true }],
+  'quotes': [2, 'single'],
  }
+
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']
