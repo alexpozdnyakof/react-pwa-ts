@@ -1,20 +1,8 @@
-import "./Stack.scss";
+import React from 'react'
+import './Stack.scss'
 
-function Stack({times }: Partial<{ times: number; nested: boolean }>) {
-  const defaultProps = {
-    times: 8,
-    nested: false,
-  };
-
-  return (
-    <div className="stack">
-      {[...new Array(times ?? defaultProps.times)]
-        .fill(undefined)
-        .map(() => (
-          <div className="box" />
-        ))}
-    </div>
-  );
+function Stack({ children }: { children: Array<React.ReactNode> }) {
+	return <div className='stack'>{children}</div>
 }
 
-export { Stack };
+export { Stack }
