@@ -1,0 +1,42 @@
+$units: 0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 56, 64, 72, 80;
+
+$point: 8px;
+$column: $point * 8;
+$gap: $point * 4;
+$grid: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+
+.container {
+    width: 100%;
+    position: relative;
+    max-width: 1120px;
+    margin: auto;
+    padding: 0 $gap/2;
+}
+
+.grid {
+    display: grid;
+    grid-gap: $gap;
+    grid-template-columns: repeat(12, 1fr);
+}
+@each $g in $grid {
+    .grid--col-#{$g} {
+        grid-column: span $g;
+    }
+}
+@each $s in $units {
+    .gap-#{$s} {
+        gap: #{$s}px;
+    }
+    .col-gap-#{$s} {
+        column-gap: #{$s}px;
+    }
+    .row-gap-#{$s} {
+        row-gap: #{$s}px;
+    }
+}
+
+@each $n in $numbers {
+    .grid-cols-#{$n} {
+        grid-template-columns: repeat(#{$n}, minmax(0, 1fr));
+    }
+}
