@@ -14,7 +14,9 @@ code {
     monospace;
 }
 
-
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 :root {
   --measure: 60ch;

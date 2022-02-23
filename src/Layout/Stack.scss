@@ -1,37 +1,34 @@
 [class^='stack'] > * {
-  margin-top: 0;
-  margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .box {
-  width: 100%;
-  height: 40px;
-  background-color: #222;
+	width: 100%;
+	height: 40px;
+	background-color: #222;
 }
 
-.stack  {
-  > * + * {
-    margin-top: 1.5rem;
-  };
+.stack {
+	> * + * {
+		margin-top: 1.5rem;
+	}
 
-  &_large  {
-    > * + * {
-    margin-top: 3rem;
-    }
-  }
-  &_small  {
-    > * + *{
-    margin-top: 0.5rem;
-    }
-  }
+	&_large {
+		> * + * {
+			margin-top: 3rem;
+		}
+	}
 
-  &_recursive{
-     * + * {
-      margin-top: 1.5rem;
-    }
-  }
+	&_small {
+		> * + * {
+			margin-top: 0.5rem;
+		}
+	}
+
+	&_recursive {
+		* + * {
+			margin-top: 1.5rem;
+		}
+	}
 }
-
-
-
-

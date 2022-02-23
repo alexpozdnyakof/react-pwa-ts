@@ -4,19 +4,25 @@ $point: 8px;
 $column: $point * 8;
 $gap: $point * 4;
 $grid: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+$numbers: $grid;
+
+// .container {
+//     width: 100%;
+//     position: relative;
+//     max-width: 1120px;
+//     margin: auto;
+//     padding: 0 $gap/2;
+// }
 
 .container {
-    width: 100%;
-    position: relative;
-    max-width: 1120px;
-    margin: auto;
-    padding: 0 $gap/2;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
-
 .grid {
+    position: relative;
     display: grid;
     grid-gap: $gap;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0,1fr));
 }
 @each $g in $grid {
     .grid--col-#{$g} {
