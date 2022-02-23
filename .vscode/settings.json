@@ -1,14 +1,26 @@
 {
-  "editor.formatOnSave": true,
   "editor.fontSize": 13,
-  "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Input Mono, SF Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll": true
   },
   "eslint.validate": [
     "javascript",
     "typescript"
   ],
   "eslint.format.enable": true,
-  "css.customData": ["./.vscode/custom.css-data.json"]
+  "css.customData": [
+    "./.vscode/custom.css-data.json"
+  ],
+  "workbench.fontAliasing": "antialiased",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
+  "stylelint.configFile": "./.stylelintrc.yml",
+  "stylelint.packageManager": "yarn",
+  "editor.formatOnSave": true
 }

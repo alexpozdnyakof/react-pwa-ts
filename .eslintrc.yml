@@ -5,6 +5,7 @@ extends:
  - 'plugin:react/recommended'
  - 'plugin:prettier/recommended'
  - 'plugin:jsx-a11y/recommended'
+ - 'plugin:storybook/recommended'
  - 'airbnb'
  - 'airbnb-typescript'
  - 'prettier'
@@ -27,6 +28,15 @@ rules:
   'react/react-in-jsx-scope': 'off',
   'prettier/prettier': ['error', { 'singleQuote': true }],
   'quotes': [2, 'single'],
+  'react/jsx-props-no-spreading': 0,
+  'import/no-extraneous-dependencies':
+   [
+    2,
+    {
+     'devDependencies': ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
+    },
+   ],
+  'react/function-component-definition': 0,
  }
 
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']

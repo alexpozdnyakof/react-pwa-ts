@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "yarn",
+			"task": "lint:fix",
+			"problemMatcher": [],
+			"label": "lint and fix"
+		},
+		{
+			"type": "yarn",
+			"task": "storybook",
+			"problemMatcher": [],
+			"label": "storybook"
+		},
+		{
+			"type": "yarn",
+			"task": "lint:scss",
+			"problemMatcher": [],
+			"label": "stylelint"
+		}
+	]
+}
