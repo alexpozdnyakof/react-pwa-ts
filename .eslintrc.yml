@@ -1,42 +1,51 @@
 env:
- browser: true
- es2021: true
+    browser: true
+    es2021: true
 extends:
- - 'plugin:react/recommended'
- - 'plugin:prettier/recommended'
- - 'plugin:jsx-a11y/recommended'
- - 'plugin:storybook/recommended'
- - 'airbnb'
- - 'airbnb-typescript'
- - 'prettier'
+    - 'plugin:react/recommended'
+    - 'plugin:prettier/recommended'
+    - 'plugin:jsx-a11y/recommended'
+    - 'plugin:storybook/recommended'
+    - 'airbnb'
+    - 'airbnb-typescript'
+    - 'prettier'
 parser: '@typescript-eslint/parser'
 parserOptions:
- project: './tsconfig.json'
- ecmaFeatures:
-  jsx: true
-  ecmaVersion: 12
-  sourceType: module
+    project: './tsconfig.json'
+    ecmaFeatures:
+        jsx: true
+        ecmaVersion: 12
+        sourceType: module
 plugins:
- - react
- - '@typescript-eslint'
- - jsx-a11y
- - prettier
+    - react
+    - '@typescript-eslint'
+    - jsx-a11y
+    - prettier
 rules:
- {
-  'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
-  'import/prefer-default-export': 'off',
-  'react/react-in-jsx-scope': 'off',
-  'prettier/prettier': ['error', { 'singleQuote': true }],
-  'quotes': [2, 'single'],
-  'react/jsx-props-no-spreading': 0,
-  'import/no-extraneous-dependencies':
-   [
-    2,
     {
-     'devDependencies': ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
-    },
-   ],
-  'react/function-component-definition': 0,
- }
+        'react/jsx-filename-extension': [1, { 'extensions': ['.tsx', '.jsx'] }],
+        'import/prefer-default-export': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'prettier/prettier': ['error', { 'singleQuote': true }],
+        'quotes': [2, 'single'],
+        'react/jsx-props-no-spreading': 0,
+        'jsx-a11y/label-has-associated-control':
+            [
+                2,
+                {
+                    assert: 'either',
+                    // either check for `htmlFor` or `nesting`,
+                },
+            ],
+        'import/no-extraneous-dependencies':
+            [
+                2,
+                {
+                    'devDependencies':
+                        ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
+                },
+            ],
+        'react/function-component-definition': 0,
+    }
 
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']
