@@ -1,8 +1,12 @@
-import { InboxIcon } from './components/icon'
-import { formatDate } from './formatters'
+import { useState } from 'react'
+import { InboxIcon } from './ui/core/icon'
 import './App.scss'
-import { AddTask } from './task/add-task'
-import Task from './task/task'
+import { AddTask } from './ui/task/add-task'
+import Task from './ui/task/task'
+import { TASK_DATA } from './data'
+import { TaskData } from './domain'
+import { TaskDTO } from './ui/task/types'
+import { formatDate } from './lib'
 
 function PageHeader() {
 	return (
@@ -14,61 +18,33 @@ function PageHeader() {
 		</header>
 	)
 }
-type TaskTag = {
-	id: number
-	text: string
-}
-type TaskItem = {
-	id: number
-	text: string
-	done: boolean
-	duedate?: Date
-	tags?: Array<TaskTag>
-}
 
-const tasks: Array<TaskItem> = [
-	{
-		id: 1,
-		text: 'Make React task list mvp',
-		done: true,
-		duedate: new Date(),
-		tags: [
-			{
-				id: 1,
-				text: 'Alpha',
-			},
-			{
-				id: 2,
-				text: 'Beta',
-			},
-			{
-				id: 3,
-				text: 'Gamma',
-			},
-		],
-	},
-	{
-		id: 2,
-		text: 'Make React task list mvp',
-		done: false,
-	},
-]
-const taskList = tasks.map(task => {
-	if (!task.duedate) return task
+function createTask(
+	dto: TaskDTO,
+	tasks: Array<TaskData>
+): TaskData & { duedate: string } {
+	const lastId = tasks[tasks.length - 1].id ?? 0
 	return {
-		...task,
-		duedate: formatDate(task.duedate),
+		id: lastId + 1,
+		...dto,
+		done: false,
+		duedate: formatDate(new Date()),
 	}
-}) as Array<TaskItem & { duedate?: string }>
-
+}
 function App() {
+	const [state, setState] = useState<Array<TaskData>>([...TASK_DATA])
+
+	const addTaskFn = (dto: TaskDTO) => {
+		const task = createTask(dto, state)
+		setState([...state, task])
+	}
 	return (
 		<div className='App'>
 			<div className='top-bar' />
 			<PageHeader />
 			<div className='view-content'>
 				<div className='task-list'>
-					{taskList.map(({ text, done, duedate, tags }) => (
+					{state.map(({ text, done, duedate, tags }) => (
 						<Task
 							text={text}
 							done={done}
@@ -77,7 +53,7 @@ function App() {
 						/>
 					))}
 				</div>
-				<AddTask />
+				<AddTask addTask={addTaskFn} />
 			</div>
 		</div>
 	)
