@@ -10,7 +10,6 @@ const TaskWrapper = styled.div`
 	mask-image: radial-gradient(white, black);
 	transition: background 0.15s linear;
 	padding: 12px 8px;
-	margin-left: -8px;
 
 	> * {
 		margin-left: 0;
