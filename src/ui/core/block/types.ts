@@ -57,14 +57,18 @@ interface MarginProps {
 	marginLeft: Space
 }
 
-interface ReusableBoxProps extends MarginProps, PaddingProps {
+interface ReusableBlockProps extends MarginProps, PaddingProps {
 	backgroundColor: string
 	borderRadius: BorderRadius
 	width: string
 	height: string
 }
 
-interface BlockProps extends FlexProps, FontProps, GridProps, ReusableBoxProps {
+interface BlockProps
+	extends FlexProps,
+		FontProps,
+		GridProps,
+		ReusableBlockProps {
 	textAlign: 'left' | 'center' | 'right'
 	boxSizing: 'border-box' | 'content-box'
 	alignItems: 'center' | 'flex-end' | 'flex-start' | 'baseline' | 'stretch'
@@ -78,4 +82,4 @@ interface BlockProps extends FlexProps, FontProps, GridProps, ReusableBoxProps {
 		| 'none'
 }
 
-export type { BlockProps, ReusableBoxProps }
+export type { BlockProps, ReusableBlockProps }
