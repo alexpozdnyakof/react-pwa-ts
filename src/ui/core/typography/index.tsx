@@ -12,6 +12,9 @@ function Body({ color, children }: TypographyElementProps) {
 			fontSize={FontSize.body}
 			lineHeight={LineHeight.body}
 			fontWeight={400}
+			whiteSpace='nowrap'
+			textOverflow='ellipsis'
+			overflow='hidden'
 		>
 			{children}
 		</Block>
@@ -77,6 +80,9 @@ function Caption({ color, children }: TypographyElementProps) {
 			fontSize={FontSize.small}
 			lineHeight={LineHeight.small}
 			fontWeight={400}
+			whiteSpace='nowrap'
+			textOverflow='ellipsis'
+			overflow='hidden'
 		>
 			{children}
 		</Block>
