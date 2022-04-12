@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components'
+import { ProjectPage } from './ui/project-page/project-page'
 
 import { darkTheme, GlobalStyles } from './ui/styles'
 
@@ -31,9 +32,7 @@ function App() {
 	// }
 	return (
 		<ThemeProvider theme={darkTheme}>
-			<div className='App'>
-				<div className='top-bar' />
-			</div>
+			<ProjectPage />
 			<GlobalStyles />
 		</ThemeProvider>
 	)
