@@ -11,8 +11,8 @@ body{
     -webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	  text-size-adjust: 100%;
-	  color: #fff;
-	  background-color: ${({ theme }: any) => theme.color[Color.background]};
+	  color: ${({ theme }) => theme.color[Color.text]};
+	  background-color: ${({ theme }) => theme.color[Color.background]};
 	  height: 100%;
 }
 code {

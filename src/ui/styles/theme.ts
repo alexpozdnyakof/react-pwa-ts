@@ -30,7 +30,7 @@ const darkTheme = ((): Theme => ({
 	color: {
 		[Color.text]: '#f5f4f3',
 		[Color.textDisabled]: '#6a696a',
-		[Color.textWeak]: 'a2a0a2',
+		[Color.textWeak]: '#a2a0a2',
 		[Color.textWeakHover]: '#f5f4f3',
 		[Color.icon]: '#a2a0a2',
 		[Color.iconHover]: '#f5f4f3',
