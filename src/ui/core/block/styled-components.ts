@@ -1,26 +1,49 @@
 import styled from 'styled-components'
-import { Space, Theme, WithStyledTheme } from '../../styles'
-import { BlockProps } from './types'
+import {
+	Color,
+	FontSize,
+	LineHeight,
+	Theme,
+	WithStyledTheme,
+} from '../../styles'
+import { BlockProps, FontProps } from './types'
+import { convertSpaceTokensToPixels } from '../../helpers'
 
-const isFlex = (
+const addFlexProps = (
 	display: string | 'flex' | undefined,
 	flexProps: Record<string, string | number | undefined>
 ) => (display === 'flex' ? { ...flexProps } : {})
 
-const isGrid = (
+const addGridProps = (
 	display: string | 'grid' | undefined,
 	gridProps: Record<string, string | number | undefined>
 ) => (display === 'grid' ? { ...gridProps } : {})
 
-function convertSpaceTokensToPixels<
-	T extends Record<string, Space | undefined>
->(space: Theme['space'], withTokens: T): Record<keyof T, string> {
-	const entries = Object.entries(withTokens).filter(
-		([, value]) => value !== undefined
-	) as unknown as Array<[keyof T, Space]>
-	const withPixels = entries.map(([key, value]) => [key, space[value]])
+const addFontProps = (
+	theme: Theme,
+	{ fontSize, lineHeight }: Partial<FontProps>
+) => {
+	const entries = Object.entries({ fontSize, lineHeight }).filter(
+		([, v]) => v !== undefined
+	) as unknown as Array<
+		[
+			keyof Pick<FontProps, 'fontSize' | 'lineHeight'>,
+			LineHeight | FontSize
+		]
+	>
 
-	return Object.fromEntries(withPixels)
+	return Object.fromEntries(entries.map(([k, v]) => [k, theme[k][v]])) as {
+		[key: string]: string
+	}
+}
+
+const addColors = ({ color }: Theme, colorProps: Partial<BlockProps>) => {
+	const entries = Object.entries(colorProps).filter(
+		([, v]) => v !== undefined
+	) as unknown as Array<[keyof Partial<BlockProps>, Color]>
+	return Object.fromEntries(entries.map(([k, v]) => [k, color[v]])) as {
+		[key: string]: string
+	}
 }
 
 export const StyledBlock = styled.div(
@@ -50,16 +73,24 @@ export const StyledBlock = styled.div(
 		marginBottom,
 		marginLeft,
 
+		fontSize,
+		lineHeight,
+
+		color,
+		backgroundColor,
+		borderColor,
+		borderBottomColor,
+
 		...props
 	}: WithStyledTheme<Partial<BlockProps>>) => ({
 		display,
-		...isFlex(display, {
+		...addFlexProps(display, {
 			flexDirection,
 			alignItems,
 			justifyContent,
 			flexWrap,
 		}),
-		...isGrid(display, {
+		...addGridProps(display, {
 			gridAutoFlow,
 			gap,
 			rowGap,
@@ -81,6 +112,13 @@ export const StyledBlock = styled.div(
 			marginLeft,
 		}),
 
+		...addFontProps(theme, { fontSize, lineHeight }),
+		...addColors(theme, {
+			color,
+			backgroundColor,
+			borderColor,
+			borderBottomColor,
+		}),
 		...props,
 	})
 )

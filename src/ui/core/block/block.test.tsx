@@ -2,7 +2,7 @@ import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import 'jest-styled-components'
 import Block from './block'
-import { Space } from '../../styles'
+import { FontSize, LineHeight, Space } from '../../styles'
 import { getStyleObject, renderWithTheme } from '../../helpers/test.helpers'
 
 afterEach(cleanup)
@@ -136,5 +136,17 @@ describe('Block', () => {
 
 		expect(style.padding).not.toEqual(style.paddingLeft)
 		expect(style.margin).not.toEqual(style.marginLeft)
+	})
+	it('should convert font properties from enum to px ', () => {
+		const props = {
+			fontSize: FontSize.small,
+			lineHeight: LineHeight.small,
+		}
+
+		renderWithTheme(<Block {...props} />)
+		const style = getStyleObject(Block)
+
+		expect(style.fontSize).toContain('px')
+		expect(style.lineHeight).toContain('px')
 	})
 })

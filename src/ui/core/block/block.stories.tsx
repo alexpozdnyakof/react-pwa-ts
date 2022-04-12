@@ -1,39 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Space } from '../../styles'
+import { StoryBookControl } from '../../helpers'
+
 import Block from './block'
-
-const textControl = () => ({
-	control: 'text',
-})
-const colorControl = () => ({
-	control: 'color',
-})
-
-const selectControl = (
-	options: Array<string | number>,
-	mapping?: Record<string, any>
-) => ({
-	control: 'select',
-	options,
-	mapping,
-})
-
-const selectControlWithNone = (options: Array<string>) =>
-	selectControl(['none', ...options], { none: undefined })
-
-const reusableBlockControls = () => ({
-	padding: selectControlWithNone(Object.values(Space)),
-	paddingTop: selectControlWithNone(Object.values(Space)),
-	paddingRight: selectControlWithNone(Object.values(Space)),
-	paddingBottom: selectControlWithNone(Object.values(Space)),
-	paddingLeft: selectControlWithNone(Object.values(Space)),
-
-	margin: selectControlWithNone(Object.values(Space)),
-	marginTop: selectControlWithNone(Object.values(Space)),
-	marginRight: selectControlWithNone(Object.values(Space)),
-	marginBottom: selectControlWithNone(Object.values(Space)),
-	marginLeft: selectControlWithNone(Object.values(Space)),
-})
 
 export default {
 	title: 'Core/Block',
@@ -42,12 +10,9 @@ export default {
 		layout: 'centered',
 	},
 	argTypes: {
-		width: textControl(),
-		height: textControl(),
-		children: textControl(),
-		textAlign: selectControlWithNone(['left', 'center', 'right']),
-		backgroundColor: colorControl(),
-		display: selectControl([
+		children: StoryBookControl.Text(),
+		textAlign: StoryBookControl.SelectWithNone(['left', 'center', 'right']),
+		display: StoryBookControl.Select([
 			'block',
 			'flex',
 			'grid',
@@ -56,16 +21,16 @@ export default {
 			'inline-flex',
 			'none',
 		]),
-		flexDirection: selectControlWithNone(['row', 'column']),
-		alignItems: selectControl([
+		flexDirection: StoryBookControl.SelectWithNone(['row', 'column']),
+		alignItems: StoryBookControl.Select([
 			'flex-start',
 			'center',
 			'flex-end',
 			'baseline',
 			'stretch',
 		]),
-		flexWrap: selectControl(['nowrap', 'wrap']),
-		justifyContent: selectControlWithNone([
+		flexWrap: StoryBookControl.Select(['nowrap', 'wrap']),
+		justifyContent: StoryBookControl.SelectWithNone([
 			'center',
 			'flex-end',
 			'flex-start',
@@ -73,24 +38,24 @@ export default {
 			'space-between',
 			'space-evenly',
 		]),
-		fontSize: textControl(),
-		fontWeight: selectControl(['normal', 'medium', 'bold']),
-		letterSpacing: textControl(),
-		lineHeight: textControl(),
-		color: colorControl(),
+		fontSize: StoryBookControl.Text(),
+		fontWeight: StoryBookControl.Select(['normal', 'medium', 'bold']),
+		letterSpacing: StoryBookControl.Text(),
+		lineHeight: StoryBookControl.Text(),
+		color: StoryBookControl.Color(),
 
-		gridAutoFlow: selectControl([
+		gridAutoFlow: StoryBookControl.Select([
 			'row',
 			'column',
 			'dense',
 			'row dense',
 			'column-dense',
 		]),
-		gap: textControl(),
-		rowGap: textControl(),
-		columnGap: textControl(),
-		gridTemplateColumns: textControl(),
-		...reusableBlockControls(),
+		gap: StoryBookControl.Text(),
+		rowGap: StoryBookControl.Text(),
+		columnGap: StoryBookControl.Text(),
+		gridTemplateColumns: StoryBookControl.Text(),
+		...StoryBookControl.ReusableBlock(),
 	},
 } as ComponentMeta<typeof Block>
 

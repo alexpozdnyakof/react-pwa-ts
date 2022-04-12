@@ -1,4 +1,4 @@
-import { Color, LineHeight, Space, BorderRadius } from '../../styles'
+import { Color, LineHeight, Space, BorderRadius, FontSize } from '../../styles'
 
 interface FlexProps {
 	flexDirection: 'column' | 'row'
@@ -21,11 +21,20 @@ interface GridProps {
 }
 
 interface FontProps {
-	fontSize: string
+	fontSize: FontSize
 	fontWeight: 400 | 500 | 600 | 900 | 'normal' | 'bold'
 	lineHeight: LineHeight
 	letterSpacing: string
 	color: Color
+	fontFamily: string
+	textOverflow: 'clip' | 'ellipsis'
+	whiteSpace:
+		| 'normal'
+		| 'nowrap'
+		| 'pre'
+		| 'pre-wrap'
+		| 'pre-line'
+		| 'break-spaces'
 }
 
 interface PaddingProps {
@@ -48,7 +57,10 @@ interface BorderProps {
 	borderRadius: BorderRadius
 	borderColor: Color
 	borderWidth: string
-	borderStyle: 'none' | 'hidden' | 'dotted' | 'solid' | 'dashed' | 'double'
+	borderStyle: 'none' | 'solid' | 'dashed'
+	borderBottomColor: Color
+	borderBottomWidth: string
+	borderBottomStyle: 'none' | 'solid' | 'dashed'
 }
 
 interface ReusableBlockProps extends MarginProps, PaddingProps, BorderProps {
