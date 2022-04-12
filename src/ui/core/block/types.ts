@@ -1,19 +1,4 @@
-import { Color, LineHeight } from '../../styles'
-
-enum Space {
-	none = 'none',
-	micro = 'micro',
-	small = 'size',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'xlarge',
-}
-
-enum BorderRadius {
-	small = 'small',
-	medium = 'medium',
-	large = 'large',
-}
+import { Color, LineHeight, Space, BorderRadius } from '../../styles'
 
 interface FlexProps {
 	flexDirection: 'column' | 'row'
@@ -92,4 +77,10 @@ interface BlockProps
 	overflow: 'hidden' | 'visible'
 }
 
-export type { BlockProps, ReusableBlockProps, FontProps }
+export type {
+	BlockProps,
+	ReusableBlockProps,
+	FontProps,
+	PaddingProps,
+	MarginProps,
+}

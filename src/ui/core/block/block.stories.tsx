@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Space } from '../../styles'
 import Block from './block'
 
 const textControl = () => ({
@@ -19,6 +20,20 @@ const selectControl = (
 
 const selectControlWithNone = (options: Array<string>) =>
 	selectControl(['none', ...options], { none: undefined })
+
+const reusableBlockControls = () => ({
+	padding: selectControlWithNone(Object.values(Space)),
+	paddingTop: selectControlWithNone(Object.values(Space)),
+	paddingRight: selectControlWithNone(Object.values(Space)),
+	paddingBottom: selectControlWithNone(Object.values(Space)),
+	paddingLeft: selectControlWithNone(Object.values(Space)),
+
+	margin: selectControlWithNone(Object.values(Space)),
+	marginTop: selectControlWithNone(Object.values(Space)),
+	marginRight: selectControlWithNone(Object.values(Space)),
+	marginBottom: selectControlWithNone(Object.values(Space)),
+	marginLeft: selectControlWithNone(Object.values(Space)),
+})
 
 export default {
 	title: 'Core/Block',
@@ -75,6 +90,7 @@ export default {
 		rowGap: textControl(),
 		columnGap: textControl(),
 		gridTemplateColumns: textControl(),
+		...reusableBlockControls(),
 	},
 } as ComponentMeta<typeof Block>
 

@@ -2,6 +2,8 @@ import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import 'jest-styled-components'
 import Block from './block'
+import { Space } from '../../styles'
+import { getStyleObject, renderWithTheme } from '../../helpers/test.helpers'
 
 afterEach(cleanup)
 
@@ -99,5 +101,40 @@ describe('Block', () => {
 			'column-gap': '12px',
 			'grid-template-columns': 'repeat(12,1fr)',
 		})
+	})
+
+	it('should convert space tokens to pixels for padding and margin props', () => {
+		const props = {
+			padding: Space.small,
+			paddingTop: Space.large,
+			paddingRight: Space.large,
+			paddingBottom: Space.large,
+			paddingLeft: Space.large,
+			margin: Space.small,
+			marginTop: Space.large,
+			marginRight: Space.large,
+			marginBottom: Space.large,
+			marginLeft: Space.large,
+		}
+
+		renderWithTheme(<Block {...props} />)
+		const style = getStyleObject(Block)
+
+		Object.keys(props).forEach((p: any) => expect(style[p]).toContain('px'))
+	})
+
+	it('should overwrite explicit declarations over implicit declarations', () => {
+		const props = {
+			padding: Space.small,
+			paddingLeft: Space.large,
+			margin: Space.small,
+			marginLeft: Space.large,
+		}
+
+		renderWithTheme(<Block {...props} />)
+		const style = getStyleObject(Block)
+
+		expect(style.padding).not.toEqual(style.paddingLeft)
+		expect(style.margin).not.toEqual(style.marginLeft)
 	})
 })

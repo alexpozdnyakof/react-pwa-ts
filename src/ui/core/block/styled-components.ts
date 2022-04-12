@@ -1,34 +1,32 @@
 import styled from 'styled-components'
+import { Space, Theme, WithStyledTheme } from '../../styles'
 import { BlockProps } from './types'
 
 const isFlex = (
-	display:
-		| 'block'
-		| 'flex'
-		| 'inline'
-		| 'inline-block'
-		| 'inline-flex'
-		| 'none'
-		| 'grid'
-		| undefined,
+	display: string | 'flex' | undefined,
 	flexProps: Record<string, string | number | undefined>
 ) => (display === 'flex' ? { ...flexProps } : {})
 
 const isGrid = (
-	display:
-		| 'block'
-		| 'flex'
-		| 'inline'
-		| 'inline-block'
-		| 'inline-flex'
-		| 'none'
-		| 'grid'
-		| undefined,
+	display: string | 'grid' | undefined,
 	gridProps: Record<string, string | number | undefined>
 ) => (display === 'grid' ? { ...gridProps } : {})
 
+function convertSpaceTokensToPixels<
+	T extends Record<string, Space | undefined>
+>(space: Theme['space'], withTokens: T): Record<keyof T, string> {
+	const entries = Object.entries(withTokens).filter(
+		([, value]) => value !== undefined
+	) as unknown as Array<[keyof T, Space]>
+	const withPixels = entries.map(([key, value]) => [key, space[value]])
+
+	return Object.fromEntries(withPixels)
+}
+
 export const StyledBlock = styled.div(
 	({
+		theme,
+
 		display,
 		flexDirection,
 		flexWrap,
@@ -40,8 +38,20 @@ export const StyledBlock = styled.div(
 		columnGap,
 		gridTemplateColumns,
 
+		padding,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
+
+		margin,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
+
 		...props
-	}: Partial<BlockProps>) => ({
+	}: WithStyledTheme<Partial<BlockProps>>) => ({
 		display,
 		...isFlex(display, {
 			flexDirection,
@@ -57,6 +67,20 @@ export const StyledBlock = styled.div(
 			alignItems,
 			gridTemplateColumns,
 		}),
+
+		...convertSpaceTokensToPixels(theme.space, {
+			padding,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			margin,
+			marginTop,
+			marginRight,
+			marginBottom,
+			marginLeft,
+		}),
+
 		...props,
 	})
 )
