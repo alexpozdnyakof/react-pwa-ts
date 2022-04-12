@@ -1,21 +1,24 @@
-import React from 'react'
-import { StyledButton } from './styles'
+import { BaseButton } from './styles'
+import { ButtonProps } from './type'
+import * as Typography from '../typography'
+import { Block } from '../block'
 
-type ButtonType = 'primary' | 'secondary'
-
+function Enhancer({ children }: React.PropsWithChildren<{}>) {
+	return <Block display='inline-flex'>{children}</Block>
+}
 export default function Button({
 	children,
 	onClick,
-	type = 'primary',
-}: React.PropsWithChildren<
-	Partial<{
-		onClick?: (event: React.SyntheticEvent) => void
-		type: ButtonType
-	}>
->) {
+	size,
+	kind,
+	startEnhancer,
+	endEnhancer,
+}: React.PropsWithChildren<Partial<ButtonProps>>) {
 	return (
-		<StyledButton type={type} onClick={onClick}>
-			{children}
-		</StyledButton>
+		<BaseButton onClick={onClick} size={size} kind={kind}>
+			<Enhancer>{startEnhancer}</Enhancer>
+			<Typography.Button>{children}</Typography.Button>
+			<Enhancer>{endEnhancer}</Enhancer>
+		</BaseButton>
 	)
 }

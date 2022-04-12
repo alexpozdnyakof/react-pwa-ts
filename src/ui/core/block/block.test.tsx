@@ -10,26 +10,25 @@ describe('Block', () => {
 		const { getByTestId } = render(<Block />)
 		expect(getByTestId).toBeDefined()
 	})
-	it('should set width and height', () => {
+
+	it('should set props', () => {
 		const props = {
-			width: '100px',
-			height: '100px',
-		}
+			display: 'flex',
+			flexDirection: 'row',
+			flexWrap: 'wrap',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		} as any
+
 		const { getByTestId } = render(<Block {...props} />)
-		expect(getByTestId('StyledBlock')).toHaveStyle(`width: ${props.width}`)
-		expect(getByTestId('StyledBlock')).toHaveStyle(
-			`height: ${props.height}`
-		)
-	})
 
-	it('should set display flex', () => {
-		const { getByTestId } = render(<Block display='flex' />)
-		expect(getByTestId('StyledBlock')).toHaveStyle('display: flex')
-	})
-
-	it('should have boxSizing', () => {
-		const { getByTestId } = render(<Block boxSizing='border-box' />)
-		expect(getByTestId('StyledBlock')).toHaveStyle('box-sizing: border-box')
+		expect(getByTestId('StyledBlock')).toHaveStyle({
+			display: 'flex',
+			'flex-direction': 'row',
+			'flex-wrap': 'wrap',
+			'justify-content': 'space-between',
+			'align-items': 'center',
+		})
 	})
 
 	it('should set flex specify properties when display flex', () => {
@@ -40,7 +39,9 @@ describe('Block', () => {
 			justifyContent: 'space-between',
 			alignItems: 'center',
 		} as any
+
 		const { getByTestId } = render(<Block {...props} />)
+
 		expect(getByTestId('StyledBlock')).toHaveStyle(props)
 	})
 
@@ -52,6 +53,7 @@ describe('Block', () => {
 			justifyContent: 'space-between',
 			alignItems: 'center',
 		} as any
+
 		const { getByTestId } = render(<Block {...props} />)
 
 		expect(getByTestId('StyledBlock')).not.toHaveStyle(props)
@@ -66,6 +68,7 @@ describe('Block', () => {
 			columnGap: '12px',
 			gridTemplateColumns: 'repeat(12, 1fr);',
 		} as any
+
 		const { getByTestId } = render(<Block {...props} />)
 
 		expect(getByTestId('StyledBlock')).toHaveStyle({
@@ -76,6 +79,7 @@ describe('Block', () => {
 			'grid-template-columns': 'repeat(12,1fr)',
 		})
 	})
+
 	it('should not set grid specify properties when not display grid', () => {
 		const props = {
 			display: 'block',
@@ -85,6 +89,7 @@ describe('Block', () => {
 			columnGap: '12px',
 			gridTemplateColumns: 'repeat(12, 1fr);',
 		} as any
+
 		const { getByTestId } = render(<Block {...props} />)
 
 		expect(getByTestId('StyledBlock')).not.toHaveStyle({

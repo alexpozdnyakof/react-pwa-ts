@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Align, Space } from '../../styles/types'
+import { Space } from '../styles'
+
 import { Stack } from './stack'
 import { Placeholder } from './storybook-helpers'
 
@@ -9,10 +10,6 @@ export default {
 	argTypes: {
 		size: {
 			options: Object.values(Space),
-			control: { type: 'select' },
-		},
-		align: {
-			options: Object.values(Align),
 			control: { type: 'select' },
 		},
 	},

@@ -34,7 +34,6 @@ export const StyledBlock = styled.div(
 		flexWrap,
 		alignItems,
 		justifyContent,
-
 		gridAutoFlow,
 		gap,
 		rowGap,
@@ -58,7 +57,6 @@ export const StyledBlock = styled.div(
 			alignItems,
 			gridTemplateColumns,
 		}),
-
 		...props,
 	})
 )

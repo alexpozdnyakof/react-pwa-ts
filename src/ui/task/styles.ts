@@ -1,6 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const TaskWrapper = styled.div`
+	width: 100%;
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -9,16 +10,9 @@ const TaskWrapper = styled.div`
 	overflow: hidden;
 	mask-image: radial-gradient(white, black);
 	transition: background 0.15s linear;
-	padding: 12px 8px;
+	padding: 6px 8px;
+	margin-left: -8px;
 
-	> * {
-		margin-left: 0;
-		margin-right: 0;
-	}
-
-	> * + * {
-		margin-left: 0.5rem;
-	}
 	::before {
 		content: '';
 		position: absolute;
@@ -36,7 +30,7 @@ const TaskWrapper = styled.div`
 		--blur-x: 372px;
 		--blur-o: 1;
 
-		background-color: rgb(44 44 49);
+		background-color: ${({ theme }) => theme.color.backgroundHover};
 	}
 `
 
@@ -51,26 +45,9 @@ const TaskStack = styled.div`
 	}
 `
 
-const TaskText = styled.div<{ checked: boolean }>`
-	line-height: 24px;
-	display: inline-block;
-	position: relative;
-	color: ${({ checked }) =>
-		checked ? 'hsla(0,0%,100%,0.4)' : 'currentColor'};
-	${({ checked }) =>
-		checked &&
-		css`
-			::before {
-				content: '';
-				position: absolute;
-				height: 1px;
-				left: -2px;
-				right: -2px;
-				top: 50%;
-				transform-origin: 0 50%;
-				transform: translateY(-50%) scaleX(1) translateZ(0);
-				background: currentColor;
-			}
-		`};
+const ListTitleContainer = styled.div`
+	padding-top: ${({ theme }) => `${theme.space.xlarge}`};
+	padding-bottom: ${({ theme }) => `${theme.space.large}`};
+	margin: 0 auto;
 `
-export { TaskWrapper, TaskStack, TaskText }
+export { TaskWrapper, TaskStack, ListTitleContainer }

@@ -1,15 +1,13 @@
-import { SyntheticEvent, useRef, useState } from 'react'
+import { useState } from 'react'
 import { TaskData } from '../../../domain'
-import { Button } from '../../core/button'
-import { PlusIcon } from '../../core/icon'
+import { useFocus } from '../../../hooks/use-focus'
 
-import {
-	ButtonInner,
-	ButtonsStack,
-	StyledAddTaskButton,
-	StyledTaskForm,
-	TextArea,
-} from './styles'
+import { Button } from '../../core/button'
+import { TextField } from '../../core/text-field'
+import { Kind } from '../../styles'
+import TaskCheckbox from '../checkbox/checkbox'
+import { TaskStack, TaskWrapper } from '../styles'
+import { ButtonsStack } from './styles'
 
 type TaskDTO = Pick<TaskData, 'text'>
 
@@ -17,59 +15,55 @@ type AddTaskProps = {
 	addTask: (task: TaskDTO) => void
 }
 
-function AddTaskButton({
-	onClick,
-}: {
-	onClick: (event: SyntheticEvent) => void
-}) {
-	return (
-		<StyledAddTaskButton onClick={onClick}>
-			<ButtonInner>
-				<PlusIcon />
-				<span>Add task</span>
-			</ButtonInner>
-		</StyledAddTaskButton>
-	)
-}
 export default function AddTask({ addTask }: AddTaskProps) {
-	const inputRef = useRef<HTMLTextAreaElement>(null)
-	const [enterMode, setEnterMode] = useState(false)
+	const inputRef = useFocus()
+	const [showForm, setShowForm] = useState(false)
 
 	const handleSubmit = () => {
 		if (!inputRef?.current?.value) return
 		addTask({ text: inputRef.current.value })
 	}
+	const handleCancel = () => setShowForm(false)
 
 	const handleKeyUp = ({
 		keyCode,
-	}: React.KeyboardEvent<HTMLTextAreaElement>) => {
+	}: React.KeyboardEvent<HTMLInputElement>) => {
 		const isEnterPressed = keyCode === 13
+		const isEscapePressed = keyCode === 27
 
 		if (isEnterPressed) handleSubmit()
+		if (isEscapePressed) handleCancel()
 	}
 
-	const handleCancel = () => setEnterMode(false)
+	if (showForm) {
+		return (
+			<>
+				<TaskWrapper>
+					<TaskCheckbox disabled />
+					<TaskStack />
+				</TaskWrapper>
+				<TextField
+					placeholder='Task description'
+					ref={inputRef}
+					onKeyUp={handleKeyUp}
+				/>
+				<ButtonsStack>
+					{!showForm && (
+						<Button kind={Kind.secondary} onClick={handleSubmit}>
+							Add a to-do
+						</Button>
+					)}
+					{/* <Button onClick={handleCancel} type='secondary'>
+						Cancel
+					</Button> */}
+				</ButtonsStack>
+			</>
+		)
+	}
 
 	return (
-		<>
-			{!enterMode && <AddTaskButton onClick={() => setEnterMode(true)} />}
-			{enterMode && (
-				<>
-					<StyledTaskForm>
-						<TextArea
-							placeholder='Add task'
-							ref={inputRef}
-							onKeyUp={handleKeyUp}
-						/>
-					</StyledTaskForm>
-					<ButtonsStack>
-						<Button onClick={handleSubmit}>Add task</Button>
-						<Button onClick={handleCancel} type='secondary'>
-							Cancel
-						</Button>
-					</ButtonsStack>
-				</>
-			)}
-		</>
+		<Button kind={Kind.secondary} onClick={() => setShowForm(true)}>
+			Add task
+		</Button>
 	)
 }

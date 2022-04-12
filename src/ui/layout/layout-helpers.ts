@@ -1,16 +1,14 @@
-import { Align } from '../../styles/types'
-
-function getAlign(align: Align | undefined): Align[keyof Align] {
+function getAlign(align: string) {
 	const alignsMap = {
-		[Align.left]: 'flex-start',
-		[Align.center]: 'center',
-		[Align.right]: 'flex-end',
+		left: 'flex-start',
+		center: 'center',
+		right: 'flex-end',
 	}
-	const defaultAlign = alignsMap[Align.left]
+	const defaultAlign = alignsMap.left
 
 	if (!align) return defaultAlign
 
-	return alignsMap[align]
+	return null
 }
 
 export { getAlign }

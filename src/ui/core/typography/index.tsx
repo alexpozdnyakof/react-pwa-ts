@@ -1,80 +1,86 @@
-import { Colors, LineHeight, TextSize } from '../../../styles'
-import { Box } from '../../layout'
+import { FontSize, LineHeight } from '../../styles'
+import { Block, FontProps } from '../block'
 
-type TypographyProps = {
-	size: TextSize
-	lineHeight: LineHeight
-	color: Colors | undefined
-	children: string
-}
+type TypographyElementProps = React.PropsWithChildren<
+	Partial<Pick<FontProps, 'color'>>
+>
 
-type TypographyElementProps = Pick<TypographyProps, 'color' | 'children'>
-
-function Typography({
-	size,
-	lineHeight,
-	color = Colors.textPrimary,
-	children,
-}: TypographyProps) {
+function Body({ color, children }: TypographyElementProps) {
 	return (
-		<Box fontSize={size} lineHeight={lineHeight} color={color}>
+		<Block
+			color={color}
+			fontSize={FontSize.body}
+			lineHeight={LineHeight.body}
+			fontWeight={400}
+		>
 			{children}
-		</Box>
+		</Block>
 	)
 }
 
-function Body({
-	color,
-	children,
-}: Pick<TypographyProps, 'color' | 'children'>) {
+function Button({ color, children }: TypographyElementProps) {
 	return (
-		<Typography
+		<Block
 			color={color}
-			size={TextSize.default}
-			lineHeight={LineHeight.default}
+			fontSize={FontSize.body}
+			lineHeight={LineHeight.body}
+			fontWeight={600}
 		>
 			{children}
-		</Typography>
+		</Block>
 	)
 }
 
-function Button({
-	color,
-	children,
-}: Pick<TypographyProps, 'color' | 'children'>) {
+function TaskTitle({ color, children }: TypographyElementProps) {
 	return (
-		<Typography
+		<Block
 			color={color}
-			size={TextSize.default}
-			lineHeight={LineHeight.default}
+			fontSize={FontSize.body}
+			lineHeight={LineHeight.medium}
+			fontWeight={400}
 		>
 			{children}
-		</Typography>
+		</Block>
+	)
+}
+
+function SubTitle({ color, children }: TypographyElementProps) {
+	return (
+		<Block
+			color={color}
+			fontSize={FontSize.medium}
+			lineHeight={LineHeight.large}
+			fontWeight={600}
+		>
+			{children}
+		</Block>
 	)
 }
 
 function Title({ color, children }: TypographyElementProps) {
 	return (
-		<Typography
+		<Block
 			color={color}
-			size={TextSize.large}
+			fontSize={FontSize.large}
 			lineHeight={LineHeight.large}
+			fontWeight={600}
 		>
 			{children}
-		</Typography>
+		</Block>
 	)
 }
 
 function Caption({ color, children }: TypographyElementProps) {
 	return (
-		<Typography
+		<Block
 			color={color}
-			size={TextSize.small}
+			fontSize={FontSize.small}
 			lineHeight={LineHeight.small}
+			fontWeight={400}
 		>
 			{children}
-		</Typography>
+		</Block>
 	)
 }
 
-export { Caption, Title, Button, Body }
+export { Caption, Title, TaskTitle, SubTitle, Button, Body }

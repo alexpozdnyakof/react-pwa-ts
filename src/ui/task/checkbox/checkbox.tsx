@@ -3,6 +3,7 @@ import { CheckboxCircle, CheckboxButton, Svg } from './styles'
 
 type CheckboxProps = {
 	checked: boolean
+	disabled: boolean
 	onChange?: (e: SyntheticEvent) => void
 }
 

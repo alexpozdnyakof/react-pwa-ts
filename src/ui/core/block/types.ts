@@ -1,3 +1,5 @@
+import { Color, LineHeight } from '../../styles'
+
 enum Space {
 	none = 'none',
 	micro = 'micro',
@@ -36,9 +38,9 @@ interface GridProps {
 interface FontProps {
 	fontSize: string
 	fontWeight: 400 | 500 | 600 | 900 | 'normal' | 'bold'
-	lineHeight: string
+	lineHeight: LineHeight
 	letterSpacing: string
-	color: string
+	color: Color
 }
 
 interface PaddingProps {
@@ -57,13 +59,19 @@ interface MarginProps {
 	marginLeft: Space
 }
 
-interface ReusableBlockProps extends MarginProps, PaddingProps {
-	backgroundColor: string
+interface BorderProps {
 	borderRadius: BorderRadius
+	borderColor: Color
+	borderWidth: string
+	borderStyle: 'none' | 'hidden' | 'dotted' | 'solid' | 'dashed' | 'double'
+}
+
+interface ReusableBlockProps extends MarginProps, PaddingProps, BorderProps {
+	backgroundColor: Color
+
 	width: string
 	height: string
 }
-
 interface BlockProps
 	extends FlexProps,
 		FontProps,
@@ -80,6 +88,8 @@ interface BlockProps
 		| 'inline-block'
 		| 'inline-flex'
 		| 'none'
+	position: 'relative' | 'static' | 'sticky' | 'absolute'
+	overflow: 'hidden' | 'visible'
 }
 
-export type { BlockProps, ReusableBlockProps }
+export type { BlockProps, ReusableBlockProps, FontProps }

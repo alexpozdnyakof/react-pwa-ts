@@ -1,22 +1,22 @@
+import { InlineRow } from '../core/inline-row'
+import { TaskTitle } from '../core/typography'
+import { Space } from '../styles'
+
 import TaskCheckbox from './checkbox/checkbox'
-import { TaskStack, TaskText, TaskWrapper } from './styles'
-import TagStack from './task-tag/tag-stack'
 
 export type TaskProps = {
-	text: string
-	done?: boolean
-	duedate?: string
-	tags?: Array<{ id: number; text: string }>
+	id: number
+	done: boolean
 }
 
-export default function Task({ text, duedate, done = false, tags }: TaskProps) {
+export default function Task({
+	done = false,
+	children,
+}: React.PropsWithChildren<Partial<TaskProps>>) {
 	return (
-		<TaskWrapper>
+		<InlineRow space={Space.small}>
 			<TaskCheckbox checked={done} />
-			<TaskStack>
-				<TaskText checked={done}>{text}</TaskText>
-				<TagStack duedate={duedate} tags={tags} />
-			</TaskStack>
-		</TaskWrapper>
+			<TaskTitle>{children}</TaskTitle>
+		</InlineRow>
 	)
 }

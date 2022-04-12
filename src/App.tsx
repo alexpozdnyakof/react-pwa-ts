@@ -1,61 +1,41 @@
-import { useState } from 'react'
-import { InboxIcon } from './ui/core/icon'
-import './App.scss'
-import { AddTask } from './ui/task/add-task'
-import Task from './ui/task/task'
-import { TASK_DATA } from './data'
-import { TaskData } from './domain'
-import { TaskDTO } from './ui/task/types'
-import { formatDate } from './lib'
+import { ThemeProvider } from 'styled-components'
 
-function PageHeader() {
-	return (
-		<header>
-			<div className='view-header'>
-				<InboxIcon size={24} />
-				<div className='title'>Inbox</div>
-			</div>
-		</header>
-	)
-}
+import { darkTheme, GlobalStyles } from './ui/styles'
 
-function createTask(
-	dto: TaskDTO,
-	tasks: Array<TaskData>
-): TaskData & { duedate: string } {
-	const lastId = tasks[tasks.length - 1].id ?? 0
-	return {
-		id: lastId + 1,
-		...dto,
-		done: false,
-		duedate: formatDate(new Date()),
-	}
-}
+// function createTask(dto: TaskDTO, lastId: number): TaskData {
+// 	return {
+// 		id: lastId + 1,
+// 		...dto,
+// 		done: false,
+// 	}
+// }
+
+// interface TaskListData {
+// 	id: number
+// 	title: string
+// 	tasks: Array<TaskData>
+// }
+
 function App() {
-	const [state, setState] = useState<Array<TaskData>>([...TASK_DATA])
+	// const [state, setState] = useState<TaskListData>({
+	// 	id: 1,
+	// 	title: '📦 First react app',
+	// 	tasks: [...TASK_DATA],
+	// })
 
-	const addTaskFn = (dto: TaskDTO) => {
-		const task = createTask(dto, state)
-		setState([...state, task])
-	}
+	// const addTaskFn = (dto: TaskDTO) => {
+	// 	const lastId = state.tasks[state.tasks.length - 1].id ?? 0
+
+	// 	const task = createTask(dto, lastId)
+	// 	setState({ ...state, tasks: [...state.tasks, task] })
+	// }
 	return (
-		<div className='App'>
-			<div className='top-bar' />
-			<PageHeader />
-			<div className='view-content'>
-				<div className='task-list'>
-					{state.map(({ text, done, duedate, tags }) => (
-						<Task
-							text={text}
-							done={done}
-							duedate={duedate}
-							tags={tags}
-						/>
-					))}
-				</div>
-				<AddTask addTask={addTaskFn} />
+		<ThemeProvider theme={darkTheme}>
+			<div className='App'>
+				<div className='top-bar' />
 			</div>
-		</div>
+			<GlobalStyles />
+		</ThemeProvider>
 	)
 }
 

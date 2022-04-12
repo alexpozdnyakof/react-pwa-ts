@@ -1,28 +1,25 @@
 import styled from 'styled-components'
+import { Space, Theme } from '../styles'
 
-import { Box, ReusableBoxProps } from './box'
+type StackProps = { space?: Space }
 
-import { WithSpace } from './types'
+function getSpace(theme: Theme, s: Space | undefined) {
+	if (!s) return '0'
+	return `${theme.space[s]}px`
+}
 
-type StackProps = WithSpace<Partial<ReusableBoxProps>>
-
-const StyledStack = styled(Box)<StackProps>`
-	display: flex;
-	justify-content: flex-start;
-
-	> * + * {
-		margin-top: ${({ theme, space }) => `${theme.space[space]}px`};
-	}
-`
+const StyledStack = styled.div(
+	({ theme, space }: { theme: any; space: Space }) => ({
+		display: 'grid',
+		gridAutoFlow: 'row',
+		rowGap: getSpace(theme, space),
+		width: '100%',
+	})
+)
 
 export function Stack({
 	children,
-	space,
-	align = 'flex-start',
+	space = Space.xsmall,
 }: React.PropsWithChildren<StackProps>) {
-	return (
-		<StyledStack space={space} direction='column' align={align}>
-			{children}
-		</StyledStack>
-	)
+	return <StyledStack space={space}>{children}</StyledStack>
 }

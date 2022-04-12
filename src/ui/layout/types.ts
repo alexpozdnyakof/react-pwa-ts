@@ -1,4 +1,4 @@
-import { Space } from '../../styles/types'
+import { Space } from '../styles'
 
 type WithSpace<T> = T & { space: Space }
 
