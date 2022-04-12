@@ -20,6 +20,9 @@ const SelectWithNone = (options: Array<string>) =>
 	Select(['none', ...options], { none: undefined })
 
 const ReusableBlock = () => ({
+	width: Text(),
+	height: Text(),
+	backgroundColor: Color(),
 	padding: SelectWithNone(Object.values(Space)),
 	paddingTop: SelectWithNone(Object.values(Space)),
 	paddingRight: SelectWithNone(Object.values(Space)),
