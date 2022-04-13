@@ -10,18 +10,21 @@ import { BlockProps, FontProps } from './types'
 import { convertSpaceTokensToPixels } from '../../helpers'
 
 const addFlexProps = (
-	display: string | 'flex' | undefined,
+	display: unknown,
 	flexProps: Record<string, string | number | undefined>
 ) => (display === 'flex' ? { ...flexProps } : {})
 
 const addGridProps = (
-	display: string | 'grid' | undefined,
+	display: unknown,
 	gridProps: Record<string, string | number | undefined>
 ) => (display === 'grid' ? { ...gridProps } : {})
 
 const addFontProps = (
 	theme: Theme,
-	{ fontSize, lineHeight }: Partial<FontProps>
+	{
+		fontSize,
+		lineHeight,
+	}: Partial<Pick<FontProps, 'fontSize' | 'lineHeight'>>
 ) => {
 	const entries = Object.entries({ fontSize, lineHeight }).filter(
 		([, v]) => v !== undefined
@@ -80,6 +83,7 @@ export const StyledBlock = styled.div(
 		backgroundColor,
 		borderColor,
 		borderBottomColor,
+		borderRightColor,
 
 		...props
 	}: WithStyledTheme<Partial<BlockProps>>) => ({
@@ -118,6 +122,7 @@ export const StyledBlock = styled.div(
 			backgroundColor,
 			borderColor,
 			borderBottomColor,
+			borderRightColor,
 		}),
 		...props,
 	})

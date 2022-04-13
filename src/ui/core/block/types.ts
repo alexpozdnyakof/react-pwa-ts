@@ -53,14 +53,18 @@ interface MarginProps {
 	marginLeft: Space
 }
 
+type BorderStyle = 'none' | 'solid' | 'dashed'
 interface BorderProps {
 	borderRadius: BorderRadius
 	borderColor: Color
 	borderWidth: string
-	borderStyle: 'none' | 'solid' | 'dashed'
+	borderStyle: BorderStyle
 	borderBottomColor: Color
 	borderBottomWidth: string
-	borderBottomStyle: 'none' | 'solid' | 'dashed'
+	borderBottomStyle: BorderStyle
+	borderRightColor: Color
+	borderRightWidth: string
+	borderRightStyle: BorderStyle
 }
 
 interface ReusableBlockProps extends MarginProps, PaddingProps, BorderProps {
@@ -86,7 +90,7 @@ interface BlockProps
 		| 'inline-flex'
 		| 'none'
 	position: 'relative' | 'static' | 'sticky' | 'absolute'
-	overflow: 'hidden' | 'visible'
+	overflow: 'hidden' | 'visible' | 'scroll'
 }
 
 export type {
