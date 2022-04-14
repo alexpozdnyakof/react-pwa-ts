@@ -1,7 +1,6 @@
-import Icon from './icon'
-import { IconProps } from './types'
+import Icon, { IconProps } from './icon'
 
-export default function CalendarIcon({ size = 16 }: IconProps) {
+export default function CalendarIcon({ size }: Partial<IconProps>) {
 	return (
 		<Icon size={size}>
 			<path

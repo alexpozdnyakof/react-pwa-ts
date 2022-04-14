@@ -1,9 +1,8 @@
-import Icon from './icon'
-import { IconProps } from './types'
+import Icon, { IconProps } from './icon'
 
-export default function TagIcon({ size = 16 }: IconProps) {
+export default function TagIcon(props: Partial<IconProps>) {
 	return (
-		<Icon size={size}>
+		<Icon {...props}>
 			<path
 				fill='currentColor'
 				fillRule='nonzero'
