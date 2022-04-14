@@ -1,14 +1,14 @@
-import { FontSize, LineHeight } from '../../styles'
-import { Block, FontProps } from '../block'
+import { Color, FontSize, LineHeight } from '../../styles'
+import { Block } from '../block'
 
 type TypographyElementProps = React.PropsWithChildren<
-	Partial<Pick<FontProps, 'color'>>
+	Partial<{ color: Color; width: string }>
 >
 
-function Body({ color, children }: TypographyElementProps) {
+function Body({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.body}
 			lineHeight={LineHeight.body}
 			fontWeight={400}
@@ -21,10 +21,10 @@ function Body({ color, children }: TypographyElementProps) {
 	)
 }
 
-function Button({ color, children }: TypographyElementProps) {
+function Button({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.body}
 			lineHeight={LineHeight.body}
 			fontWeight={600}
@@ -34,10 +34,10 @@ function Button({ color, children }: TypographyElementProps) {
 	)
 }
 
-function TaskTitle({ color, children }: TypographyElementProps) {
+function TaskTitle({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.body}
 			lineHeight={LineHeight.medium}
 			fontWeight={400}
@@ -47,10 +47,10 @@ function TaskTitle({ color, children }: TypographyElementProps) {
 	)
 }
 
-function SubTitle({ color, children }: TypographyElementProps) {
+function SubTitle({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.medium}
 			lineHeight={LineHeight.large}
 			fontWeight={600}
@@ -60,10 +60,10 @@ function SubTitle({ color, children }: TypographyElementProps) {
 	)
 }
 
-function Title({ color, children }: TypographyElementProps) {
+function Title({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.large}
 			lineHeight={LineHeight.large}
 			fontWeight={600}
@@ -73,10 +73,10 @@ function Title({ color, children }: TypographyElementProps) {
 	)
 }
 
-function Caption({ color, children }: TypographyElementProps) {
+function Caption({ children, ...props }: TypographyElementProps) {
 	return (
 		<Block
-			color={color}
+			{...props}
 			fontSize={FontSize.small}
 			lineHeight={LineHeight.small}
 			fontWeight={400}
