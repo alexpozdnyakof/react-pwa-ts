@@ -5,6 +5,7 @@ import {
 	Color,
 	LineHeight,
 	Size,
+	Width,
 } from './tokens'
 
 interface Theme {
@@ -14,6 +15,8 @@ interface Theme {
 	borderRadius: Record<BorderRadius, string>
 	lineHeight: Record<LineHeight, string>
 	size: Record<Size, string>
+	width: Record<Width, string>
+
 	buttonHeight: { [Size.medium]: string; [Size.large]: string }
 	buttonPadding: { [Size.medium]: string; [Size.large]: string }
 }
@@ -28,6 +31,7 @@ const darkTheme = ((): Theme => ({
 		[Size.large]: '16px',
 	},
 	color: {
+		[Color.transparent]: 'transparent',
 		[Color.text]: '#f5f4f3',
 		[Color.textDisabled]: '#6a696a',
 		[Color.textWeak]: '#a2a0a2',
@@ -69,17 +73,32 @@ const darkTheme = ((): Theme => ({
 	},
 
 	space: {
+		[Space.zero]: '0px',
+		[Space.micro]: '2px',
 		[Space.xsmall]: '4px',
 		[Space.small]: '8px',
-		[Space.medium]: '12px',
-		[Space.large]: '16px',
+		[Space.normal]: '12px',
+		[Space.medium]: '16px',
+		[Space.large]: '20px',
 		[Space.xlarge]: '24px',
 		[Space.xxlarge]: '32px',
+		[Space.xxxlarge]: '36px',
 	},
 	borderRadius: {
 		[BorderRadius.small]: '2px',
 		[BorderRadius.medium]: '4px',
 		[BorderRadius.large]: '8px',
+	},
+	width: {
+		[Size.micro]: '2px',
+		[Size.xsmall]: '4px',
+		[Size.small]: '8px',
+		[Size.normal]: '12px',
+		[Size.medium]: '16px',
+		[Size.large]: '20px',
+		[Size.xlarge]: '24px',
+		[Size.xxlarge]: '32px',
+		[Size.xxxlarge]: '36px',
 	},
 	size: {
 		[Size.micro]: '2px',

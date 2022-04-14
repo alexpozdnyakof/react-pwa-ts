@@ -15,6 +15,7 @@ enum LineHeight {
 }
 
 enum Size {
+	zero = 'zero',
 	micro = 'micro',
 	xsmall = 'xsmall',
 	small = 'small',
@@ -27,12 +28,28 @@ enum Size {
 }
 
 enum Space {
+	zero = 'zero',
+	micro = 'micro',
 	xsmall = 'xsmall',
 	small = 'small',
+	normal = 'normal',
 	medium = 'medium',
 	large = 'large',
 	xlarge = 'xlarge',
 	xxlarge = 'xxlarge',
+	xxxlarge = 'xxxlarge',
+}
+
+enum Width {
+	micro = 'micro',
+	xsmall = 'xsmall',
+	small = 'small',
+	normal = 'normal',
+	medium = 'medium',
+	large = 'large',
+	xlarge = 'xlarge',
+	xxlarge = 'xxlarge',
+	xxxlarge = 'xxxlarge',
 }
 
 enum BorderRadius {
@@ -42,6 +59,7 @@ enum BorderRadius {
 }
 
 enum Color {
+	transparent = 'transparent',
 	text = 'text',
 	textDisabled = 'textDisabled',
 	textWeak = 'textWeak',
@@ -73,4 +91,4 @@ enum Kind {
 	tertiary = 'tertiary',
 }
 
-export { FontSize, Space, BorderRadius, Color, LineHeight, Size, Kind }
+export { FontSize, Space, BorderRadius, Color, LineHeight, Size, Kind, Width }
