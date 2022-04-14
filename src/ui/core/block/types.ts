@@ -91,6 +91,11 @@ interface BlockProps
 		| 'none'
 	position: 'relative' | 'static' | 'sticky' | 'absolute'
 	overflow: 'hidden' | 'visible' | 'scroll'
+	top: string
+	right: string
+	bottom: string
+	left: string
+	zIndex: number
 }
 
 export type {
