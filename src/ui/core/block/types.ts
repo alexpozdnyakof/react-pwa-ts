@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react'
 import { Color, LineHeight, Space, BorderRadius, FontSize } from '../../styles'
 
 interface FlexProps {
@@ -73,6 +74,15 @@ interface ReusableBlockProps extends MarginProps, PaddingProps, BorderProps {
 	width: string
 	height: string
 }
+
+interface BlockAttributes {
+	attributes: HTMLAttributes<HTMLDivElement>
+}
+
+interface TestIdAttribute {
+	testId: string
+}
+
 interface BlockProps
 	extends FlexProps,
 		FontProps,
@@ -99,9 +109,11 @@ interface BlockProps
 }
 
 export type {
+	BlockAttributes,
 	BlockProps,
 	ReusableBlockProps,
 	FontProps,
 	PaddingProps,
 	MarginProps,
+	TestIdAttribute,
 }

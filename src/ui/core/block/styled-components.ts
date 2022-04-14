@@ -1,53 +1,8 @@
 import styled from 'styled-components'
-import {
-	Color,
-	FontSize,
-	LineHeight,
-	Theme,
-	WithStyledTheme,
-} from '../../styles'
-import { BlockProps, FontProps } from './types'
+import { WithStyledTheme } from '../../styles'
+import { BlockProps } from './types'
 import { convertSpaceTokensToPixels } from '../../helpers'
-
-const addFlexProps = (
-	display: unknown,
-	flexProps: Record<string, string | number | undefined>
-) => (display === 'flex' ? { ...flexProps } : {})
-
-const addGridProps = (
-	display: unknown,
-	gridProps: Record<string, string | number | undefined>
-) => (display === 'grid' ? { ...gridProps } : {})
-
-const addFontProps = (
-	theme: Theme,
-	{
-		fontSize,
-		lineHeight,
-	}: Partial<Pick<FontProps, 'fontSize' | 'lineHeight'>>
-) => {
-	const entries = Object.entries({ fontSize, lineHeight }).filter(
-		([, v]) => v !== undefined
-	) as unknown as Array<
-		[
-			keyof Pick<FontProps, 'fontSize' | 'lineHeight'>,
-			LineHeight | FontSize
-		]
-	>
-
-	return Object.fromEntries(entries.map(([k, v]) => [k, theme[k][v]])) as {
-		[key: string]: string
-	}
-}
-
-const addColors = ({ color }: Theme, colorProps: Partial<BlockProps>) => {
-	const entries = Object.entries(colorProps).filter(
-		([, v]) => v !== undefined
-	) as unknown as Array<[keyof Partial<BlockProps>, Color]>
-	return Object.fromEntries(entries.map(([k, v]) => [k, color[v]])) as {
-		[key: string]: string
-	}
-}
+import { addColors, addFlexProps, addFontProps, addGridProps } from './helpers'
 
 export const StyledBlock = styled.div(
 	({

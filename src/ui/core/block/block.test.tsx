@@ -4,6 +4,7 @@ import 'jest-styled-components'
 import Block from './block'
 import { FontSize, LineHeight, Space } from '../../styles'
 import { getStyleObject, renderWithTheme } from '../../helpers/test.helpers'
+import { BlockAttributes } from './types'
 
 afterEach(cleanup)
 
@@ -148,5 +149,15 @@ describe('Block', () => {
 
 		expect(style.fontSize).toContain('px')
 		expect(style.lineHeight).toContain('px')
+	})
+
+	it('should setup html attributes', () => {
+		const props = {
+			attributes: { contentEditable: true },
+		} as BlockAttributes
+
+		const { getByTestId } = render(<Block {...props} />)
+
+		expect(getByTestId('StyledBlock')).toHaveAttribute('contentEditable')
 	})
 })
