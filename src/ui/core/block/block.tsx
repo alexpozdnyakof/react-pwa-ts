@@ -11,7 +11,7 @@ type BlockComposedProps = React.PropsWithChildren<
 export default function Block({
 	children,
 	attributes = {},
-	testId = 'StyledBlock',
+	testId,
 	onInput,
 	...props
 }: BlockComposedProps) {
