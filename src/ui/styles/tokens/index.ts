@@ -83,6 +83,22 @@ enum Color {
 
 	darkBackgroundHover = 'darkBackgroundHover',
 	darkBackgroundActive = 'darkBackgroundActive',
+
+	successText = 'successText',
+	successTextHover = 'successTextHover',
+	successTextStrong = 'successTextStrong',
+	successIcon = 'successIcon',
+	successIconHover = 'successIconHover',
+	successIconStrong = 'successIconStrong',
+	successBorder = 'successBorder',
+	successBorderHover = 'successBorderHover',
+
+	successBackground = 'successBackground',
+	successBackgroundHover = 'successBackgroundHover',
+	successBackgroundActive = 'successBackgroundActive',
+	successBackgroundStrong = 'successBackgroundStrong',
+	successBackgroundStrongHover = 'successBackgroundStrongHover',
+	successBackgroundStrongActive = 'successBackgroundStrongActive',
 }
 
 enum Kind {

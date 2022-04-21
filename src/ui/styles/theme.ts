@@ -33,11 +33,14 @@ const darkTheme = ((): Theme => ({
 	color: {
 		[Color.transparent]: 'transparent',
 		[Color.text]: '#f5f4f3',
+
 		[Color.textDisabled]: '#6a696a',
 		[Color.textWeak]: '#a2a0a2',
 		[Color.textWeakHover]: '#f5f4f3',
+
 		[Color.icon]: '#a2a0a2',
 		[Color.iconHover]: '#f5f4f3',
+
 		[Color.border]: '#424244',
 		[Color.borderHover]: '#6a696a',
 		[Color.borderActive]: '#a2a0a2',
@@ -55,6 +58,24 @@ const darkTheme = ((): Theme => ({
 
 		[Color.darkBackgroundHover]: 'rgba(55, 23, 23, 0.03)',
 		[Color.darkBackgroundActive]: 'rgba(55, 23, 23, 0.05)',
+
+		[Color.successText]: '#86bca4',
+		[Color.successTextHover]: '#afd6c6',
+		[Color.successTextStrong]: '#1e1f21',
+
+		[Color.successIcon]: '#5da283',
+		[Color.successIconHover]: '#86bca4',
+		[Color.successIconStrong]: '#1e1f21',
+
+		[Color.successBorder]: '#32695d',
+		[Color.successBorderHover]: '#5da283',
+
+		[Color.successBackground]: '#192c29',
+		[Color.successBackgroundHover]: '#21433d',
+		[Color.successBackgroundActive]: '#244c45',
+		[Color.successBackgroundStrong]: '#5da283',
+		[Color.successBackgroundStrongHover]: '#5a9b7e',
+		[Color.successBackgroundStrongActive]: '#559377',
 	},
 
 	fontSize: {
@@ -101,6 +122,7 @@ const darkTheme = ((): Theme => ({
 		[Size.xxxlarge]: '36px',
 	},
 	size: {
+		[Size.zero]: '0px',
 		[Size.micro]: '2px',
 		[Size.xsmall]: '4px',
 		[Size.small]: '8px',
