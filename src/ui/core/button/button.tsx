@@ -1,6 +1,6 @@
-import { BaseButton } from './styles'
+import { BaseButton } from './styled-components'
 import { ButtonProps } from './type'
-import * as Typography from '../typography'
+import Typography from '../typography'
 import { Block } from '../block'
 
 function Enhancer({ children }: React.PropsWithChildren<{}>) {

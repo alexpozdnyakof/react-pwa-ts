@@ -107,4 +107,17 @@ enum Kind {
 	tertiary = 'tertiary',
 }
 
-export { FontSize, Space, BorderRadius, Color, LineHeight, Size, Kind, Width }
+enum Animation {
+	time = 'time',
+}
+export {
+	FontSize,
+	Space,
+	BorderRadius,
+	Color,
+	LineHeight,
+	Size,
+	Kind,
+	Width,
+	Animation,
+}

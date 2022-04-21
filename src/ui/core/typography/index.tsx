@@ -88,5 +88,6 @@ function Caption({ children, ...props }: TypographyElementProps) {
 		</Block>
 	)
 }
+const Typography = { Caption, Title, TaskTitle, SubTitle, Button, Body }
 
-export { Caption, Title, TaskTitle, SubTitle, Button, Body }
+export default Typography

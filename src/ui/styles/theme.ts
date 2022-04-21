@@ -1,4 +1,5 @@
 import {
+	Animation,
 	FontSize,
 	Space,
 	BorderRadius,
@@ -16,6 +17,9 @@ interface Theme {
 	lineHeight: Record<LineHeight, string>
 	size: Record<Size, string>
 	width: Record<Width, string>
+	animation: {
+		[Animation.time]: number
+	}
 
 	buttonHeight: { [Size.medium]: string; [Size.large]: string }
 	buttonPadding: { [Size.medium]: string; [Size.large]: string }
@@ -132,6 +136,9 @@ const darkTheme = ((): Theme => ({
 		[Size.xlarge]: '24px',
 		[Size.xxlarge]: '32px',
 		[Size.xxxlarge]: '36px',
+	},
+	animation: {
+		[Animation.time]: 200,
 	},
 }))()
 

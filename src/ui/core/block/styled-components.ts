@@ -2,7 +2,13 @@ import styled from 'styled-components'
 import { WithStyledTheme } from '../../styles'
 import { BlockProps } from './types'
 import { convertSpaceTokensToPixels } from '../../helpers'
-import { addColors, addFlexProps, addFontProps, addGridProps } from './helpers'
+import {
+	addBorderRadius,
+	addColors,
+	addFlexProps,
+	addFontProps,
+	addGridProps,
+} from './helpers'
 
 export const StyledBlock = styled.div(
 	({
@@ -39,6 +45,7 @@ export const StyledBlock = styled.div(
 		borderColor,
 		borderBottomColor,
 		borderRightColor,
+		borderRadius,
 
 		...props
 	}: WithStyledTheme<Partial<BlockProps>>) => ({
@@ -79,6 +86,8 @@ export const StyledBlock = styled.div(
 			borderBottomColor,
 			borderRightColor,
 		}),
+		...addBorderRadius(theme, { borderRadius }),
+
 		...props,
 	})
 )

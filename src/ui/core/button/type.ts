@@ -10,6 +10,8 @@ interface ButtonProps {
 	startEnhancer?: React.ReactNode | string
 	endEnhancer?: React.ReactNode | string
 	onClick?: (event: SyntheticEvent) => void
+	onMouseOver?: (event: SyntheticEvent) => void
+	onMouseLeave?: (event: SyntheticEvent) => void
 }
 
 export type { ButtonProps }

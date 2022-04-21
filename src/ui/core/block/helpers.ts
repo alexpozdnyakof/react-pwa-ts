@@ -1,4 +1,4 @@
-import { Theme, LineHeight, FontSize, Color } from '../../styles'
+import { Theme, LineHeight, FontSize, Color, BorderRadius } from '../../styles'
 import { FontProps, BlockProps } from './types'
 
 const addFlexProps = (
@@ -41,4 +41,19 @@ const addColors = ({ color }: Theme, colorProps: Partial<BlockProps>) => {
 	}
 }
 
-export { addFlexProps, addGridProps, addFontProps, addColors }
+const addBorderRadius = (
+	{ borderRadius }: Theme,
+	props: Partial<BlockProps>
+) => {
+	const entries = Object.entries(props).filter(
+		([, v]) => v !== undefined
+	) as unknown as Array<[keyof Partial<BlockProps>, BorderRadius]>
+
+	return Object.fromEntries(
+		entries.map(([k, v]) => [k, borderRadius[v]])
+	) as {
+		[key: string]: string
+	}
+}
+
+export { addFlexProps, addGridProps, addFontProps, addColors, addBorderRadius }
