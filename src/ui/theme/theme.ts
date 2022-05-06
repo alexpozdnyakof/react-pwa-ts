@@ -1,12 +1,15 @@
-import { CSSObject } from 'styled-components'
-import darkColors, { Colors } from './colors'
+import darkColors, { Color } from './colors'
 
-type VisualTheme = Record<Colors, string> & {}
+interface VisualTheme {
+	color: Record<Color, string>
+	getColor: (c: Color | undefined) => string | undefined
+}
 
-type WithVisualTheme<T extends CSSObject> = T & { theme: VisualTheme }
+type WithVisualTheme<T> = T & { theme: VisualTheme }
 
 export const darkTheme: VisualTheme = {
-	...darkColors,
+	color: { ...darkColors },
+	getColor: (c: Color | undefined) => darkColors[c] ?? undefined,
 }
 
 export type { WithVisualTheme }

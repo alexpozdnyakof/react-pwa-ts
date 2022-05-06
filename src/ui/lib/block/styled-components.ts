@@ -1,20 +1,25 @@
 import styled from 'styled-components'
-import { WithStyledTheme } from '../../styles'
+import { WithVisualTheme } from '../../theme/theme'
+import { ColorProps } from './types'
 
-/**
- * Зачем нужен блок?
- * Чтобы пробросить токены: цвета, шрифт
- */
-
-interface Props {
+interface Props extends Partial<ColorProps> {
 	width?: string
 	height?: string
 }
 
 export const BaseBlock = styled.div(
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	({ theme, width, height }: WithStyledTheme<Props>) => ({
+	({
+		theme,
 		width,
 		height,
+		backgroundColor,
+		borderColor,
+		color,
+	}: WithVisualTheme<Props>) => ({
+		width,
+		height,
+		backgroundColor: theme.getColor(backgroundColor),
+		borderColor: theme.getColor(borderColor),
+		color: theme.getColor(color),
 	})
 )

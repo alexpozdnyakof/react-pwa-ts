@@ -1,4 +1,4 @@
-export type Colors =
+export type Color =
 	| 'action'
 	| 'background'
 	| 'surface'
@@ -7,7 +7,7 @@ export type Colors =
 	| 'text'
 	| 'caption'
 
-const darkColors: Record<Colors, string> = {
+const darkColors: Record<Color, string> = {
 	action: '#30bb6c',
 	background: '#000000',
 	border: '#333333',
