@@ -64,12 +64,29 @@ describe('Block Component', () => {
 	it('should set border-width and border-radius', () => {
 		const props = {
 			borderWidth: 1,
-			borderRadius: 3,
+			radius: 3,
 		}
 		const result = renderBlockWithProps(props)
 		expect(result).toHaveStyle({
 			borderWidth: '1px',
 			borderRadius: '3px',
+		})
+	})
+
+	it('should set all margins', () => {
+		const props = {
+			ml: 'auto',
+			mt: 0,
+			mr: 'auto',
+			mb: 10,
+		}
+
+		const result = renderBlockWithProps(props as any)
+		expect(result).toHaveStyle({
+			marginLeft: 'auto',
+			marginTop: '0',
+			marginRight: 'auto',
+			marginBottom: '10px',
 		})
 	})
 })
