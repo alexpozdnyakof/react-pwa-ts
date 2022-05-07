@@ -1,8 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { StoryBookControl } from '../../helpers'
-import { darkTheme } from '../../theme/theme'
 import Block from './block'
 import { BlockProps } from './types'
 
@@ -29,9 +27,7 @@ const Template: ComponentStory<typeof Block> = ({
 	children,
 	...props
 }: React.PropsWithChildren<Partial<BlockProps>>) => (
-	<ThemeProvider theme={darkTheme as any}>
-		<Block {...props}>{children}</Block>
-	</ThemeProvider>
+	<Block {...props}>{children}</Block>
 )
 
 export const Default = Template.bind({})

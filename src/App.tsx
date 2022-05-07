@@ -1,5 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { TodosPage } from './ui/pages/todos'
 
 import { GlobalStyles } from './ui/styles'
 import { darkTheme } from './ui/theme'
@@ -34,6 +35,7 @@ function App() {
 	return (
 		<React.StrictMode>
 			<ThemeProvider theme={darkTheme}>
+				<TodosPage projectName='Project Name' />
 				<GlobalStyles />
 			</ThemeProvider>
 		</React.StrictMode>

@@ -1,8 +1,5 @@
-import { Todo } from '../../../domain'
-import { Block } from '../../atoms/block'
-import { Button } from '../../atoms/button'
-import { Space } from '../../styles'
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Todo } from '../../../../domain'
 import { useEditMode } from './use-edit-mode'
 import { useFocus } from './use-focus'
 
@@ -43,24 +40,16 @@ export default function TodoForm({
 	// 	addTodo(ref.current?.textContent as string)
 	// }
 
-	const handleButtonClick = () => {
-		toggleEditMode()
+	// const handleButtonClick = () => {
+	// 	toggleEditMode()
 
-		if (editMode) ref.current?.focus()
-	}
+	// 	if (editMode) ref.current?.focus()
+	// }
 
-	const state: { buttonText: string; todoItemDisplay: 'block' | 'none' } = {
-		buttonText: editMode ? 'Cancel' : 'Add to-do',
-		todoItemDisplay: editMode ? 'block' : 'none',
-	}
+	// const state: { buttonText: string; todoItemDisplay: 'block' | 'none' } = {
+	// 	buttonText: editMode ? 'Cancel' : 'Add to-do',
+	// 	todoItemDisplay: editMode ? 'block' : 'none',
+	// }
 
-	return (
-		<>
-			<Block marginBottom={Space.medium}>
-				<Button onClick={handleButtonClick}>{state.buttonText}</Button>
-			</Block>
-
-			{editMode && <Block display={state.todoItemDisplay} />}
-		</>
-	)
+	return <>value</>
 }

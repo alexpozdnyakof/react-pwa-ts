@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { WithVisualTheme } from '../theme'
 import { Normalize } from './normalize'
 
 export default createGlobalStyle`
@@ -10,8 +11,9 @@ body{
     -webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	  text-size-adjust: 100%;
-	  color: ${({ theme }) => theme.getColor('text')};
-	  background-color: ${({ theme }) => theme.getColor('background')};
+	  color: ${({ theme }: WithVisualTheme<{}>) => theme.getColor('text')};
+	  background-color: ${({ theme }: WithVisualTheme<{}>) =>
+			theme.getColor('background')};
 	  height: 100%;
 }
 code {
