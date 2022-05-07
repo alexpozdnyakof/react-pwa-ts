@@ -1,18 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
 import { Normalize } from './normalize'
-import { Color } from './tokens'
 
 export default createGlobalStyle`
 body{
-  font-family: -apple-system, system-ui, 'Segoe UI', roboto, noto,
+  font-family: sans-serif, -apple-system, system-ui, 'Segoe UI', roboto, noto,
 		oxygen-sans, ubuntu, cantrell, 'Helvetica Neue', sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 1rem;
     -webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	  text-size-adjust: 100%;
-	  color: ${({ theme }) => theme.color[Color.text]};
-	  background-color: ${({ theme }) => theme.color[Color.background]};
+	  color: ${({ theme }) => theme.getColor('text')};
+	  background-color: ${({ theme }) => theme.getColor('background')};
 	  height: 100%;
 }
 code {

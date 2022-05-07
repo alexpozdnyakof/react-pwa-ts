@@ -1,123 +1,51 @@
-enum FontSize {
-	small = 'small',
-	body = 'body',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'large',
-}
-
-enum LineHeight {
-	small = 'small',
-	body = 'body',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'large',
-}
-
-enum Size {
-	zero = 'zero',
-	micro = 'micro',
-	xsmall = 'xsmall',
-	small = 'small',
-	normal = 'normal',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'xlarge',
-	xxlarge = 'xxlarge',
-	xxxlarge = 'xxxlarge',
-}
-
-enum Space {
-	zero = 'zero',
-	micro = 'micro',
-	xsmall = 'xsmall',
-	small = 'small',
-	normal = 'normal',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'xlarge',
-	xxlarge = 'xxlarge',
-	xxxlarge = 'xxxlarge',
-}
-
-enum Width {
-	micro = 'micro',
-	xsmall = 'xsmall',
-	small = 'small',
-	normal = 'normal',
-	medium = 'medium',
-	large = 'large',
-	xlarge = 'xlarge',
-	xxlarge = 'xxlarge',
-	xxxlarge = 'xxxlarge',
-}
-
-enum BorderRadius {
-	small = 'small',
-	medium = 'medium',
-	large = 'large',
-}
-
-enum Color {
-	transparent = 'transparent',
-	text = 'text',
-	textDisabled = 'textDisabled',
-	textWeak = 'textWeak',
-	textWeakHover = 'textWeakHover',
-	icon = 'icon',
-	iconHover = 'iconHover',
-	border = 'border',
-	borderHover = 'borderHover',
-	borderActive = 'borderActive',
-	borderStrong = 'borderStrong',
-
-	background = 'background',
-	backgroundHover = 'backgroundHover',
-	backgroundActive = 'backgroundActive',
-	backgroundWeak = 'backgroundWeak',
-	backgroundMedium = 'backgroundMedium',
-	backgroundStrong = 'backgroundStrong',
-
-	darkText = 'darkText',
-	darkTextDisabled = 'darkTextDisabled',
-
-	darkBackgroundHover = 'darkBackgroundHover',
-	darkBackgroundActive = 'darkBackgroundActive',
-
-	successText = 'successText',
-	successTextHover = 'successTextHover',
-	successTextStrong = 'successTextStrong',
-	successIcon = 'successIcon',
-	successIconHover = 'successIconHover',
-	successIconStrong = 'successIconStrong',
-	successBorder = 'successBorder',
-	successBorderHover = 'successBorderHover',
-
-	successBackground = 'successBackground',
-	successBackgroundHover = 'successBackgroundHover',
-	successBackgroundActive = 'successBackgroundActive',
-	successBackgroundStrong = 'successBackgroundStrong',
-	successBackgroundStrongHover = 'successBackgroundStrongHover',
-	successBackgroundStrongActive = 'successBackgroundStrongActive',
-}
+import { AnimationParams } from './animation'
+import borderRadius, { BorderRadiusMap, BorderRadius } from './border-radius'
+import { Color } from './colors'
+import fontSize, { FontSizeMap, FontSize } from './font-size'
+import fontWeight, { FontWeightMap } from './font-weight'
+import lineHeight, { LineHeightMap, LineHeight } from './line-height'
+import size, { SizeMap, Size } from './size'
+import space, { SpaceMap, Space } from './space'
+import boxShadow, { BoxShadow } from './box-shadow'
 
 enum Kind {
 	primary = 'primary',
 	secondary = 'secondary',
 	tertiary = 'tertiary',
 }
-
-enum Animation {
-	time = 'time',
+interface BaseTheme {
+	fontSize: FontSizeMap
+	fontWeight: FontWeightMap
+	space: SpaceMap
+	borderRadius: BorderRadiusMap
+	lineHeight: LineHeightMap
+	size: SizeMap
+	boxShadow: Record<BoxShadow, string>
+	animation: typeof AnimationParams
 }
+
+export default function createBaseTheme(): BaseTheme {
+	return Object.assign(
+		Object.create(null),
+		{ fontSize },
+		{ fontWeight },
+		{ lineHeight },
+		{ borderRadius },
+		{ size },
+		{ space },
+		{ boxShadow },
+		{ animation: AnimationParams }
+	)
+}
+
 export {
+	Color,
+	Kind,
 	FontSize,
 	Space,
 	BorderRadius,
-	Color,
 	LineHeight,
 	Size,
-	Kind,
-	Width,
-	Animation,
+	AnimationParams,
 }
+export type { BaseTheme }

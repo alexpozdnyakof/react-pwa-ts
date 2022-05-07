@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import { darkTheme } from '../styles'
+import { darkTheme } from '../theme'
 
 function renderWithTheme(toRender: JSX.Element) {
 	return render(<ThemeProvider theme={darkTheme}>{toRender}</ThemeProvider>)

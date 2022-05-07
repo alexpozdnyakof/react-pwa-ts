@@ -9,7 +9,7 @@ type WithVisualTheme<T> = T & { theme: VisualTheme }
 
 export const darkTheme: VisualTheme = {
 	color: { ...darkColors },
-	getColor: (c: Color | undefined) => darkColors[c] ?? undefined,
+	getColor: (c: Color | undefined) => (c ? darkColors[c] : undefined),
 }
 
-export type { WithVisualTheme }
+export type { WithVisualTheme, VisualTheme }
