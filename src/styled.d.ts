@@ -1,6 +1,6 @@
 import 'styled-components'
-import { Theme } from './ui/styles/theme'
+import { VisualTheme } from './ui/theme'
 
 declare module 'styled-components' {
-	export interface DefaultTheme extends Theme {}
+	export interface DefaultTheme extends VisualTheme {}
 }

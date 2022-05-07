@@ -18,6 +18,12 @@
 			"task": "lint:scss",
 			"problemMatcher": [],
 			"label": "stylelint"
+		},
+		{
+			"type": "yarn",
+			"task": "test",
+			"problemMatcher": [],
+			"label": "yarn: test"
 		}
 	]
 }

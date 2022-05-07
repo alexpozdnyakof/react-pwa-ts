@@ -1,7 +1,8 @@
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ProjectPage } from './ui/project-page/project-page'
 
-import { darkTheme, GlobalStyles } from './ui/styles'
+import { GlobalStyles } from './ui/styles'
+import { darkTheme } from './ui/theme'
 
 // function createTask(dto: TaskDTO, lastId: number): TaskData {
 // 	return {
@@ -31,10 +32,11 @@ function App() {
 	// 	setState({ ...state, tasks: [...state.tasks, task] })
 	// }
 	return (
-		<ThemeProvider theme={darkTheme}>
-			<ProjectPage />
-			<GlobalStyles />
-		</ThemeProvider>
+		<React.StrictMode>
+			<ThemeProvider theme={darkTheme}>
+				<GlobalStyles />
+			</ThemeProvider>
+		</React.StrictMode>
 	)
 }
 

@@ -46,6 +46,7 @@ rules:
                 },
             ],
         'react/function-component-definition': 0,
+        'no-sequences': 'off',
     }
 
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']

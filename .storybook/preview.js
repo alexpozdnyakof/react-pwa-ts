@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyles, darkTheme} from '../src/ui/styles'
+import { GlobalStyles, darkTheme, lightTheme} from '../src/ui/styles'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
