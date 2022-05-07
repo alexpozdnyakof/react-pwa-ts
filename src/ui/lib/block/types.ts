@@ -13,10 +13,17 @@ interface ColorProps {
 	color: Color
 }
 
+interface BorderProps {
+	borderWidth: number
+	borderRadius: number
+	borderStyle: 'solid' | 'dashed'
+}
+
 interface Attributes {
 	testId: string
 }
-type ReusableBlockProps = SizeProps & ColorProps
+
+type ReusableBlockProps = SizeProps & ColorProps & BorderProps
 
 type BlockProps = ReusableBlockProps & Attributes
 

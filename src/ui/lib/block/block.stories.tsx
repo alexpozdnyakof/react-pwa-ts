@@ -19,6 +19,9 @@ export default {
 		backgroundColor: StoryBookControl.SelectColorToken(),
 		borderColor: StoryBookControl.SelectColorToken(),
 		color: StoryBookControl.SelectColorToken(),
+		borderRadius: StoryBookControl.Number(),
+		borderWidth: StoryBookControl.Number(),
+		borderStyle: StoryBookControl.Select(['dashed', 'solid']),
 	},
 } as ComponentMeta<typeof Block>
 

@@ -12,12 +12,16 @@ export default function Block({
 	width,
 	height,
 	children,
+	borderWidth,
+	borderRadius,
 	testId,
 	...props
 }: React.PropsWithChildren<Partial<BlockProps>>) {
 	const result = {
 		width: addPixel(width),
 		height: addPixel(height),
+		borderWidth: addPixel(borderWidth),
+		borderRadius: addPixel(borderRadius),
 		...props,
 	}
 	return (

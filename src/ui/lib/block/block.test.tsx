@@ -31,7 +31,7 @@ describe('Block Component', () => {
 		expect(children).toBeInTheDocument()
 	})
 
-	it('should add px for size properties', () => {
+	it('should set width and height', () => {
 		const props = {
 			width: 100,
 			height: 50,
@@ -45,7 +45,7 @@ describe('Block Component', () => {
 		})
 	})
 
-	it('should add color for background, color and border', () => {
+	it('should set background-color, color, border-color', () => {
 		const props = {
 			backgroundColor: 'surface',
 			color: 'text',
@@ -58,6 +58,18 @@ describe('Block Component', () => {
 			backgroundColor: darkTheme.getColor(props.backgroundColor),
 			borderColor: darkTheme.getColor(props.borderColor),
 			color: darkTheme.getColor(props.color),
+		})
+	})
+
+	it('should set border-width and border-radius', () => {
+		const props = {
+			borderWidth: 1,
+			borderRadius: 3,
+		}
+		const result = renderBlockWithProps(props)
+		expect(result).toHaveStyle({
+			borderWidth: '1px',
+			borderRadius: '3px',
 		})
 	})
 })
