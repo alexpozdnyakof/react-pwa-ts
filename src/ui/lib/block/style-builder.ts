@@ -1,15 +1,17 @@
 import { CSSObject } from 'styled-components'
+import { BaseBlockProps } from './styled-components'
+import { ElementSize } from './types'
 
 interface ApplyParams {
 	property: string
-	value: string | number | boolean | undefined
+	value: string | number | boolean | undefined | ElementSize
 	transform?: (x: any) => string
 }
 
 interface StyleBuilder {
 	apply: (params: ApplyParams) => StyleBuilder
 	get: () => CSSObject
-	withTail: (tail: any) => CSSObject
+	withTail: (tail: any) => BaseBlockProps
 }
 
 const build = (): StyleBuilder => {
@@ -21,7 +23,8 @@ const build = (): StyleBuilder => {
 			return result
 		},
 		get: () => styles,
-		withTail: (tail: CSSObject) => Object.assign(styles, tail),
+		withTail: (tail: CSSObject) =>
+			Object.assign(styles, tail) as BaseBlockProps,
 	}
 
 	return result

@@ -1,9 +1,11 @@
 import { Color } from '../../theme/colors'
 
-type ElementSize = number
+type Unit = 'pct' | 'vh' | 'vw' | 'px'
+
+type ElementSize = number | { value: number; unit: Unit }
 type ElementSpace = number
-type ElementSpaceOrAuto = ElementSpace | 'auto'
-interface SizeProps {
+type ElementSpaceOrAuto = ElementSpace | 'auto' | string
+interface ElementSizeProps {
 	width: ElementSize
 	height: ElementSize
 }
@@ -27,16 +29,15 @@ interface Attributes {
 	testId: string
 }
 
-type ReusableBlockProps = SizeProps & MarginProps
+type ReusableBlockProps = ElementSizeProps & MarginProps
 
 type BlockProps = ReusableBlockProps & Attributes & ColorProps & BorderProps
-type Unit = '%' | 'vh' | 'vw' | 'px'
 
 export type {
 	ElementSize,
 	ElementSpaceOrAuto,
 	ReusableBlockProps,
-	SizeProps,
+	ElementSizeProps,
 	BlockProps,
 	ColorProps,
 	MarginProps,

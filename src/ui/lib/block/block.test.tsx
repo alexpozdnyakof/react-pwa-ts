@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
-import { BlockProps, ColorProps, MarginProps } from './types'
+import { BlockProps, ColorProps, ElementSizeProps, MarginProps } from './types'
 
 function renderWithTheme(toRender: JSX.Element) {
 	return render(
@@ -28,6 +28,7 @@ const renderBlockWithProps = ({
 describe('Block Component', () => {
 	it('should render correctly', () => {
 		renderBlockWithProps({ children: 'text' })
+
 		const children = screen.getByText(/text/i)
 		expect(children).toBeInTheDocument()
 	})
@@ -43,6 +44,20 @@ describe('Block Component', () => {
 		expect(result).toHaveStyle({
 			width: '100px',
 			height: '50px',
+		})
+	})
+
+	it('should set width and height with custom unit', () => {
+		const props: ElementSizeProps = {
+			width: { value: 100, unit: 'pct' },
+			height: { value: 100, unit: 'vh' },
+		}
+
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			width: '100%',
+			height: '100vh',
 		})
 	})
 
@@ -85,6 +100,28 @@ describe('Block Component', () => {
 		const result = renderBlockWithProps(props)
 
 		expect(result).toHaveStyle({
+			marginTop: '0px',
+			marginRight: 'auto',
+			marginBottom: '10px',
+			marginLeft: 'auto',
+		})
+	})
+	it('should override margin', () => {
+		const props: MarginProps = {
+			m: '0px auto',
+			mt: 0,
+			mr: 'auto',
+			mb: 10,
+			ml: 'auto',
+		}
+
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			margin: '0px auto',
+		})
+
+		expect(result).not.toHaveStyle({
 			marginTop: '0px',
 			marginRight: 'auto',
 			marginBottom: '10px',

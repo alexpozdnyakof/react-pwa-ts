@@ -1,7 +1,7 @@
 import React from 'react'
 import build from './style-builder'
-import { BaseBlock, BaseBlockProps } from './styled-components'
-import { BlockProps } from './types'
+import { BaseBlock } from './styled-components'
+import { BlockProps, ElementSize, Unit } from './types'
 import { margin, unit } from './utils'
 
 export default function Block({
@@ -10,6 +10,7 @@ export default function Block({
 	children,
 	borderWidth,
 	radius,
+	m,
 	mt,
 	mr,
 	mb,
@@ -22,13 +23,15 @@ export default function Block({
 	styles.apply({
 		property: 'width',
 		value: width,
-		transform: w => unit(w).px,
+		transform: (w: ElementSize) =>
+			typeof w === 'number' ? unit(w).px : unit(w.value)[w.unit],
 	})
 
 	styles.apply({
 		property: 'height',
 		value: height,
-		transform: w => unit(w).px,
+		transform: (w: ElementSize) =>
+			typeof w === 'number' ? unit(w).px : unit(w.value)[w.unit],
 	})
 
 	styles.apply({
@@ -67,7 +70,13 @@ export default function Block({
 		transform: w => margin(w),
 	})
 
-	const result = styles.withTail(unhandledProps) as BaseBlockProps
+	styles.apply({
+		property: 'margin',
+		value: m,
+		transform: w => margin(w),
+	})
+
+	const result = styles.withTail(unhandledProps)
 
 	return (
 		<BaseBlock data-testid={testId} {...result}>
