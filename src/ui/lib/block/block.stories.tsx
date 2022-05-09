@@ -20,6 +20,16 @@ export default {
 		radius: StoryBookControl.Number(),
 		borderWidth: StoryBookControl.Number(),
 		borderStyle: StoryBookControl.Select(['dashed', 'solid']),
+		m: StoryBookControl.Text(),
+		mt: StoryBookControl.Number(),
+		mr: StoryBookControl.Number(),
+		mb: StoryBookControl.Number(),
+		ml: StoryBookControl.Number(),
+		p: StoryBookControl.Number(),
+		pt: StoryBookControl.Number(),
+		pr: StoryBookControl.Number(),
+		pb: StoryBookControl.Number(),
+		pl: StoryBookControl.Number(),
 	},
 } as ComponentMeta<typeof Block>
 

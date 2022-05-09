@@ -25,11 +25,15 @@ interface BorderProps {
 type MarginProps = Partial<
 	Record<'m' | 'mt' | 'mr' | 'mb' | 'ml', ElementSpaceOrAuto>
 >
+
+type PaddingProps = Partial<
+	Record<'p' | 'pt' | 'pr' | 'pb' | 'pl', ElementSpace>
+>
 interface Attributes {
 	testId: string
 }
 
-type ReusableBlockProps = ElementSizeProps & MarginProps
+type ReusableBlockProps = ElementSizeProps & MarginProps & PaddingProps
 
 type BlockProps = ReusableBlockProps & Attributes & ColorProps & BorderProps
 
@@ -41,5 +45,6 @@ export type {
 	BlockProps,
 	ColorProps,
 	MarginProps,
+	PaddingProps,
 	Unit,
 }

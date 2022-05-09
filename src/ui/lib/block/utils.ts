@@ -14,4 +14,6 @@ const unit = (value: number): Record<Unit, string> => {
 const margin = (value: number | 'auto' | string): string =>
 	typeof value === 'number' ? unit(value).px : value
 
-export { unit, margin }
+const padding = (value: number): string => unit(value).px
+
+export { unit, margin, padding }

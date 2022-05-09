@@ -3,7 +3,13 @@ import { ThemeProvider } from 'styled-components'
 
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
-import { BlockProps, ColorProps, ElementSizeProps, MarginProps } from './types'
+import {
+	BlockProps,
+	ColorProps,
+	ElementSizeProps,
+	MarginProps,
+	PaddingProps,
+} from './types'
 
 function renderWithTheme(toRender: JSX.Element) {
 	return render(
@@ -126,6 +132,39 @@ describe('Block Component', () => {
 			marginRight: 'auto',
 			marginBottom: '10px',
 			marginLeft: 'auto',
+		})
+	})
+
+	it('should set all padding', () => {
+		const props: PaddingProps = {
+			pt: 0,
+			pr: 10,
+			pb: 10,
+			pl: 0,
+		}
+
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			paddingTop: '0px',
+			paddingRight: '10px',
+			paddingBottom: '10px',
+			paddingLeft: '0',
+		})
+	})
+
+	it('should override padding', () => {
+		const props: PaddingProps = {
+			p: 20,
+			pt: 0,
+			pr: 10,
+			pb: 10,
+			pl: 0,
+		}
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			padding: '20px',
 		})
 	})
 })

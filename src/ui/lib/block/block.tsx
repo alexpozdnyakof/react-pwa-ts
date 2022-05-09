@@ -1,8 +1,8 @@
 import React from 'react'
 import build from './style-builder'
 import { BaseBlock } from './styled-components'
-import { BlockProps, ElementSize, Unit } from './types'
-import { margin, unit } from './utils'
+import { BlockProps, ElementSize } from './types'
+import { margin, padding, unit } from './utils'
 
 export default function Block({
 	width,
@@ -15,6 +15,11 @@ export default function Block({
 	mr,
 	mb,
 	ml,
+	p,
+	pt,
+	pr,
+	pb,
+	pl,
 	testId,
 	...unhandledProps
 }: React.PropsWithChildren<Partial<BlockProps>>) {
@@ -74,6 +79,36 @@ export default function Block({
 		property: 'margin',
 		value: m,
 		transform: w => margin(w),
+	})
+
+	styles.apply({
+		property: 'paddingTop',
+		value: pt,
+		transform: w => padding(w),
+	})
+
+	styles.apply({
+		property: 'paddingRight',
+		value: pr,
+		transform: w => padding(w),
+	})
+
+	styles.apply({
+		property: 'paddingBottom',
+		value: pb,
+		transform: w => padding(w),
+	})
+
+	styles.apply({
+		property: 'paddingLeft',
+		value: pl,
+		transform: w => padding(w),
+	})
+
+	styles.apply({
+		property: 'padding',
+		value: p,
+		transform: w => padding(w),
 	})
 
 	const result = styles.withTail(unhandledProps)
