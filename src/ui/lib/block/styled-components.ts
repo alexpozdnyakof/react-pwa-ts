@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { WithVisualTheme } from '../../theme/theme'
 import { ColorProps } from './types'
 
-interface Props extends Partial<ColorProps> {
+export interface BaseBlockProps extends Partial<ColorProps> {
 	width?: string
 	height?: string
 	borderWidth?: string
@@ -19,7 +19,7 @@ export const BaseBlock = styled.div(
 		borderColor,
 		color,
 		...props
-	}: WithVisualTheme<Props>) => ({
+	}: WithVisualTheme<BaseBlockProps>) => ({
 		width,
 		height,
 		backgroundColor: theme.getColor(backgroundColor),

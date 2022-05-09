@@ -20,7 +20,9 @@ interface BorderProps {
 	borderStyle: 'solid' | 'dashed'
 }
 
-type MarginProps = Record<'m' | 'mt' | 'mr' | 'mb' | 'ml', ElementSpaceOrAuto>
+type MarginProps = Partial<
+	Record<'m' | 'mt' | 'mr' | 'mb' | 'ml', ElementSpaceOrAuto>
+>
 interface Attributes {
 	testId: string
 }
@@ -28,6 +30,7 @@ interface Attributes {
 type ReusableBlockProps = SizeProps & MarginProps
 
 type BlockProps = ReusableBlockProps & Attributes & ColorProps & BorderProps
+type Unit = '%' | 'vh' | 'vw' | 'px'
 
 export type {
 	ElementSize,
@@ -36,4 +39,6 @@ export type {
 	SizeProps,
 	BlockProps,
 	ColorProps,
+	MarginProps,
+	Unit,
 }

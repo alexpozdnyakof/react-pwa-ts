@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
+
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
-import { BlockProps, ColorProps } from './types'
+import { BlockProps, ColorProps, MarginProps } from './types'
 
 function renderWithTheme(toRender: JSX.Element) {
 	return render(
@@ -74,19 +75,20 @@ describe('Block Component', () => {
 	})
 
 	it('should set all margins', () => {
-		const props = {
-			ml: 'auto',
+		const props: MarginProps = {
 			mt: 0,
 			mr: 'auto',
 			mb: 10,
+			ml: 'auto',
 		}
 
-		const result = renderBlockWithProps(props as any)
+		const result = renderBlockWithProps(props)
+
 		expect(result).toHaveStyle({
-			marginLeft: 'auto',
-			marginTop: '0',
+			marginTop: '0px',
 			marginRight: 'auto',
 			marginBottom: '10px',
+			marginLeft: 'auto',
 		})
 	})
 })
