@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StoryBookControl } from '../../helpers'
+import { TEXT_SIZE_KEYS } from '../../theme'
 import Block from './block'
 import { BlockProps } from './types'
 
@@ -30,6 +31,10 @@ export default {
 		pr: StoryBookControl.Number(),
 		pb: StoryBookControl.Number(),
 		pl: StoryBookControl.Number(),
+		fontSize: StoryBookControl.Select(TEXT_SIZE_KEYS),
+		fontWeight: StoryBookControl.Select(['normal', 'semibold', 'bold']),
+		lineHeight: StoryBookControl.Number(),
+		fontFamily: StoryBookControl.Select(['sans', 'mono']),
 	},
 } as ComponentMeta<typeof Block>
 
@@ -44,4 +49,6 @@ export const Default = Template.bind({})
 
 Default.args = {
 	children: 'Block',
+	width: 480,
+	height: 120,
 }

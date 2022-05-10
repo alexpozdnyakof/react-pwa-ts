@@ -1,4 +1,4 @@
-import { Color, TextSize, TextWeight } from '../../theme'
+import { Color, TextSize, TextType, TextWeight } from '../../theme'
 
 type Unit = 'pct' | 'vh' | 'vw' | 'px'
 
@@ -35,6 +35,7 @@ interface TextProps {
 	fontSize: TextSize
 	fontWeight: TextWeight
 	lineHeight: number | ValueWithUnit
+	fontFamily: TextType
 }
 interface Attributes {
 	testId: string

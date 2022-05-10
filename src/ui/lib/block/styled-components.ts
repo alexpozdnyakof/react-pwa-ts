@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { WithVisualTheme, TextSize } from '../../theme'
+import { WithVisualTheme, TextSize, TextType } from '../../theme'
 import { ColorProps } from './types'
 
 export interface BaseBlockProps extends ColorProps {
@@ -15,6 +15,7 @@ export interface BaseBlockProps extends ColorProps {
 	margin: string
 	fontWeight: string
 	fontSize: TextSize
+	fontFamily: TextType
 	lineHeight: string
 	padding: string
 	paddingTop: string
@@ -32,6 +33,7 @@ export const BaseBlock = styled.div(
 		borderColor,
 		color,
 		fontSize,
+		fontFamily,
 		...props
 	}: WithVisualTheme<Partial<BaseBlockProps>>) => ({
 		width,
@@ -40,6 +42,7 @@ export const BaseBlock = styled.div(
 		borderColor: theme.getColor(borderColor),
 		color: theme.getColor(color),
 		fontSize: theme.getTextSize(fontSize),
+		fontFamily: theme.getTextType(fontFamily),
 		...props,
 	})
 )

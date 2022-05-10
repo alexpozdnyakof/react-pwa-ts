@@ -158,6 +158,7 @@ describe('Block Component', () => {
 			fontSize: 'huge',
 			fontWeight: 'semibold',
 			lineHeight: 24,
+			fontFamily: 'sans',
 		}
 
 		const result = renderBlockWithProps(props)
@@ -166,6 +167,7 @@ describe('Block Component', () => {
 			fontSize: '28px',
 			fontWeight: '600',
 			lineHeight: '24px',
+			fontFamily: 'sans-serif',
 		})
 	})
 })
