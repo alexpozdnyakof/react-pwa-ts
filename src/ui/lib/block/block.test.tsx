@@ -1,7 +1,5 @@
-import { render, screen } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
+import { screen } from '@testing-library/react'
 import { getHTMLElement } from '../../helpers'
-
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
 import {
@@ -159,6 +157,7 @@ describe('Block Component', () => {
 		const props: TextProps = {
 			fontSize: 'huge',
 			fontWeight: 'semibold',
+			lineHeight: 24,
 		}
 
 		const result = renderBlockWithProps(props)
@@ -166,6 +165,7 @@ describe('Block Component', () => {
 		expect(result).toHaveStyle({
 			fontSize: '28px',
 			fontWeight: '600',
+			lineHeight: '24px',
 		})
 	})
 })

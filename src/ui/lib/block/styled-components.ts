@@ -15,6 +15,12 @@ export interface BaseBlockProps extends ColorProps {
 	margin: string
 	fontWeight: string
 	fontSize: TextSize
+	lineHeight: string
+	padding: string
+	paddingTop: string
+	paddingRight: string
+	paddingBottom: string
+	paddingLeft: string
 }
 
 export const BaseBlock = styled.div(

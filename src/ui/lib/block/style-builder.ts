@@ -1,24 +1,26 @@
 import { CSSObject } from 'styled-components'
 import { BaseBlockProps } from './styled-components'
-import { ElementSize } from './types'
 
-interface ApplyParams {
-	property: string
-	value: string | number | boolean | undefined | ElementSize
-	transform?: (x: any) => string | number
+interface ApplyParams<T = any> {
+	property: keyof BaseBlockProps
+	transform?: (x: T) => string | number
 }
+type StyleBuilderResult = Record<keyof BaseBlockProps, string | number>
 
 interface StyleBuilder {
-	apply: (params: ApplyParams) => StyleBuilder
-	get: () => CSSObject
+	apply: <T>(value: T, params: ApplyParams<T>) => StyleBuilder
+	get: () => StyleBuilderResult
 	withTail: (tail: any) => BaseBlockProps
 }
 
 const build = (): StyleBuilder => {
-	const styles = Object.create(null) as CSSObject
+	const styles = Object.create(null) as StyleBuilderResult
 
 	const result = {
-		apply: ({ property, transform = x => `${x}`, value }: ApplyParams) => {
+		apply: <T>(
+			value: T,
+			{ property, transform = x => `${x}` }: ApplyParams<T>
+		) => {
 			if (value !== undefined) styles[property] = transform(value)
 			return result
 		},

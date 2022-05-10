@@ -1,7 +1,7 @@
 import React from 'react'
 import build from './style-builder'
 import { BaseBlock } from './styled-components'
-import { BlockProps, ElementSize } from './types'
+import { BlockProps } from './types'
 import { margin, padding, unit, weight } from './utils'
 
 export default function Block({
@@ -21,100 +21,92 @@ export default function Block({
 	pb,
 	pl,
 	fontWeight,
+	lineHeight,
 	testId = 'blockToTest',
 	...unhandledProps
 }: React.PropsWithChildren<Partial<BlockProps>>) {
 	const styles = build()
 
-	styles.apply({
+	styles.apply(width, {
 		property: 'width',
-		value: width,
-		transform: (w: ElementSize) =>
-			typeof w === 'number' ? unit(w).px : unit(w.value)[w.unit],
+		transform: w =>
+			typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
 	})
 
-	styles.apply({
+	styles.apply(height, {
 		property: 'height',
-		value: height,
-		transform: (w: ElementSize) =>
-			typeof w === 'number' ? unit(w).px : unit(w.value)[w.unit],
+		transform: w =>
+			typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
 	})
 
-	styles.apply({
+	styles.apply(borderWidth, {
 		property: 'borderWidth',
-		value: borderWidth,
-		transform: w => unit(w).px,
+		transform: w => unit(w!).px,
 	})
 
-	styles.apply({
+	styles.apply(radius, {
 		property: 'borderRadius',
-		value: radius,
-		transform: w => unit(w).px,
+		transform: w => unit(w!).px,
 	})
 
-	styles.apply({
+	styles.apply(mt, {
 		property: 'marginTop',
-		value: mt,
-		transform: w => margin(w),
+		transform: w => margin(w!),
 	})
 
-	styles.apply({
+	styles.apply(mr, {
 		property: 'marginRight',
-		value: mr,
-		transform: w => margin(w),
+		transform: w => margin(w!),
 	})
 
-	styles.apply({
+	styles.apply(mb, {
 		property: 'marginBottom',
-		value: mb,
-		transform: w => margin(w),
+		transform: w => margin(w!),
 	})
 
-	styles.apply({
+	styles.apply(ml, {
 		property: 'marginLeft',
-		value: ml,
-		transform: w => margin(w),
+		transform: w => margin(w!),
 	})
 
-	styles.apply({
+	styles.apply(m, {
 		property: 'margin',
-		value: m,
-		transform: w => margin(w),
+		transform: w => margin(w!),
 	})
 
-	styles.apply({
+	styles.apply(pt, {
 		property: 'paddingTop',
-		value: pt,
-		transform: w => padding(w),
+		transform: w => padding(w!),
 	})
 
-	styles.apply({
+	styles.apply(pr, {
 		property: 'paddingRight',
-		value: pr,
-		transform: w => padding(w),
+		transform: w => padding(w!),
 	})
 
-	styles.apply({
+	styles.apply(pb, {
 		property: 'paddingBottom',
-		value: pb,
-		transform: w => padding(w),
+		transform: w => padding(w!),
 	})
 
-	styles.apply({
+	styles.apply(pl, {
 		property: 'paddingLeft',
-		value: pl,
-		transform: w => padding(w),
+		transform: w => padding(w!),
 	})
 
-	styles.apply({
+	styles.apply(p, {
 		property: 'padding',
-		value: p,
-		transform: w => padding(w),
+		transform: w => padding(w!),
 	})
-	styles.apply({
+	styles.apply(fontWeight, {
 		property: 'fontWeight',
-		value: fontWeight,
-		transform: w => weight(w),
+		transform: w => weight(w!),
+	})
+
+	styles.apply(lineHeight, {
+		property: 'lineHeight',
+		transform: w =>
+			typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
 	})
 
 	const result = styles.withTail(unhandledProps)
