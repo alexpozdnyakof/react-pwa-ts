@@ -14,4 +14,14 @@ function getStyleObject(
 	)
 }
 
-export { renderWithTheme, getStyleObject }
+function getHTMLElement<T>(Component: React.FC<T>, props: T): HTMLElement {
+	const testId = 'elementToTest'
+
+	const { getByTestId } = renderWithTheme(
+		<Component {...props} testId={testId} />
+	)
+
+	return getByTestId(testId)
+}
+
+export { renderWithTheme, getStyleObject, getHTMLElement }
