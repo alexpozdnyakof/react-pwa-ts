@@ -1,5 +1,6 @@
 type TextSize = 'micro' | 'small' | 'body' | 'medium' | 'large' | 'huge'
-
+type TextWeight = 'normal' | 'semibold' | 'bold'
+type TextTone = 'text' | 'action' | 'caption'
 export const textSizeKeys: Array<TextSize> = [
 	'micro',
 	'small',
@@ -17,5 +18,5 @@ const textSize: Record<TextSize, number> = {
 	huge: 28,
 }
 
-export type { TextSize }
+export type { TextSize, TextWeight, TextTone }
 export default textSize
