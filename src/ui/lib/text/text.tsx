@@ -1,9 +1,9 @@
 import React from 'react'
 import { TextSize, TextTone, TextWeight } from '../../theme'
-import { Block } from '../block'
+import { Block, ReusableBlockProps } from '../block'
 import { WithTestId } from '../helpers'
 
-interface Props {
+interface Props extends ReusableBlockProps {
 	size: TextSize
 	tone: TextTone
 	weight: TextWeight
@@ -21,9 +21,11 @@ export default function Text({
 	mono = false,
 	children,
 	testId,
+	...props
 }: React.PropsWithChildren<Partial<TextProps>>) {
 	return (
 		<Block
+			{...props}
 			fontSize={size}
 			color={tone}
 			fontWeight={weight}

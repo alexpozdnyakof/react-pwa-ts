@@ -1,4 +1,5 @@
 import { Color, TextSize, TextType, TextWeight } from '../../theme'
+import { WithTestId } from '../helpers'
 
 type Unit = 'pct' | 'vh' | 'vw' | 'px'
 
@@ -37,17 +38,12 @@ interface TextProps {
 	lineHeight: number | ValueWithUnit
 	fontFamily: TextType
 }
-interface Attributes {
-	testId: string
-}
 
 type ReusableBlockProps = ElementSizeProps & MarginProps & PaddingProps
 
-type BlockProps = ReusableBlockProps &
-	Attributes &
-	ColorProps &
-	BorderProps &
-	TextProps
+type BlockProps = WithTestId<
+	ReusableBlockProps & ColorProps & BorderProps & TextProps
+>
 
 export type {
 	ElementSize,

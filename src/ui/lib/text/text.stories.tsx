@@ -17,6 +17,7 @@ export default {
 		tone: StoryBookControl.Select(TEXT_TONE_KEYS),
 		line: StoryBookControl.Number(),
 		mono: StoryBookControl.Boolean(),
+		...StoryBookControl.ReusableBlock(),
 	},
 } as ComponentMeta<typeof Text>
 

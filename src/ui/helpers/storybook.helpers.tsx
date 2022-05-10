@@ -32,20 +32,18 @@ const SelectWithNone = (options: Array<string>) =>
 const SelectColorToken = () => SelectWithNone(COLOR_KEYS)
 
 const ReusableBlock = () => ({
-	width: Text(),
-	height: Text(),
-	backgroundColor: Color(),
-	padding: SelectWithNone(Object.values(Space)),
-	paddingTop: SelectWithNone(Object.values(Space)),
-	paddingRight: SelectWithNone(Object.values(Space)),
-	paddingBottom: SelectWithNone(Object.values(Space)),
-	paddingLeft: SelectWithNone(Object.values(Space)),
-
-	margin: SelectWithNone(Object.values(Space)),
-	marginTop: SelectWithNone(Object.values(Space)),
-	marginRight: SelectWithNone(Object.values(Space)),
-	marginBottom: SelectWithNone(Object.values(Space)),
-	marginLeft: SelectWithNone(Object.values(Space)),
+	m: Text(),
+	mt: Number(),
+	mr: Number(),
+	mb: Number(),
+	ml: Number(),
+	p: Number(),
+	pt: Number(),
+	pr: Number(),
+	pb: Number(),
+	pl: Number(),
+	width: Number(),
+	height: Number(),
 })
 
 export const StoryBookControl = {
