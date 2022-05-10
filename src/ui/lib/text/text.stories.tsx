@@ -17,6 +17,7 @@ export default {
 		tone: StoryBookControl.Select(TEXT_TONE_KEYS),
 		line: StoryBookControl.Number(),
 		mono: StoryBookControl.Boolean(),
+		align: StoryBookControl.Select(['left', 'center', 'right']),
 		...StoryBookControl.ReusableBlock(),
 	},
 } as ComponentMeta<typeof Text>

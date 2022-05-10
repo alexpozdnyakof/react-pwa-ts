@@ -9,6 +9,7 @@ interface Props extends ReusableBlockProps {
 	weight: TextWeight
 	line: number
 	mono: boolean
+	align: 'left' | 'center' | 'right'
 }
 
 type TextProps = React.PropsWithChildren<Partial<WithTestId<Props>>>
@@ -19,6 +20,7 @@ export default function Text({
 	weight = 'normal',
 	line = 20,
 	mono = false,
+	align = 'left',
 	children,
 	testId,
 	...props
@@ -32,6 +34,7 @@ export default function Text({
 			testId={testId}
 			lineHeight={line}
 			fontFamily={mono ? 'mono' : 'sans'}
+			textAlign={align}
 		>
 			{children}
 		</Block>

@@ -66,4 +66,14 @@ describe('Text Component', () => {
 			fontFamily: 'monospace',
 		})
 	})
+	it('should set text algn', () => {
+		const props: TextProps = {
+			align: 'right',
+		}
+		const result = renderTextComponent(props)
+
+		expect(result).toHaveStyle({
+			textAlign: 'right',
+		})
+	})
 })
