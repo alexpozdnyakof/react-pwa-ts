@@ -1,5 +1,5 @@
 import { Space } from '../styles'
-import { colorKeys } from '../theme'
+import { COLOR_KEYS } from '../theme'
 
 const Text = () => ({
 	control: 'text',
@@ -7,6 +7,10 @@ const Text = () => ({
 
 const Number = () => ({
 	control: 'number',
+})
+
+const Boolean = () => ({
+	control: 'boolean',
 })
 
 const Color = () => ({
@@ -25,7 +29,7 @@ const Select = (
 const SelectWithNone = (options: Array<string>) =>
 	Select(['none', ...options], { none: undefined })
 
-const SelectColorToken = () => SelectWithNone(colorKeys)
+const SelectColorToken = () => SelectWithNone(COLOR_KEYS)
 
 const ReusableBlock = () => ({
 	width: Text(),
@@ -46,6 +50,7 @@ const ReusableBlock = () => ({
 
 export const StoryBookControl = {
 	Text,
+	Boolean,
 	Number,
 	Color,
 	Select,
