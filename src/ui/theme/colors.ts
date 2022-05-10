@@ -8,7 +8,7 @@ export type Color =
 	| 'caption'
 	| 'transparent'
 
-export const colorKeys: Array<Color> = [
+export const COLOR_KEYS: Array<Color> = [
 	'action',
 	'background',
 	'surface',
@@ -19,7 +19,7 @@ export const colorKeys: Array<Color> = [
 	'transparent',
 ]
 
-const darkColors: Record<Color, string> = {
+const DARK_COLORS: Record<Color, string> = {
 	action: '#30bb6c',
 	background: '#000000',
 	border: '#333333',
@@ -30,4 +30,4 @@ const darkColors: Record<Color, string> = {
 	transparent: 'transparent',
 }
 
-export default darkColors
+export default DARK_COLORS
