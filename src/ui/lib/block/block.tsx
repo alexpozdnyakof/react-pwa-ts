@@ -2,7 +2,7 @@ import React from 'react'
 import build from './style-builder'
 import { BaseBlock } from './styled-components'
 import { BlockProps, ElementSize } from './types'
-import { margin, padding, unit } from './utils'
+import { margin, padding, unit, weight } from './utils'
 
 export default function Block({
 	width,
@@ -20,7 +20,8 @@ export default function Block({
 	pr,
 	pb,
 	pl,
-	testId,
+	fontWeight,
+	testId = 'blockToTest',
 	...unhandledProps
 }: React.PropsWithChildren<Partial<BlockProps>>) {
 	const styles = build()
@@ -109,6 +110,11 @@ export default function Block({
 		property: 'padding',
 		value: p,
 		transform: w => padding(w),
+	})
+	styles.apply({
+		property: 'fontWeight',
+		value: fontWeight,
+		transform: w => weight(w),
 	})
 
 	const result = styles.withTail(unhandledProps)

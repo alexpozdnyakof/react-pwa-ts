@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
+import { getHTMLElement } from '../../helpers'
 
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
@@ -9,31 +10,17 @@ import {
 	ElementSizeProps,
 	MarginProps,
 	PaddingProps,
+	TextProps,
 } from './types'
 
-function renderWithTheme(toRender: JSX.Element) {
-	return render(
-		<ThemeProvider theme={darkTheme as any}>{toRender}</ThemeProvider>
-	)
-}
-
-const renderBlockWithProps = ({
-	children,
-	...props
-}: React.PropsWithChildren<Partial<BlockProps>>): HTMLElement => {
-	const testId = 'baseBlock'
-	const { getByTestId } = renderWithTheme(
-		<Block {...props} testId={testId}>
-			{children}
-		</Block>
-	)
-
-	return getByTestId(testId)
-}
+const renderBlockWithProps = (
+	props: Partial<BlockProps>,
+	result = { ...props, children: 'text' }
+) => getHTMLElement<React.PropsWithChildren<Partial<BlockProps>>>(Block, result)
 
 describe('Block Component', () => {
 	it('should render correctly', () => {
-		renderBlockWithProps({ children: 'text' })
+		renderBlockWithProps({})
 
 		const children = screen.getByText(/text/i)
 		expect(children).toBeInTheDocument()
@@ -165,6 +152,20 @@ describe('Block Component', () => {
 
 		expect(result).toHaveStyle({
 			padding: '20px',
+		})
+	})
+
+	it('should set text size and weight', () => {
+		const props: TextProps = {
+			fontSize: 'huge',
+			fontWeight: 'semibold',
+		}
+
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			fontSize: '28px',
+			fontWeight: '600',
 		})
 	})
 })

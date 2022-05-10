@@ -5,7 +5,7 @@ import { ElementSize } from './types'
 interface ApplyParams {
 	property: string
 	value: string | number | boolean | undefined | ElementSize
-	transform?: (x: any) => string
+	transform?: (x: any) => string | number
 }
 
 interface StyleBuilder {

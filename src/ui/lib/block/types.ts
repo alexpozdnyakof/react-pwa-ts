@@ -1,8 +1,9 @@
-import { Color } from '../../theme/colors'
+import { Color, TextSize, TextWeight } from '../../theme'
 
 type Unit = 'pct' | 'vh' | 'vw' | 'px'
 
-type ElementSize = number | { value: number; unit: Unit }
+type ValueWithUnit = { value: number; unit: Unit }
+type ElementSize = number | ValueWithUnit
 type ElementSpace = number
 type ElementSpaceOrAuto = ElementSpace | 'auto' | string
 interface ElementSizeProps {
@@ -29,13 +30,23 @@ type MarginProps = Partial<
 type PaddingProps = Partial<
 	Record<'p' | 'pt' | 'pr' | 'pb' | 'pl', ElementSpace>
 >
+
+interface TextProps {
+	fontSize: TextSize
+	fontWeight: TextWeight
+	lineHeight: number | ValueWithUnit
+}
 interface Attributes {
 	testId: string
 }
 
 type ReusableBlockProps = ElementSizeProps & MarginProps & PaddingProps
 
-type BlockProps = ReusableBlockProps & Attributes & ColorProps & BorderProps
+type BlockProps = ReusableBlockProps &
+	Attributes &
+	ColorProps &
+	BorderProps &
+	TextProps
 
 export type {
 	ElementSize,
@@ -46,5 +57,6 @@ export type {
 	ColorProps,
 	MarginProps,
 	PaddingProps,
+	TextProps,
 	Unit,
 }
