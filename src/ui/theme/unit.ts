@@ -1,5 +1,12 @@
-export type Unit = '%' | 'vh' | 'vw' | 'px'
+export type Unit = 'pct' | 'vh' | 'vw' | 'px'
 
-export default function addUnit(value: number, unit: Unit): string {
-	return value.toString().concat(unit)
+export default function unit(value: number): Record<Unit, string> {
+	const stringify = value.toString()
+
+	return {
+		px: stringify.concat('px'),
+		pct: stringify.concat('%'),
+		vh: stringify.concat('vh'),
+		vw: stringify.concat('vw'),
+	}
 }
