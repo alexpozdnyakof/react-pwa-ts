@@ -153,12 +153,14 @@ describe('Block Component', () => {
 		})
 	})
 
-	it('should set text size and weight', () => {
-		const props: TextProps = {
+	it('should set text props', () => {
+		const props: Partial<TextProps> = {
 			fontSize: 'huge',
 			fontWeight: 'semibold',
 			lineHeight: 24,
 			fontFamily: 'sans',
+			textAlign: 'left',
+			letterSpacing: -0.03,
 		}
 
 		const result = renderBlockWithProps(props)
@@ -168,6 +170,7 @@ describe('Block Component', () => {
 			fontWeight: '600',
 			lineHeight: '24px',
 			fontFamily: 'sans-serif',
+			letterSpacing: '-0.03em',
 		})
 	})
 })

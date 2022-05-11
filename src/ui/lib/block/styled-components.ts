@@ -1,8 +1,18 @@
 import styled from 'styled-components'
 import { WithVisualTheme, TextSize, TextType } from '../../theme'
-import { ColorProps } from './types'
+import { BoxProps, ColorProps } from './types'
 
-export interface BaseBlockProps extends ColorProps {
+type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', string>
+
+type PaddingProps = Record<
+	'padding' | 'paddingTop' | 'paddingRight' | 'paddingBottom' | 'paddingLeft',
+	string
+>
+export interface BaseBlockProps
+	extends ColorProps,
+		BoxProps,
+		PositionProps,
+		PaddingProps {
 	width: string
 	height: string
 	borderWidth: string
@@ -17,11 +27,7 @@ export interface BaseBlockProps extends ColorProps {
 	fontSize: TextSize
 	fontFamily: TextType
 	lineHeight: string
-	padding: string
-	paddingTop: string
-	paddingRight: string
-	paddingBottom: string
-	paddingLeft: string
+	letterSpacing: string
 }
 
 export const BaseBlock = styled.div(

@@ -22,6 +22,7 @@ export default function Block({
 	pl,
 	fontWeight,
 	lineHeight,
+	letterSpacing,
 	testId = 'blockToTest',
 	...unhandledProps
 }: React.PropsWithChildren<Partial<BlockProps>>) {
@@ -107,6 +108,11 @@ export default function Block({
 		property: 'lineHeight',
 		transform: w =>
 			typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
+	})
+
+	styles.apply(letterSpacing, {
+		property: 'letterSpacing',
+		transform: w => unit(w!).em,
 	})
 
 	const result = styles.withTail(unhandledProps)

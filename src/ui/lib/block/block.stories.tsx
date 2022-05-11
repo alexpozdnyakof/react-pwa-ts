@@ -24,6 +24,8 @@ export default {
 		fontSize: StoryBookControl.Select(TEXT_SIZE_KEYS),
 		fontWeight: StoryBookControl.Select(['normal', 'semibold', 'bold']),
 		lineHeight: StoryBookControl.Number(),
+		textAlign: StoryBookControl.Select(['left', 'center', 'right']),
+		letterSpacing: StoryBookControl.Number(),
 		fontFamily: StoryBookControl.Select(['sans', 'mono']),
 	},
 } as ComponentMeta<typeof Block>

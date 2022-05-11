@@ -31,18 +31,52 @@ type MarginProps = Partial<
 type PaddingProps = Partial<
 	Record<'p' | 'pt' | 'pr' | 'pb' | 'pl', ElementSpace>
 >
+interface BoxProps {
+	display:
+		| 'block'
+		| 'flex'
+		| 'grid'
+		| 'inline'
+		| 'inline-block'
+		| 'inline-flex'
+		| 'none'
+	boxSizing: 'border-box' | 'content-box'
+	alignItems: 'center' | 'flex-end' | 'flex-start' | 'baseline' | 'stretch'
+	position: 'relative' | 'static' | 'sticky' | 'absolute'
+	overflow: 'hidden' | 'visible' | 'scroll'
 
+	zIndex: number
+}
+
+type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', number>
 interface TextProps {
 	fontSize: TextSize
 	fontWeight: TextWeight
 	lineHeight: number | ValueWithUnit
 	fontFamily: TextType
+	textAlign: 'left' | 'center' | 'right'
+	letterSpacing: number
+}
+interface GridProps {
+	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'
+	gap: string
+	rowGap: string
+	columnGap: string
+	gridTemplateColumns: string
 }
 
-type ReusableBlockProps = ElementSizeProps & MarginProps & PaddingProps
+type ReusableBlockProps = ElementSizeProps &
+	MarginProps &
+	PaddingProps &
+	PositionProps
 
 type BlockProps = WithTestId<
-	ReusableBlockProps & ColorProps & BorderProps & TextProps
+	ReusableBlockProps &
+		ColorProps &
+		BorderProps &
+		TextProps &
+		BoxProps &
+		GridProps
 >
 
 export type {
@@ -56,4 +90,5 @@ export type {
 	PaddingProps,
 	TextProps,
 	Unit,
+	BoxProps,
 }
