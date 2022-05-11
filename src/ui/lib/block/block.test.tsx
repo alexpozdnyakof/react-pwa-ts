@@ -6,7 +6,6 @@ import {
 	BlockProps,
 	ColorProps,
 	ElementSizeProps,
-	EventHandlers,
 	MarginProps,
 	PaddingProps,
 	TextProps,
@@ -43,6 +42,8 @@ describe('Block Component', () => {
 		const props: ElementSizeProps = {
 			width: { value: 100, unit: 'pct' },
 			height: { value: 100, unit: 'vh' },
+			maxHeight: { value: 100, unit: 'pct' },
+			maxWidth: 'max-content',
 		}
 
 		const result = renderBlockWithProps(props)
@@ -50,6 +51,8 @@ describe('Block Component', () => {
 		expect(result).toHaveStyle({
 			width: '100%',
 			height: '100vh',
+			maxHeight: '100%',
+			maxWidth: 'max-content',
 		})
 	})
 

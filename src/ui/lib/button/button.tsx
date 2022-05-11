@@ -14,6 +14,7 @@ export default function Button({ children, onClick, testId }: ButtonProps) {
 			fontWeight='bold'
 			lineHeight={24}
 			letterSpacing={-0.01}
+			maxWidth='max-content'
 			onClick={onClick}
 			testId={testId}
 		>

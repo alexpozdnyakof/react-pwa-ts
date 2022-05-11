@@ -4,12 +4,14 @@ import { WithTestId } from '../helpers'
 type Unit = 'pct' | 'vh' | 'vw' | 'px'
 
 type ValueWithUnit = { value: number; unit: Unit }
-type ElementSize = number | ValueWithUnit
+type ElementSize = number | ValueWithUnit | 'max-content'
 type ElementSpace = number
 type ElementSpaceOrAuto = ElementSpace | 'auto' | string
 interface ElementSizeProps {
 	width: ElementSize
 	height: ElementSize
+	maxWidth: ElementSize
+	maxHeight: ElementSize
 }
 
 interface ColorProps {

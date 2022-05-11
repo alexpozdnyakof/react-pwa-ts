@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { ForwardedRef, forwardRef } from 'react'
+
 import build from './style-builder'
 import { BaseBlock } from './styled-components'
 import { BlockProps } from './types'
-import { margin, padding, unit, weight } from './utils'
+import { margin, padding, unit, weight, size } from './utils'
 
 const Block = forwardRef<
 	HTMLDivElement,
@@ -13,6 +14,8 @@ const Block = forwardRef<
 		{
 			width,
 			height,
+			maxWidth,
+			maxHeight,
 			children,
 			borderWidth,
 			radius,
@@ -39,14 +42,22 @@ const Block = forwardRef<
 
 		styles.apply(width, {
 			property: 'width',
-			transform: w =>
-				typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
+			transform: w => size(w!),
 		})
 
 		styles.apply(height, {
 			property: 'height',
-			transform: w =>
-				typeof w === 'number' ? unit(w).px : unit(w!.value)[w!.unit],
+			transform: w => size(w!),
+		})
+
+		styles.apply(maxWidth, {
+			property: 'maxWidth',
+			transform: w => size(w!),
+		})
+
+		styles.apply(maxHeight, {
+			property: 'maxHeight',
+			transform: w => size(w!),
 		})
 
 		styles.apply(borderWidth, {

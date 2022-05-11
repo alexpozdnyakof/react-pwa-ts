@@ -16,6 +16,8 @@ export interface BaseBlockProps
 		GridProps {
 	width: string
 	height: string
+	maxWidth: string
+	maxHeight: string
 	borderWidth: string
 	borderStyle: 'solid' | 'dashed'
 	borderRadius: string
