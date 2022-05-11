@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { getHTMLElement } from '../../helpers'
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
@@ -6,6 +6,7 @@ import {
 	BlockProps,
 	ColorProps,
 	ElementSizeProps,
+	EventHandlers,
 	MarginProps,
 	PaddingProps,
 	TextProps,
@@ -172,5 +173,14 @@ describe('Block Component', () => {
 			fontFamily: 'sans-serif',
 			letterSpacing: '-0.03em',
 		})
+	})
+
+	it('should trigger click handler', () => {
+		const onClick = jest.fn()
+
+		const result = renderBlockWithProps({ onClick })
+		fireEvent.click(result)
+
+		expect(onClick).toBeCalled()
 	})
 })

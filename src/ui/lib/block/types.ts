@@ -65,6 +65,14 @@ interface GridProps {
 	gridTemplateColumns: string
 }
 
+interface ShowAs {
+	as: 'div' | 'span' | 'p' | 'button' | 'input'
+}
+
+interface EventHandlers {
+	onClick: <T>(e: React.MouseEvent<T>) => void
+}
+
 type ReusableBlockProps = ElementSizeProps &
 	MarginProps &
 	PaddingProps &
@@ -76,7 +84,9 @@ type BlockProps = WithTestId<
 		BorderProps &
 		TextProps &
 		BoxProps &
-		GridProps
+		GridProps &
+		ShowAs &
+		EventHandlers
 >
 
 export type {
@@ -84,10 +94,12 @@ export type {
 	ElementSpaceOrAuto,
 	ReusableBlockProps,
 	ElementSizeProps,
+	EventHandlers,
 	BlockProps,
 	ColorProps,
 	MarginProps,
 	PaddingProps,
+	GridProps,
 	TextProps,
 	Unit,
 	BoxProps,

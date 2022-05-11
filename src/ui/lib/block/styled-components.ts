@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { WithVisualTheme, TextSize, TextType } from '../../theme'
-import { BoxProps, ColorProps } from './types'
+import { BoxProps, ColorProps, GridProps } from './types'
 
 type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', string>
 
@@ -12,7 +12,8 @@ export interface BaseBlockProps
 	extends ColorProps,
 		BoxProps,
 		PositionProps,
-		PaddingProps {
+		PaddingProps,
+		GridProps {
 	width: string
 	height: string
 	borderWidth: string
