@@ -18,6 +18,7 @@ export default {
 		line: StoryBookControl.Number(),
 		mono: StoryBookControl.Boolean(),
 		align: StoryBookControl.Select(['left', 'center', 'right']),
+		spacing: StoryBookControl.Number(),
 		...StoryBookControl.ReusableBlock(),
 	},
 } as ComponentMeta<typeof Text>

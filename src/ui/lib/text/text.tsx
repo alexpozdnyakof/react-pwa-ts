@@ -10,6 +10,7 @@ interface Props extends ReusableBlockProps {
 	line: number
 	mono: boolean
 	align: 'left' | 'center' | 'right'
+	spacing: number
 }
 
 type TextProps = React.PropsWithChildren<Partial<WithTestId<Props>>>
@@ -21,6 +22,7 @@ export default function Text({
 	line = 20,
 	mono = false,
 	align = 'left',
+	spacing = 0,
 	children,
 	testId,
 	...props
@@ -35,6 +37,7 @@ export default function Text({
 			lineHeight={line}
 			fontFamily={mono ? 'mono' : 'sans'}
 			textAlign={align}
+			letterSpacing={spacing}
 		>
 			{children}
 		</Block>

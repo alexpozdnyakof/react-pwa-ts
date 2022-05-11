@@ -76,4 +76,14 @@ describe('Text Component', () => {
 			textAlign: 'right',
 		})
 	})
+	it('should set spacing', () => {
+		const props: TextProps = {
+			spacing: -0.03,
+		}
+		const result = renderTextComponent(props)
+
+		expect(result).toHaveStyle({
+			letterSpacing: '-0.03em',
+		})
+	})
 })
