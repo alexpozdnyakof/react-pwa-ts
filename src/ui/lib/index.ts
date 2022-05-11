@@ -1,3 +1,5 @@
 export { Block } from './block'
 export { Button } from './button'
 export { Text } from './text'
+export { Svg } from './svg'
+export { Icon } from './icon'

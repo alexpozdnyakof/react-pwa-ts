@@ -9,7 +9,7 @@ const renderButton = (
 	}
 ) => getHTMLElement<ButtonProps>(Button, result)
 
-describe('Text Component', () => {
+describe('Button Component', () => {
 	it('should render correctly', () => {
 		const result = renderButton({})
 

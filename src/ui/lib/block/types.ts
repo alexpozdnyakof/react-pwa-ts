@@ -68,11 +68,11 @@ interface GridProps {
 }
 
 interface ShowAs {
-	as: 'div' | 'span' | 'p' | 'button' | 'input'
+	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg'
 }
 
 interface EventHandlers {
-	onClick: <T>(e: React.MouseEvent<T>) => void
+	onClick: <T>(e?: React.MouseEvent<T>) => void
 }
 
 type ReusableBlockProps = ElementSizeProps &
