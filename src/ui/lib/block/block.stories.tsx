@@ -20,7 +20,7 @@ export default {
 		radius: StoryBookControl.Number(),
 		borderWidth: StoryBookControl.Number(),
 		borderStyle: StoryBookControl.Select(['dashed', 'solid']),
-
+		boxShadow: StoryBookControl.Text(),
 		fontSize: StoryBookControl.Select(TEXT_SIZE_KEYS),
 		fontWeight: StoryBookControl.Select(['normal', 'semibold', 'bold']),
 		lineHeight: StoryBookControl.Number(),

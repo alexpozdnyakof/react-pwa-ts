@@ -9,7 +9,9 @@ describe('Icon Component', () => {
 	it('should render correctly', () => {
 		const result = renderIcon({ icon: 'check' })
 
-		expect(result.innerHTML).toBe(`<path d="${ICONS_LIB.check[0]}"></path>`)
+		expect(result.innerHTML).toBe(
+			`<path d="${ICONS_LIB.check[0]}" fill="currentColor" stroke="currentColor"></path>`
+		)
 	})
 
 	it('should set size', () => {

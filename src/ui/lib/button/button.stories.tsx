@@ -1,15 +1,20 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Button, { ButtonProps } from './button'
+import { StoryBookControl } from '../../helpers'
+import ButtonFactory from './button-factory'
+import { ButtonFactoryProps, buttonVariants } from './types'
 
 export default {
 	title: 'Lib/Button',
-	component: Button,
-} as ComponentMeta<typeof Button>
+	component: ButtonFactory,
+	argTypes: {
+		variant: StoryBookControl.SelectWithNone(buttonVariants),
+	},
+} as ComponentMeta<typeof ButtonFactory>
 
-const Template: ComponentStory<typeof Button> = ({
+const Template: ComponentStory<typeof ButtonFactory> = ({
 	children,
 	...props
-}: ButtonProps) => <Button {...props}>{children}</Button>
+}: ButtonFactoryProps) => <ButtonFactory {...props}>{children}</ButtonFactory>
 
 export const Default = Template.bind({})
 

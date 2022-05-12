@@ -17,7 +17,7 @@ export default function Icon({
 					d={path}
 					key={key}
 					fill='currentColor'
-					color='currentColor'
+					stroke='currentColor'
 				/>
 			))}
 		</Svg>

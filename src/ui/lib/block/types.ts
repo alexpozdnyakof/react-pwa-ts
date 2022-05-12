@@ -46,7 +46,7 @@ interface BoxProps {
 	alignItems: 'center' | 'flex-end' | 'flex-start' | 'baseline' | 'stretch'
 	position: 'relative' | 'static' | 'sticky' | 'absolute'
 	overflow: 'hidden' | 'visible' | 'scroll'
-
+	boxShadow: string
 	zIndex: number
 }
 
@@ -75,11 +75,17 @@ interface EventHandlers {
 	onClick: <T>(e?: React.MouseEvent<T>) => void
 }
 
+interface AnimationProps {
+	transition: string
+}
 type ReusableBlockProps = ElementSizeProps &
 	MarginProps &
 	PaddingProps &
 	PositionProps
 
+interface Pseudo {
+	hover: Partial<ColorProps & BoxProps>
+}
 type BlockProps = WithTestId<
 	ReusableBlockProps &
 		ColorProps &
@@ -88,7 +94,9 @@ type BlockProps = WithTestId<
 		BoxProps &
 		GridProps &
 		ShowAs &
-		EventHandlers
+		EventHandlers &
+		AnimationProps &
+		Pseudo
 >
 
 export type {
