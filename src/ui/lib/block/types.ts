@@ -44,10 +44,18 @@ interface BoxProps {
 		| 'none'
 	boxSizing: 'border-box' | 'content-box'
 	alignItems: 'center' | 'flex-end' | 'flex-start' | 'baseline' | 'stretch'
+	justifyContent:
+		| 'center'
+		| 'flex-end'
+		| 'flex-start'
+		| 'space-around'
+		| 'space-between'
+		| 'space-evenly'
 	position: 'relative' | 'static' | 'sticky' | 'absolute'
 	overflow: 'hidden' | 'visible' | 'scroll'
 	boxShadow: string
 	zIndex: number
+	cursor: 'pointer' | 'none' | 'disabled'
 }
 
 type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', number>
@@ -81,7 +89,8 @@ interface AnimationProps {
 type ReusableBlockProps = ElementSizeProps &
 	MarginProps &
 	PaddingProps &
-	PositionProps
+	PositionProps &
+	AnimationProps & { opacity: number }
 
 interface Pseudo {
 	hover: Partial<ColorProps & BoxProps>

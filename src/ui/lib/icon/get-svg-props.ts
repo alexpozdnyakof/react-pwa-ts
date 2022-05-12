@@ -15,6 +15,7 @@ const getSvgProps = ({ size, tone, icon }: Omit<IconProps, 'testId'>) => {
 		height: iconSize,
 		maxHeight: iconSize,
 		color: tone,
+		transition: 'box-shadow ease 200ms ,background-color ease 200ms',
 		paths,
 	}
 }
