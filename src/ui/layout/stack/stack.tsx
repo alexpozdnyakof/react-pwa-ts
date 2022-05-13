@@ -9,10 +9,17 @@ export default function Stack({
 	spaceUnit = SPACE_UNIT,
 	testId,
 	children,
+	...props
 }: StackProps) {
 	const gap = unit(space * spaceUnit).px
 	return (
-		<Block display='grid' gridAutoFlow='row' gap={gap} testId={testId}>
+		<Block
+			{...props}
+			display='grid'
+			gridAutoFlow='row'
+			gap={gap}
+			testId={testId}
+		>
 			{children}
 		</Block>
 	)
