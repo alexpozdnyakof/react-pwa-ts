@@ -1,4 +1,3 @@
-import { Space } from '../styles'
 import { COLOR_KEYS } from '../theme'
 
 const Text = () => ({
