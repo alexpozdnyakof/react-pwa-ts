@@ -1,38 +1,14 @@
 type ControlBoxShadow = Record<'default' | 'action', string>
 
-const getBoxShadow = (
-	shade: Record<'100' | '200' | '300' | '400' | '500', string>
-) =>
-	[
-		`-1px 0 0 1px ${shade['100']}`,
-		`-1px -1px 0 1px ${shade['200']}`,
-		`-1px 1px 0 1px ${shade['200']}`,
-		`0 -1px 0 1px ${shade['300']}`,
-		`0 1px 0 1px ${shade['300']}`,
-		`1px -1px 0 1px ${shade['400']}`,
-		`1px 1px 0 1px ${shade['400']}`,
-		`1px 0 0 1px ${shade['500']}`,
-	].join(',')
+const darkDefaultOutline =
+	'-1px 0px 0px 1px rgba(207, 199, 210, 0.75), -1px -1px 0px 1px rgba(209, 203, 213, 0.25), -1px 1px 0px 1px rgba(209, 203, 213, 0.25), 0px -1px 0px 1px rgba(211, 207, 216, 0.5), 0px 1px 0px 1px rgba(211, 207, 216, 0.5), 1px -1px 0px 1px #D5D3DB, 1px 1px 0px 1px rgba(213, 211, 219, 0.25), 1px 0px 0px 1px rgba(215, 216, 222, 0.75)'
 
-const greenShade = {
-	'100': 'rgba(174, 234, 200, 0.75)',
-	'200': 'rgba(141, 226, 178, 0.25)',
-	'300': 'rgba(93, 213, 145, 0.5)',
-	'400': 'rgba(40, 246, 129, 0.25)',
-	'500': 'rgba(9, 227, 103, 0.75)',
-}
-
-const blackShade = {
-	'100': 'rgba(175, 177, 189, 0.75)',
-	'200': 'rgba(199, 200, 209, 0.25)',
-	'300': 'rgba(199, 201, 209, 0.5)',
-	'400': 'rgba(221, 223, 227, 0.25)',
-	'500': 'rgba(244, 244, 246, 0.75)',
-}
+const darkActionOutline =
+	'-1px 0px 0px 1px rgba(173, 211, 86, 0.75), -1px -1px 0px 1px rgba(130, 214, 106, 0.25), -1px 1px 0px 1px rgba(130, 214, 106, 0.25), 0px -1px 0px 1px rgba(87, 217, 126, 0.5), 0px 1px 0px 1px rgba(87, 217, 126, 0.5), 1px -1px 0px 1px rgba(44, 220, 146, 0.25), 1px 1px 0px 1px rgba(44, 220, 146, 0.25), 1px 0px 0px 1px rgba(0, 223, 166, 0.75)'
 
 const getControlBoxShadow = () => ({
-	default: getBoxShadow(blackShade),
-	action: getBoxShadow(greenShade),
+	default: darkDefaultOutline,
+	action: darkActionOutline,
 })
 
 export type { ControlBoxShadow }
