@@ -26,7 +26,7 @@ export default function Text({
 	children,
 	testId,
 	...props
-}: React.PropsWithChildren<Partial<TextProps>>) {
+}: React.PropsWithChildren<Partial<TextProps & ReusableBlockProps>>) {
 	return (
 		<Block
 			{...props}

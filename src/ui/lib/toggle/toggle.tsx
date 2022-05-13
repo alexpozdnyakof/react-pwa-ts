@@ -15,6 +15,7 @@ export default function Toggle({ on, onClick }: ToggleProps) {
 		width: 16,
 		height: 16,
 		radius: 6,
+		margin: 2,
 		transition: 'box-shadow ease 200ms ,background-color ease 200ms',
 		boxShadow: on
 			? getControlBoxShadow().action
