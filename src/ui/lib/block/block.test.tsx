@@ -186,4 +186,12 @@ describe('Block Component', () => {
 
 		expect(onClick).toBeCalled()
 	})
+	it('should trigger onkeydown handler', () => {
+		const onKeyDown = jest.fn()
+
+		const result = renderBlockWithProps({ onKeyDown })
+		fireEvent.keyDown(result)
+
+		expect(onKeyDown).toBeCalled()
+	})
 })

@@ -56,6 +56,7 @@ interface BoxProps {
 	boxShadow: string
 	zIndex: number
 	cursor: 'pointer' | 'none' | 'disabled'
+	outline: string
 }
 
 type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', number>
@@ -81,20 +82,29 @@ interface ShowAs {
 
 interface EventHandlers {
 	onClick: <T>(e?: React.MouseEvent<T>) => void
+	onKeyDown: <T>(e?: React.KeyboardEvent<T>) => void
 }
 
 interface AnimationProps {
 	transition: string
 }
+
+interface BlockAttributes {
+	attributes: HTMLElement
+}
+
 type ReusableBlockProps = ElementSizeProps &
 	MarginProps &
 	PaddingProps &
 	PositionProps &
-	AnimationProps & { opacity: number }
+	AnimationProps & { opacity: number } & BlockAttributes
 
 interface Pseudo {
 	hover: Partial<ColorProps & BoxProps>
+	focus: Pick<ColorProps, 'borderColor'>
+	focusVisible: Pick<ColorProps, 'borderColor'> & { boxShadow: string }
 }
+
 type BlockProps = WithTestId<
 	ReusableBlockProps &
 		ColorProps &
@@ -122,4 +132,5 @@ export type {
 	TextProps,
 	Unit,
 	BoxProps,
+	Pseudo,
 }

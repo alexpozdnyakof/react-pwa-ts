@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TextSize, TextType, WithVisualTheme } from '../../theme'
-import { BoxProps, ColorProps, GridProps } from './types'
+import { BoxProps, ColorProps, GridProps, Pseudo } from './types'
 
 type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', string>
 
@@ -13,7 +13,8 @@ export interface BaseBlockProps
 		BoxProps,
 		PositionProps,
 		PaddingProps,
-		GridProps {
+		GridProps,
+		Pseudo {
 	width: string
 	height: string
 	maxWidth: string
@@ -32,7 +33,7 @@ export interface BaseBlockProps
 	lineHeight: string
 	letterSpacing: string
 	transition: string
-	hover: Partial<ColorProps & BoxProps>
+	type: string
 }
 
 export const BaseBlock = styled.div(
@@ -46,6 +47,8 @@ export const BaseBlock = styled.div(
 		fontSize,
 		fontFamily,
 		hover,
+		focus,
+		focusVisible,
 		...props
 	}: WithVisualTheme<Partial<BaseBlockProps>>) => ({
 		width,
@@ -60,6 +63,13 @@ export const BaseBlock = styled.div(
 			borderColor: theme.getColor(hover?.borderColor),
 			color: theme.getColor(hover?.color),
 			boxShadow: hover?.boxShadow,
+		},
+		'&:focus': {
+			borderColor: theme.getColor(focus?.borderColor),
+		},
+		'&:focus-visible': {
+			borderColor: theme.getColor(focusVisible?.borderColor),
+			boxShadow: focusVisible?.boxShadow,
 		},
 		...props,
 	})

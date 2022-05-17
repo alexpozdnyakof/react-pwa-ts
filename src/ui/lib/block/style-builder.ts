@@ -10,7 +10,7 @@ type StyleBuilderResult = Record<keyof BaseBlockProps, string | number>
 interface StyleBuilder {
 	apply: <T>(value: T, params: ApplyParams<T>) => StyleBuilder
 	get: () => StyleBuilderResult
-	withTail: (tail: any) => BaseBlockProps
+	withTail: (tail: any) => Partial<BaseBlockProps>
 }
 
 const build = (): StyleBuilder => {
@@ -26,7 +26,7 @@ const build = (): StyleBuilder => {
 		},
 		get: () => styles,
 		withTail: (tail: CSSObject) =>
-			Object.assign(styles, tail) as BaseBlockProps,
+			Object.assign(styles, tail) as unknown as Partial<BaseBlockProps>,
 	}
 
 	return result

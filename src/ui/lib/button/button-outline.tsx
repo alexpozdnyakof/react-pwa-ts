@@ -23,6 +23,7 @@ export default function OutlineButton({
 		paddingRight: 8,
 		paddingTop: 2,
 		paddingBottom: 2,
+		margin: 2,
 		transition: 'box-shadow ease 200ms ,background-color ease 200ms',
 		hover: {
 			boxShadow: getControlBoxShadow().action,
