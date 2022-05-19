@@ -26,7 +26,7 @@ export default function TodoList({ title, progress, todos }: TodoListProps) {
 
 			<Stack space={0.5} ml={-2}>
 				{todos.map(todo => (
-					<TodoItem>
+					<TodoItem key={todo.type.concat(todo.id.toString())}>
 						<TodoItem.Complete
 							complete={todo.done}
 							onComplete={() => {

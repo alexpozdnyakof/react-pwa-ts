@@ -34,14 +34,14 @@ export const COLOR_KEYS: Array<Color> = [
 const defaultColors = { white: '#fff', black: '#000', current: 'currentColor' }
 
 const DARK_COLORS: Record<Color, string> = {
-	action: '#30bb6c',
+	action: '#34C759',
 	actionHover: 'rgb(40 246 129 / 25%)',
-	background: '#000000',
+	background: '#1E1E1E',
 	border: '#333333',
 	borderLight: '#555555',
 	borderLightFocus: '#d7d8de',
-	surface: '#0e1013',
-	onSurface: 'rgba(0,0,0,.7)',
+	surface: '#222325',
+	onSurface: 'rgba(30,30,30,.7)',
 	text: '#fff',
 	caption: '#d7d8de',
 	transparent: 'transparent',

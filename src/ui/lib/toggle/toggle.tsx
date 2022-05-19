@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { BlockProps } from '../../atoms/block'
 import { Color } from '../../theme'
 import getControlBoxShadow from '../../theme/control-box-shadow'
 import { Block, EventHandlers } from '../block'

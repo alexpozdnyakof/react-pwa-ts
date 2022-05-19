@@ -15,9 +15,11 @@ describe('Toggle', () => {
 		const { getByTestId } = renderWithTheme(
 			<Toggle on onClick={() => {}} />
 		)
+
 		expect(getByTestId('toggle')).toHaveStyle({
 			'background-color': DARK_COLORS.action,
 		})
+
 		expect(getByTestId('icon')).toHaveStyle({
 			opacity: 1,
 		})

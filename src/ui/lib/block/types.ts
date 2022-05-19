@@ -67,6 +67,14 @@ interface TextProps {
 	fontFamily: TextType
 	textAlign: 'left' | 'center' | 'right'
 	letterSpacing: number
+	textOverflow?: 'clip' | 'ellipsis'
+	whiteSpace?:
+		| 'normal'
+		| 'nowrap'
+		| 'pre'
+		| 'pre-wrap'
+		| 'pre-line'
+		| 'break-spaces'
 }
 interface GridProps {
 	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'

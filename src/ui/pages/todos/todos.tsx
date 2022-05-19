@@ -1,18 +1,14 @@
-import { TODO_LISTS } from '../../../data/todo-list'
 import { Stack, Surface } from '../../layout'
 import { Block, Button, Text } from '../../lib'
+import { useTodoState } from './state'
 import { TodoList } from './todo-list'
 
-interface Props {
-	projectName: string
-}
+export default function TodosPage() {
+	const { state } = useTodoState()
 
-export default function TodosPage({ projectName }: Props) {
-	const title = projectName.concat(' To-dos')
 	const addNewList = () => {
 		console.log('add new list')
 	}
-	const todolists = TODO_LISTS
 
 	return (
 		<Surface>
@@ -25,14 +21,17 @@ export default function TodosPage({ projectName }: Props) {
 							weight='bold'
 							spacing={-0.03}
 						>
-							{title}
+							{state?.projectName}
 						</Text>
 						<Button onClick={addNewList} variant='link'>
 							Add new list
 						</Button>
 					</Stack>
-					{todolists.map(list => (
-						<TodoList {...list} />
+					{state?.lists.map(list => (
+						<TodoList
+							{...list}
+							key={list.type.concat(list.id.toString())}
+						/>
 					))}
 				</Stack>
 			</Block>
