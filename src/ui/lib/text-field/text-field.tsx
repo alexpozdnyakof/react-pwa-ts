@@ -4,6 +4,7 @@ import { Block, EventHandlers } from '../block'
 
 interface TextFieldProps {
 	value: string
+	placeholder: string
 	testId: string
 	ariaLabel: string
 	onKeyDown: EventHandlers['onKeyDown']
@@ -12,20 +13,14 @@ interface TextFieldProps {
 
 const TextField = forwardRef(
 	(
-		{
-			value,
-			onKeyDown,
-			onChange,
-			ariaLabel,
-			testId = 'textfield',
-		}: Partial<TextFieldProps>,
+		{ testId = 'textfield', ...props }: Partial<TextFieldProps>,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
 		<Block
 			testId={testId}
 			as='input'
 			ref={ref}
-			value={value}
+			{...props}
 			fontSize='medium'
 			fontFamily='sans'
 			lineHeight={24}
@@ -47,11 +42,9 @@ const TextField = forwardRef(
 				boxShadow: getControlBoxShadow().focus,
 			}}
 			transition='all ease 200ms'
-			onKeyDown={onKeyDown}
-			onChange={onChange}
-			ariaLabel={ariaLabel}
 		/>
 	)
 )
+
 TextField.displayName = 'TextField'
 export default TextField

@@ -101,6 +101,7 @@ interface AnimationProps {
 interface BlockAttributes {
 	value: string
 	ariaLabel: string
+	placeholder: string
 }
 
 type ReusableBlockProps = ElementSizeProps &

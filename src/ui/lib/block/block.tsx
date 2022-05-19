@@ -37,6 +37,7 @@ const Block = forwardRef<
 			columnGap,
 			value,
 			ariaLabel,
+			placeholder,
 			as = 'div',
 			testId = 'blockToTest',
 			...unhandledProps
@@ -165,6 +166,7 @@ const Block = forwardRef<
 				ref={ref}
 				as={as}
 				value={value}
+				placeholder={placeholder}
 			>
 				{children}
 			</BaseBlock>

@@ -27,6 +27,17 @@ describe('Text Field', () => {
 		expect(input).toHaveValue(settedValue)
 	})
 
+	it('should set placeholder', () => {
+		const placeholder = 'placeholder'
+		const { getByTestId } = renderWithTheme(
+			<TextField placeholder={placeholder} />
+		)
+
+		const input = getByTestId('textfield') as HTMLInputElement
+
+		expect(input.placeholder).toBe(placeholder)
+	})
+
 	it('should trigger onChange callback', () => {
 		const onChangeFn = jest.fn()
 		const { getByTestId } = renderWithTheme(
