@@ -15,4 +15,26 @@ describe('Text Field', () => {
 
 		expect(onKeyDownFn).toHaveBeenCalledTimes(1)
 	})
+
+	it('should set value', () => {
+		const settedValue = '138'
+		const { getByTestId } = renderWithTheme(
+			<TextField value={settedValue} />
+		)
+
+		const input = getByTestId('textfield') as HTMLInputElement
+
+		expect(input).toHaveValue(settedValue)
+	})
+
+	it('should trigger onChange callback', () => {
+		const onChangeFn = jest.fn()
+		const { getByTestId } = renderWithTheme(
+			<TextField onChange={onChangeFn} />
+		)
+
+		fireEvent.change(getByTestId('textfield'), { target: { value: 'a' } })
+
+		expect(onChangeFn).toBeCalledTimes(1)
+	})
 })

@@ -5,7 +5,7 @@ import { IconProps } from './types'
 
 export default function Icon({
 	size = 'medium',
-	testId,
+	testId = 'icon',
 	icon,
 	tone = 'current',
 	opacity,

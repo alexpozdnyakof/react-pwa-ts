@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TextSize, TextType, WithVisualTheme } from '../../theme'
-import { BoxProps, ColorProps, GridProps, Pseudo } from './types'
+import { BoxProps, ColorProps, Pseudo } from './types'
 
 type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', string>
 
@@ -13,7 +13,6 @@ export interface BaseBlockProps
 		BoxProps,
 		PositionProps,
 		PaddingProps,
-		GridProps,
 		Pseudo {
 	width: string
 	height: string
@@ -34,6 +33,11 @@ export interface BaseBlockProps
 	letterSpacing: string
 	transition: string
 	type: string
+	gap: string
+	rowGap: string
+	columnGap: string
+	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'
+	gridTemplateColumns: string
 }
 
 export const BaseBlock = styled.div(

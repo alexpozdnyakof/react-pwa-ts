@@ -32,7 +32,7 @@ export default function Toggle({ on, onClick }: ToggleProps) {
 	}
 
 	return (
-		<Block as='button' {...styles} onClick={onClick}>
+		<Block as='button' {...styles} onClick={onClick} testId='toggle'>
 			<Icon
 				icon='check'
 				size='small'

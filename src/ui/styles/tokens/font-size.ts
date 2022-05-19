@@ -7,6 +7,7 @@ enum FontSize {
 }
 
 type FontSizeMap = Record<FontSize, string>
+
 const fontSize: FontSizeMap = {
 	[FontSize.small]: '12px',
 	[FontSize.medium]: '14px',

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
 import { Color, LineHeight, Space, BorderRadius, FontSize } from '../../styles'
 import { FontWeight } from '../../styles/tokens/font-weight'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Block } from '../../lib'
-import { unit } from '../../theme'
 import { SPACE_UNIT } from './constraints'
 import { StackProps } from './types'
 
@@ -11,7 +10,8 @@ export default function Stack({
 	children,
 	...props
 }: StackProps) {
-	const gap = unit(space * spaceUnit).px
+	const gap = space * spaceUnit
+
 	return (
 		<Block
 			{...props}

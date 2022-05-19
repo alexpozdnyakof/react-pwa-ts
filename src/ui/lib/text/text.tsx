@@ -13,7 +13,7 @@ interface Props extends ReusableBlockProps {
 	spacing: number
 }
 
-type TextProps = React.PropsWithChildren<Partial<WithTestId<Props>>>
+export type TextProps = React.PropsWithChildren<Partial<WithTestId<Props>>>
 
 export default function Text({
 	size = 'body',
@@ -43,5 +43,3 @@ export default function Text({
 		</Block>
 	)
 }
-
-export type { TextProps }

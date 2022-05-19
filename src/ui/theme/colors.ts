@@ -5,6 +5,8 @@ export type Color =
 	| 'surface'
 	| 'onSurface'
 	| 'border'
+	| 'borderLightFocus'
+	| 'borderLight'
 	| 'text'
 	| 'caption'
 	| 'transparent'
@@ -19,6 +21,8 @@ export const COLOR_KEYS: Array<Color> = [
 	'surface',
 	'onSurface',
 	'border',
+	'borderLight',
+	'borderLightFocus',
 	'text',
 	'caption',
 	'transparent',
@@ -34,6 +38,8 @@ const DARK_COLORS: Record<Color, string> = {
 	actionHover: 'rgb(40 246 129 / 25%)',
 	background: '#000000',
 	border: '#333333',
+	borderLight: '#555555',
+	borderLightFocus: '#d7d8de',
 	surface: '#0e1013',
 	onSurface: 'rgba(0,0,0,.7)',
 	text: '#fff',

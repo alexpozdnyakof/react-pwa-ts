@@ -70,19 +70,20 @@ interface TextProps {
 }
 interface GridProps {
 	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'
-	gap: string
-	rowGap: string
-	columnGap: string
+	gap: number
+	rowGap: number
+	columnGap: number
 	gridTemplateColumns: string
 }
 
 interface ShowAs {
-	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg'
+	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg' | 'kbd'
 }
 
 interface EventHandlers {
 	onClick: <T>(e?: React.MouseEvent<T>) => void
 	onKeyDown: <T>(e?: React.KeyboardEvent<T>) => void
+	onChange: <T>(e?: React.KeyboardEvent<T>) => void
 }
 
 interface AnimationProps {
@@ -90,14 +91,17 @@ interface AnimationProps {
 }
 
 interface BlockAttributes {
-	attributes: HTMLElement
+	value: string
+	ariaLabel: string
 }
 
 type ReusableBlockProps = ElementSizeProps &
 	MarginProps &
 	PaddingProps &
 	PositionProps &
-	AnimationProps & { opacity: number } & BlockAttributes
+	AnimationProps & { opacity: number } & BlockAttributes &
+	GridProps &
+	BoxProps
 
 interface Pseudo {
 	hover: Partial<ColorProps & BoxProps>

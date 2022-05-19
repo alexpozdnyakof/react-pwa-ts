@@ -32,6 +32,11 @@ const Block = forwardRef<
 			fontWeight,
 			lineHeight,
 			letterSpacing,
+			gap,
+			rowGap,
+			columnGap,
+			value,
+			ariaLabel,
 			as = 'div',
 			testId = 'blockToTest',
 			...unhandledProps
@@ -135,10 +140,32 @@ const Block = forwardRef<
 			transform: w => unit(w!).em,
 		})
 
+		styles.apply(gap, {
+			property: 'gap',
+			transform: w => unit(w!).px,
+		})
+
+		styles.apply(rowGap, {
+			property: 'rowGap',
+			transform: w => unit(w!).px,
+		})
+
+		styles.apply(columnGap, {
+			property: 'columnGap',
+			transform: w => unit(w!).px,
+		})
+
 		const result = styles.withTail(unhandledProps)
 
 		return (
-			<BaseBlock data-testid={testId} {...result} ref={ref} as={as}>
+			<BaseBlock
+				aria-label={ariaLabel}
+				data-testid={testId}
+				{...result}
+				ref={ref}
+				as={as}
+				value={value}
+			>
 				{children}
 			</BaseBlock>
 		)

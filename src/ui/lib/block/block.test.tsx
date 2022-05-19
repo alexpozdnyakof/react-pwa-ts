@@ -186,12 +186,28 @@ describe('Block Component', () => {
 
 		expect(onClick).toBeCalled()
 	})
-	it('should trigger onkeydown handler', () => {
+	it('should trigger onkeydown callback', () => {
 		const onKeyDown = jest.fn()
 
 		const result = renderBlockWithProps({ onKeyDown })
 		fireEvent.keyDown(result)
 
 		expect(onKeyDown).toBeCalled()
+	})
+
+	it('should set gap props', () => {
+		const props = {
+			gap: 10,
+			columnGap: 15,
+			rowGap: 20,
+		}
+
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			gap: '10px',
+			columnGap: '15px',
+			rowGap: '20px',
+		})
 	})
 })
