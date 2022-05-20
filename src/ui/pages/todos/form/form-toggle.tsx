@@ -1,7 +1,7 @@
 import { cloneElement, useState } from 'react'
 import { Block } from '../../../lib'
 import ItemForm from './title-form'
-import { useFocus } from '../todo-list/use-focus'
+import { useFocus } from './use-focus'
 
 interface Props {
 	children: [
