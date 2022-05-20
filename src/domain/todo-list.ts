@@ -1,7 +1,7 @@
 import { Todo } from './todo'
 
 export type TodoList = {
-	id: number
+	id: string
 	type: 'list'
 	title: string
 	progress: string
