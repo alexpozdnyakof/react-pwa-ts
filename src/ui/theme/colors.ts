@@ -41,9 +41,9 @@ const DARK_COLORS: Record<Color, string> = {
 	borderLight: '#555555',
 	borderLightFocus: '#d7d8de',
 	surface: '#222325',
-	onSurface: 'rgba(30,30,30,.7)',
-	text: '#fff',
-	caption: '#d7d8de',
+	onSurface: 'rgba(30,30,30,.9)',
+	text: '#d7d8de',
+	caption: '#999',
 	transparent: 'transparent',
 	...defaultColors,
 }
