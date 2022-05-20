@@ -26,13 +26,22 @@ interface BorderProps {
 	borderStyle: 'solid' | 'dashed'
 }
 
-type MarginProps = Partial<
-	Record<'m' | 'mt' | 'mr' | 'mb' | 'ml', ElementSpaceOrAuto>
->
+type MarginProps = Partial<{
+	m: ElementSpaceOrAuto
+	mt: ElementSpaceOrAuto
+	mr: ElementSpaceOrAuto
+	mb: ElementSpaceOrAuto
+	ml: ElementSpaceOrAuto
+}>
 
-type PaddingProps = Partial<
-	Record<'p' | 'pt' | 'pr' | 'pb' | 'pl', ElementSpace>
->
+type PaddingProps = Partial<{
+	p: ElementSpace
+	pt: ElementSpace
+	pr: ElementSpace
+	pb: ElementSpace
+	pl: ElementSpace
+}>
+
 interface BoxProps {
 	display:
 		| 'block'
@@ -59,7 +68,13 @@ interface BoxProps {
 	outline: string
 }
 
-type PositionProps = Record<'top' | 'right' | 'bottom' | 'left', number>
+type PositionProps = {
+	top: number
+	right: number
+	bottom: number
+	left: number
+}
+
 interface TextProps {
 	fontSize: TextSize
 	fontWeight: TextWeight
