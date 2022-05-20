@@ -1,6 +1,6 @@
 import React from 'react'
 import { Block, Toggle } from '../../../lib'
-import Typography from './typography'
+import Typography from '../../../lib/text/typography'
 
 function TodoItem({ children }: React.PropsWithChildren<{}>) {
 	return (

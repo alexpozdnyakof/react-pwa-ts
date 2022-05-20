@@ -1,8 +1,9 @@
 import { Todo } from '../../../../domain'
 import { Stack } from '../../../layout'
-import TodoForm from './todo-form'
+import { Button, Typography } from '../../../lib'
+import { TitleForm, FormToggle } from '../form'
+
 import TodoItem from './todo-item'
-import Typography from './typography'
 
 type TodoListProps = {
 	title: string
@@ -15,14 +16,17 @@ export default function TodoList({ title, progress, todos }: TodoListProps) {
 		<Stack space={2}>
 			<Stack>
 				<Typography variant='caption'>{progress}</Typography>
-				<Typography variant='title'>{title}</Typography>
+				<Typography variant='list-title'>{title}</Typography>
 			</Stack>
 
-			<TodoForm
-				onAddNewTodo={todoTitle => {
+			<FormToggle
+				onSubmit={todoTitle => {
 					console.log({ todoTitle })
 				}}
-			/>
+			>
+				<Button>Add a todo</Button>
+				<TitleForm placeholder='Type todo Title' />
+			</FormToggle>
 
 			<Stack space={0.5} ml={-2}>
 				{todos.map(todo => (
