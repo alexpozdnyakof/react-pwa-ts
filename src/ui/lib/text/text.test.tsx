@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react'
 import React from 'react'
 import { getHTMLElement } from '../../helpers'
+import DARK_COLORS from '../../theme/colors'
 import Text, { TextProps } from './text'
 
 const renderTextComponent = (
@@ -42,7 +43,7 @@ describe('Text Component', () => {
 		const result = renderTextComponent(props)
 
 		expect(result).toHaveStyle({
-			color: '#30bb6c',
+			color: DARK_COLORS.action,
 		})
 	})
 	it('should set line height', () => {
