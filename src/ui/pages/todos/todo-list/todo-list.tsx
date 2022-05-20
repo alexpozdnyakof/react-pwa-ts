@@ -20,6 +20,7 @@ export default function TodoList({ title, progress, todos }: TodoListProps) {
 			</Stack>
 
 			<FormToggle
+				testId='todo-item-form'
 				onSubmit={todoTitle => {
 					console.log({ todoTitle })
 				}}
@@ -28,7 +29,7 @@ export default function TodoList({ title, progress, todos }: TodoListProps) {
 				<TitleForm placeholder='Type todo Title' />
 			</FormToggle>
 
-			<Stack space={0.5} ml={-2}>
+			<Stack space={0.5} ml={-2} testId='todo-list'>
 				{todos.map(todo => (
 					<TodoItem key={todo.type.concat(todo.id.toString())}>
 						<TodoItem.Complete

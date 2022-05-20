@@ -13,11 +13,18 @@ interface Props {
 		React.ReactElement<typeof ItemForm>
 	]
 	onSubmit: (value: string) => void
+	// eslint-disable-next-line react/require-default-props
+	testId?: string
 }
 
-export default function FormToggle({ children, onSubmit }: Props) {
+export default function FormToggle({
+	children,
+	onSubmit,
+	testId = 'form-toggle',
+}: Props) {
 	const [inputMode, setInputMode] = useState<boolean>(false)
 	const inputRef = useFocus()
+
 	const [control, form] = children
 
 	const show = () => {
@@ -37,7 +44,7 @@ export default function FormToggle({ children, onSubmit }: Props) {
 	}
 
 	return (
-		<Block width={{ value: 80, unit: 'pct' }}>
+		<Block width={{ value: 80, unit: 'pct' }} testId={testId}>
 			{!inputMode && cloneElement(control, { onClick: show } as any)}
 			{inputMode &&
 				cloneElement(form, {

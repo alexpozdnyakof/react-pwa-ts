@@ -1,1 +1,1 @@
-export { default as TodosPage } from './todos'
+export { default as TodosPage } from './todos-page'
