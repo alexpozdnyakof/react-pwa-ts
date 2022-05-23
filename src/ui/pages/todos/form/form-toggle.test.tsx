@@ -27,6 +27,7 @@ describe('Form Toggle', () => {
 
 		expect(queryByTestId('outlineButton')).not.toBeInTheDocument()
 		expect(getByTestId('textfield')).toBeInTheDocument()
+		expect(getByTestId('textfield')).toHaveFocus()
 	})
 
 	it('should hide form', () => {

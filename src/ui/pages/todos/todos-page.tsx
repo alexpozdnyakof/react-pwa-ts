@@ -5,7 +5,10 @@ import { useTodoState } from './state'
 import { TodoList } from './todo-list'
 
 export default function TodosPage() {
-	const { state } = useTodoState()
+	const { state, dispatch } = useTodoState()
+
+	const addTodoList = (title: string) =>
+		dispatch({ type: 'ADD_LIST', payload: title })
 
 	return (
 		<Surface>
@@ -16,11 +19,12 @@ export default function TodosPage() {
 							{state?.projectName}
 						</Typography>
 
-						<FormToggle onSubmit={t => console.log({ t })}>
+						<FormToggle onSubmit={addTodoList}>
 							<Button variant='link'>Add new list</Button>
 							<TitleForm placeholder='Type list title' mt={8} />
 						</FormToggle>
 					</Stack>
+
 					{state?.lists.map(list => (
 						<TodoList
 							{...list}

@@ -17,4 +17,5 @@ DefaultList.args = {
 	title: 'iOS Production Bugs',
 	progress: '11/13 completed',
 	todos: TODOS,
+	id: 'id',
 }

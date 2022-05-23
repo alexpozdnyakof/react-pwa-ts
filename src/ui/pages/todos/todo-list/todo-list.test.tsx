@@ -7,6 +7,7 @@ describe('TodoList', () => {
 		title: 'iOS Production Bugs',
 		progress: '11/13 completed',
 		todos: TODOS,
+		id: '123',
 	}
 	it('should render title, progress, list and todo item form', () => {
 		const { getByTestId, getByText } = renderWithTheme(
