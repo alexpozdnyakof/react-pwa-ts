@@ -1,4 +1,4 @@
-import { Stack, Surface } from '../../layout'
+import { Container, Stack } from '../../layout'
 import { Block, Button, Typography } from '../../lib'
 import { FormToggle, TitleForm } from './form'
 import { useTodoState } from './state'
@@ -11,8 +11,8 @@ export default function TodosPage() {
 		dispatch({ type: 'ADD_LIST', payload: title })
 
 	return (
-		<Surface>
-			<Block m='0 auto'>
+		<Container>
+			<Block m='0 auto' pt={48} pl={124} pr={124} pb={56}>
 				<Stack space={4}>
 					<Stack space={1}>
 						<Typography variant='page-title'>
@@ -33,6 +33,6 @@ export default function TodosPage() {
 					))}
 				</Stack>
 			</Block>
-		</Surface>
+		</Container>
 	)
 }
