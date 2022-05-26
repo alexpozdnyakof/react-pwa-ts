@@ -1,15 +1,6 @@
-import { Todo } from '../../../domain'
+import { Todo } from '../../../../domain'
 
-type AddList = {
-	type: 'add_list'
-	payload: string
-}
-
-type AddTodo = {
-	type: 'add_todo'
-	payload: { title: string; listId: string }
-}
-
+// discriminated union, action type is discriminant
 type Action =
 	| {
 			type: 'add_list'
@@ -44,4 +35,5 @@ const completeTodo = (todoId: string, listId: string) =>
 const reoderTodos = (todosInNewOrder: Array<Todo>, listId: string) =>
 	createAction('reorder_todos', { todos: todosInNewOrder, listId })
 
+export type { Action }
 export { addTodoList, addTodo, completeTodo, reoderTodos }

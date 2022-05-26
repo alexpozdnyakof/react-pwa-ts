@@ -1,8 +1,9 @@
 import { Container, Stack } from '../../layout'
 import { Block, Button, Typography } from '../../lib'
-import { addTodoList } from './actions'
-import { FormToggle, TitleForm } from './form'
+import { addTodoList } from './state/actions'
 import { useTodoState } from './state'
+import { FormToggle, TitleForm } from './form'
+
 import { TodoList } from './todo-list'
 
 export default function TodosPage() {
