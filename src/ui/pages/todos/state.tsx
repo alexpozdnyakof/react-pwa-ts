@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, Dispatch, useContext } from 'react'
+import { useImmerReducer } from 'use-immer'
 import { TODO_LISTS } from '../../../data'
 import { createList, createTodo, Todo, TodoList } from '../../../domain'
 
@@ -10,26 +11,26 @@ interface TodoPageState {
 // discriminated union, action type is discriminant
 type Action =
 	| {
-			type: 'ADD_LIST'
+			type: 'add_list'
 			payload: string
 	  }
 	| {
-			type: 'ADD_TODO'
+			type: 'add_todo'
 			payload: { title: string; listId: string }
 	  }
 	| {
-			type: 'COMPLETE_TODO'
+			type: 'complete_todo'
 			payload: { todoId: string; listId: string }
 	  }
 	| {
-			type: 'REODER_TODOS'
+			type: 'reorder_todos'
 			payload: { todos: Array<Todo>; listId: string }
 	  }
 const findItemIndexById = (items: Array<{ id: string }>, searchedId: string) =>
 	items.findIndex(({ id }) => id === searchedId)
 interface TodoPageContextProps {
 	state: TodoPageState
-	dispatch: (action: Action) => void
+	dispatch: Dispatch<Action>
 }
 
 const data: TodoPageState = {
@@ -39,60 +40,61 @@ const data: TodoPageState = {
 
 const TodoPageStateContext = createContext({} as TodoPageContextProps)
 
-function TodoPageReducer(state: TodoPageState, action: Action): TodoPageState {
+function TodoPageReducer(
+	draft: TodoPageState,
+	action: Action
+): TodoPageState | void {
 	console.log(action.type, action.payload)
 	switch (action.type) {
-		case 'ADD_LIST': {
-			return {
-				...state,
-				lists: [createList(action.payload), ...state.lists],
-			}
+		case 'add_list': {
+			draft.lists.push(createList(action.payload))
+			break
 		}
-		case 'ADD_TODO': {
-			state.lists[
-				findItemIndexById(state.lists, action.payload.listId)
-			].todos.push(createTodo(action.payload.title))
-
-			return { ...state }
+		case 'add_todo': {
+			const targetIndex = findItemIndexById(
+				draft.lists,
+				action.payload.listId
+			)
+			draft.lists[targetIndex].todos.push(
+				createTodo(action.payload.title)
+			)
+			break
 		}
-		case 'COMPLETE_TODO': {
-			const modifiedLists = state.lists.map(list => {
-				if (list.id === action.payload.listId) {
-					return {
-						...list,
-						todos: list.todos.map((todo: Todo) =>
-							todo.id === action.payload.todoId
-								? { ...todo, done: true }
-								: todo
-						),
-					}
-				}
-				return list
-			})
+		case 'complete_todo': {
+			const listIndex = findItemIndexById(
+				draft.lists,
+				action.payload.listId
+			)
+			const todo = draft.lists[listIndex].todos.find(
+				t => t.id === action.payload.todoId
+			)
 
-			return { ...state, lists: modifiedLists }
+			if (todo) todo.done = true
+
+			break
 		}
-		case 'REODER_TODOS': {
-			const modifiedLists = state.lists.map(list => {
-				if (list.id === action.payload.listId) {
-					return {
-						...list,
-						todos: action.payload.todos,
-					}
-				}
-				return list
-			})
+		case 'reorder_todos': {
+			const listIndex = findItemIndexById(
+				draft.lists,
+				action.payload.listId
+			)
 
-			return { ...state, lists: modifiedLists }
+			draft.lists[listIndex].todos.sort(
+				(todoX, todoY) =>
+					findItemIndexById(action.payload.todos, todoX.id) -
+					findItemIndexById(action.payload.todos, todoY.id)
+			)
+
+			break
 		}
 		default: {
-			return { ...state }
+			break
 		}
 	}
 }
 
 const TodoPageStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
-	const [state, dispatch] = useReducer(TodoPageReducer, data)
+	const [state, dispatch] = useImmerReducer(TodoPageReducer, data)
 	// const memoizedState = useMemo(() => ({ state, dispatch }), [])
 
 	return (

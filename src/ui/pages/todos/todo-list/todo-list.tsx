@@ -51,17 +51,17 @@ export default function TodoList({
 
 	const addTodo = (todoTitle: string) =>
 		dispatch({
-			type: 'ADD_TODO',
+			type: 'add_todo',
 			payload: { title: todoTitle, listId: id },
 		})
 	const completeTodo = (todoId: string) =>
 		dispatch({
-			type: 'COMPLETE_TODO',
+			type: 'complete_todo',
 			payload: { todoId, listId: id },
 		})
 	const reoder = (todosInNewOrder: Array<Todo>) => {
 		dispatch({
-			type: 'REODER_TODOS',
+			type: 'reorder_todos',
 			payload: { todos: todosInNewOrder, listId: id },
 		})
 	}

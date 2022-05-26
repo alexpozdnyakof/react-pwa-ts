@@ -8,7 +8,7 @@ export default function TodosPage() {
 	const { state, dispatch } = useTodoState()
 
 	const addTodoList = (title: string) =>
-		dispatch({ type: 'ADD_LIST', payload: title })
+		dispatch({ type: 'add_list', payload: title })
 
 	return (
 		<Container>
