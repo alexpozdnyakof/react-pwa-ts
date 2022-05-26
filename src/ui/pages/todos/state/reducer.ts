@@ -1,4 +1,4 @@
-import { createList, createTodo } from '../../../../domain'
+import { createList, createTodo, Todo } from '../../../../domain'
 import { Action } from './actions'
 import { TodoPageState } from './state'
 
@@ -34,7 +34,7 @@ export default function TodoPageReducer(
 				action.payload.listId
 			)
 			const todo = draft.lists[listIndex].todos.find(
-				t => t.id === action.payload.todoId
+				(t: Todo) => t.id === action.payload.todoId
 			)
 
 			if (todo) todo.done = true
@@ -48,7 +48,7 @@ export default function TodoPageReducer(
 			)
 
 			draft.lists[listIndex].todos.sort(
-				(todoX, todoY) =>
+				(todoX: Todo, todoY: Todo) =>
 					findItemIndexById(action.payload.todos, todoX.id) -
 					findItemIndexById(action.payload.todos, todoY.id)
 			)
