@@ -7,6 +7,7 @@ export type TodoList = {
 	title: string
 	progress: string
 	todos: Array<Todo>
+	index: number
 }
 
 function createList(title: string): TodoList {
@@ -16,6 +17,7 @@ function createList(title: string): TodoList {
 		todos: [],
 		title,
 		progress: '0 completed',
+		index: 0,
 	}
 }
 

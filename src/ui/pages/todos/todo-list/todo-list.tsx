@@ -1,16 +1,42 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Reorder } from 'framer-motion'
+import { useRef, useState } from 'react'
 import { Todo } from '../../../../domain'
 import { Stack } from '../../../layout'
 import { Button, Typography } from '../../../lib'
-import { TitleForm, FormToggle } from '../form'
+import { FormToggle, TitleForm } from '../form'
 import { useTodoState } from '../state'
-
 import TodoItem from './todo-item'
 
+const throttle = (fn: Function, wait: number) => {
+	let inThrottle: boolean
+	let lastFn: NodeJS.Timeout | undefined
+	let lastTime: number
+	return () => {
+		const context = this
+		const args = fn.arguments
+		if (!inThrottle) {
+			fn.apply(context, args)
+			lastTime = Date.now()
+			inThrottle = true
+		} else {
+			clearTimeout(lastFn)
+			lastFn = setTimeout(() => {
+				if (Date.now() - lastTime >= wait) {
+					fn.apply(context, args)
+					lastTime = Date.now()
+				}
+			}, Math.max(wait - (Date.now() - lastTime), 0))
+		}
+	}
+}
 type TodoListProps = {
 	title: string
 	progress: string
 	todos: Array<Todo>
 	id: string
+	// eslint-disable-next-line react/no-unused-prop-types
+	index: number
 }
 
 export default function TodoList({
@@ -19,7 +45,9 @@ export default function TodoList({
 	todos,
 	id,
 }: TodoListProps) {
-	const { dispatch } = useTodoState()
+	const { state, dispatch } = useTodoState()
+	const [items] = useState<Array<Todo>>(todos)
+	const listRef = useRef<HTMLDivElement>(null)
 
 	const addTodo = (todoTitle: string) =>
 		dispatch({
@@ -31,9 +59,15 @@ export default function TodoList({
 			type: 'COMPLETE_TODO',
 			payload: { todoId, listId: id },
 		})
+	const reoder = (todosInNewOrder: Array<Todo>) => {
+		dispatch({
+			type: 'REODER_TODOS',
+			payload: { todos: todosInNewOrder, listId: id },
+		})
+	}
 
 	return (
-		<Stack space={2}>
+		<Stack space={2} ref={listRef}>
 			<Stack>
 				<Typography variant='caption'>{progress}</Typography>
 				<Typography variant='list-title'>{title}</Typography>
@@ -45,15 +79,30 @@ export default function TodoList({
 			</FormToggle>
 
 			<Stack space={0.5} ml={-2} testId='todo-list'>
-				{todos.map(todo => (
-					<TodoItem key={todo.type.concat(todo.id.toString())}>
-						<TodoItem.Complete
-							complete={todo.done}
-							onComplete={() => completeTodo(todo.id)}
-						/>
-						<TodoItem.Title>{todo.title}</TodoItem.Title>
-					</TodoItem>
-				))}
+				<Reorder.Group
+					as='div'
+					axis='y'
+					values={todos}
+					onReorder={reoder}
+				>
+					{todos.map(todo => (
+						<Reorder.Item
+							as='div'
+							key={todo.type.concat(todo.id.toString())}
+							value={todo}
+						>
+							<TodoItem
+								key={todo.type.concat(todo.id.toString())}
+							>
+								<TodoItem.Complete
+									complete={todo.done}
+									onComplete={() => completeTodo(todo.id)}
+								/>
+								<TodoItem.Title>{todo.title}</TodoItem.Title>
+							</TodoItem>
+						</Reorder.Item>
+					))}
+				</Reorder.Group>
 			</Stack>
 		</Stack>
 	)

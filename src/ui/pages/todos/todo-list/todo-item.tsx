@@ -4,7 +4,15 @@ import Typography from '../../../lib/text/typography'
 
 function TodoItem({ children }: React.PropsWithChildren<{}>) {
 	return (
-		<Block display='flex' alignItems='center' testId='todo-item'>
+		<Block
+			display='flex'
+			alignItems='center'
+			testId='todo-item'
+			pl={8}
+			pr={8}
+			pt={2}
+			pb={2}
+		>
 			{children}
 		</Block>
 	)

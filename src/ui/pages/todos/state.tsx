@@ -21,7 +21,10 @@ type Action =
 			type: 'COMPLETE_TODO'
 			payload: { todoId: string; listId: string }
 	  }
-
+	| {
+			type: 'REODER_TODOS'
+			payload: { todos: Array<Todo>; listId: string }
+	  }
 const findItemIndexById = (items: Array<{ id: string }>, searchedId: string) =>
 	items.findIndex(({ id }) => id === searchedId)
 interface TodoPageContextProps {
@@ -67,7 +70,18 @@ function TodoPageReducer(state: TodoPageState, action: Action): TodoPageState {
 				return list
 			})
 
-			console.log(state)
+			return { ...state, lists: modifiedLists }
+		}
+		case 'REODER_TODOS': {
+			const modifiedLists = state.lists.map(list => {
+				if (list.id === action.payload.listId) {
+					return {
+						...list,
+						todos: action.payload.todos,
+					}
+				}
+				return list
+			})
 
 			return { ...state, lists: modifiedLists }
 		}

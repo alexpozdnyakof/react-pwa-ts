@@ -44,6 +44,8 @@ describe('Block Component', () => {
 			height: { value: 100, unit: 'vh' },
 			maxHeight: { value: 100, unit: 'pct' },
 			maxWidth: 'max-content',
+			minHeight: 100,
+			minWidth: 100,
 		}
 
 		const result = renderBlockWithProps(props)
@@ -53,6 +55,8 @@ describe('Block Component', () => {
 			height: '100vh',
 			maxHeight: '100%',
 			maxWidth: 'max-content',
+			minHeight: '100px',
+			minWidth: '100px',
 		})
 	})
 

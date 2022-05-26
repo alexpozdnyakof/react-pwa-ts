@@ -12,6 +12,8 @@ interface ElementSizeProps {
 	height: ElementSize
 	maxWidth: ElementSize
 	maxHeight: ElementSize
+	minWidth: ElementSize
+	minHeight: ElementSize
 }
 
 interface ColorProps {
@@ -60,7 +62,7 @@ interface BoxProps {
 		| 'space-around'
 		| 'space-between'
 		| 'space-evenly'
-	position: 'relative' | 'static' | 'sticky' | 'absolute'
+	position: 'relative' | 'static' | 'sticky' | 'absolute' | 'fixed'
 	overflow: 'hidden' | 'visible' | 'scroll'
 	boxShadow: string
 	zIndex: number
@@ -111,6 +113,7 @@ interface EventHandlers {
 
 interface AnimationProps {
 	transition: string
+	transform: string
 }
 
 interface BlockAttributes {

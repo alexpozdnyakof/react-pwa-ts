@@ -18,4 +18,5 @@ DefaultList.args = {
 	progress: '11/13 completed',
 	todos: TODOS,
 	id: 'id',
+	index: 0,
 }
