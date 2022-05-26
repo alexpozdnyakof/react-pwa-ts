@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { Todo } from '../../../../domain'
 import { Stack } from '../../../layout'
 import { Button, Typography } from '../../../lib'
+import { addTodo, completeTodo, reoderTodos } from '../actions'
 import { FormToggle, TitleForm } from '../form'
 import { useTodoState } from '../state'
 import TodoItem from './todo-item'
@@ -49,23 +50,6 @@ export default function TodoList({
 	const [items] = useState<Array<Todo>>(todos)
 	const listRef = useRef<HTMLDivElement>(null)
 
-	const addTodo = (todoTitle: string) =>
-		dispatch({
-			type: 'add_todo',
-			payload: { title: todoTitle, listId: id },
-		})
-	const completeTodo = (todoId: string) =>
-		dispatch({
-			type: 'complete_todo',
-			payload: { todoId, listId: id },
-		})
-	const reoder = (todosInNewOrder: Array<Todo>) => {
-		dispatch({
-			type: 'reorder_todos',
-			payload: { todos: todosInNewOrder, listId: id },
-		})
-	}
-
 	return (
 		<Stack space={2} ref={listRef}>
 			<Stack>
@@ -73,7 +57,10 @@ export default function TodoList({
 				<Typography variant='list-title'>{title}</Typography>
 			</Stack>
 
-			<FormToggle testId='todo-item-form' onSubmit={addTodo}>
+			<FormToggle
+				testId='todo-item-form'
+				onSubmit={text => dispatch(addTodo(text, id))}
+			>
 				<Button>Add a todo</Button>
 				<TitleForm placeholder='Type todo Title' />
 			</FormToggle>
@@ -83,7 +70,7 @@ export default function TodoList({
 					as='div'
 					axis='y'
 					values={todos}
-					onReorder={reoder}
+					onReorder={newOrder => dispatch(reoderTodos(newOrder, id))}
 				>
 					{todos.map(todo => (
 						<Reorder.Item
@@ -96,7 +83,9 @@ export default function TodoList({
 							>
 								<TodoItem.Complete
 									complete={todo.done}
-									onComplete={() => completeTodo(todo.id)}
+									onComplete={() =>
+										dispatch(completeTodo(todo.id, id))
+									}
 								/>
 								<TodoItem.Title>{todo.title}</TodoItem.Title>
 							</TodoItem>

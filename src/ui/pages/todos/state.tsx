@@ -26,6 +26,7 @@ type Action =
 			type: 'reorder_todos'
 			payload: { todos: Array<Todo>; listId: string }
 	  }
+
 const findItemIndexById = (items: Array<{ id: string }>, searchedId: string) =>
 	items.findIndex(({ id }) => id === searchedId)
 interface TodoPageContextProps {

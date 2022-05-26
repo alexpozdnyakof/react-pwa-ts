@@ -1,14 +1,12 @@
 import { Container, Stack } from '../../layout'
 import { Block, Button, Typography } from '../../lib'
+import { addTodoList } from './actions'
 import { FormToggle, TitleForm } from './form'
 import { useTodoState } from './state'
 import { TodoList } from './todo-list'
 
 export default function TodosPage() {
 	const { state, dispatch } = useTodoState()
-
-	const addTodoList = (title: string) =>
-		dispatch({ type: 'add_list', payload: title })
 
 	return (
 		<Container>
@@ -26,7 +24,11 @@ export default function TodosPage() {
 							{state?.projectName}
 						</Typography>
 
-						<FormToggle onSubmit={addTodoList}>
+						<FormToggle
+							onSubmit={(title: string) =>
+								dispatch(addTodoList(title))
+							}
+						>
 							<Button variant='link'>Add new list</Button>
 							<TitleForm placeholder='Type list title' mt={8} />
 						</FormToggle>
