@@ -17,7 +17,7 @@ export default function Typography({ variant, children }: TypographyProps) {
 			size: 'large',
 			tone: 'action',
 			spacing: -0.03,
-			line: 24,
+			line: 32,
 			weight: 'bold',
 		},
 		'page-title': {

@@ -109,17 +109,25 @@ interface EventHandlers {
 	onClick: <T>(e?: React.MouseEvent<T>) => void
 	onKeyDown: <T>(e?: React.KeyboardEvent<T>) => void
 	onChange: <T>(e?: React.KeyboardEvent<T>) => void
+	onMouseEnter: <T>(e?: React.MouseEvent<T>) => void
+	onMouseLeave: <T>(e?: React.MouseEvent<T>) => void
 }
 
 interface AnimationProps {
 	transition: string
 	transform: string
+	willChange: string
 }
 
 interface BlockAttributes {
 	value: string
 	ariaLabel: string
 	placeholder: string
+}
+interface Pseudo {
+	hover: Partial<ColorProps & BoxProps>
+	focus: Pick<ColorProps, 'borderColor'>
+	focusVisible: Pick<ColorProps, 'borderColor'> & { boxShadow: string }
 }
 
 type ReusableBlockProps = ElementSizeProps &
@@ -128,24 +136,18 @@ type ReusableBlockProps = ElementSizeProps &
 	PositionProps &
 	AnimationProps & { opacity: number } & BlockAttributes &
 	GridProps &
-	BoxProps
-
-interface Pseudo {
-	hover: Partial<ColorProps & BoxProps>
-	focus: Pick<ColorProps, 'borderColor'>
-	focusVisible: Pick<ColorProps, 'borderColor'> & { boxShadow: string }
-}
+	BoxProps &
+	ColorProps & {
+		pointerEvents: 'none' | 'auto'
+	} & Pseudo &
+	BorderProps
 
 type BlockProps = WithTestId<
 	ReusableBlockProps &
-		ColorProps &
 		BorderProps &
 		TextProps &
-		BoxProps &
-		GridProps &
 		ShowAs &
 		EventHandlers &
-		AnimationProps &
 		Pseudo
 >
 

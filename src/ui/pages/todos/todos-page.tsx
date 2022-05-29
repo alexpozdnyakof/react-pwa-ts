@@ -1,24 +1,18 @@
 import { Container, Stack } from '../../layout'
 import { Block, Button, Typography } from '../../lib'
-import { addTodoList } from './state/actions'
-import { useTodoState } from './state'
+import { addTodoList } from './actions'
+import { useTodoState } from './context'
 import { FormToggle, TitleForm } from './form'
 
 import { TodoList } from './todo-list'
+import { DragLayer } from './reorder/drag-layer'
 
 export default function TodosPage() {
 	const { state, dispatch } = useTodoState()
 
 	return (
 		<Container>
-			<Block
-				m='0 auto'
-				pt={48}
-				pl={124}
-				pr={124}
-				pb={56}
-				position='relative'
-			>
+			<Block m='0 auto' pt={48} pl={124} pr={124} pb={56}>
 				<Stack space={4}>
 					<Stack space={1}>
 						<Typography variant='page-title'>
@@ -34,13 +28,15 @@ export default function TodosPage() {
 							<TitleForm placeholder='Type list title' mt={8} />
 						</FormToggle>
 					</Stack>
-
-					{state?.lists.map(list => (
-						<TodoList
-							{...list}
-							key={list.type.concat(list.id.toString())}
-						/>
-					))}
+					<Stack space={3} ml={-32}>
+						<DragLayer />
+						{state?.lists.map(list => (
+							<TodoList
+								{...list}
+								key={list.type.concat(list.id.toString())}
+							/>
+						))}
+					</Stack>
 				</Stack>
 			</Block>
 		</Container>

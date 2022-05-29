@@ -38,6 +38,7 @@ export interface BaseBlockProps
 	columnGap: string
 	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'
 	gridTemplateColumns: string
+	pointerEvents: 'none' | 'auto'
 }
 
 export const BaseBlock = styled.div(

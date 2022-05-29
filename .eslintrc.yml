@@ -29,14 +29,24 @@ rules:
         'prettier/prettier': ['error', { 'singleQuote': true }],
         'quotes': [2, 'single'],
         'react/jsx-props-no-spreading': 0,
-        'jsx-a11y/label-has-associated-control': [2, { assert: 'either', // either check for `htmlFor` or `nesting` }],
+        'jsx-a11y/label-has-associated-control':
+            [
+                2,
+                {
+                    assert: 'either',
+                    // either check for `htmlFor` or `nesting`,
+                },
+            ],
         'import/no-extraneous-dependencies':
-            [2, { 'devDependencies': ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'] }],
+            [
+                2,
+                {
+                    'devDependencies':
+                        ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
+                },
+            ],
         'react/function-component-definition': 0,
         'no-sequences': 'off',
-        'function-paren-newline': ["error", "never"],
-        'function-call-argument-newline': ["error", "never"],
-        'prettier/prettier': ['error', { printWidth: 120 }],
     }
 
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']
