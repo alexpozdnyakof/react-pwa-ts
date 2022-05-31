@@ -1,4 +1,5 @@
 import React from 'react'
+import { UserPic } from '../../lib'
 import { Block } from '../../lib/block'
 import Logo from './logo'
 
@@ -13,6 +14,8 @@ export default function TopBar() {
 			pr={32}
 		>
 			<Logo />
+			<Block flex='1 1 auto' />
+			<UserPic image='userpic.jpeg' />
 		</Block>
 	)
 }

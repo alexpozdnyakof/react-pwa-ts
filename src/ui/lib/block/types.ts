@@ -73,6 +73,7 @@ interface BoxProps {
 	zIndex: number
 	cursor: 'pointer' | 'none' | 'disabled'
 	outline: string
+	flex: string
 }
 
 type PositionProps = {
