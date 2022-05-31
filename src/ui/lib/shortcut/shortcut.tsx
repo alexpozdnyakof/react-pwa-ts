@@ -6,7 +6,7 @@ interface ShortcutProps {
 }
 
 const shortcutStyles = {
-	backgroundColor: 'background',
+	backgroundColor: 'onSurface',
 	borderColor: 'border',
 	borderStyle: 'solid',
 	borderWidth: 1,

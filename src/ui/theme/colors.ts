@@ -36,14 +36,14 @@ const defaultColors = { white: '#fff', black: '#000', current: 'currentColor' }
 const DARK_COLORS: Record<Color, string> = {
 	action: '#34C759',
 	actionHover: 'rgb(40 246 129 / 25%)',
-	background: '#1E1E1E',
+	background: '#1a1a1a',
 	border: '#333333',
 	borderLight: '#555555',
 	borderLightFocus: '#d7d8de',
 	surface: '#222325',
-	onSurface: 'rgba(30,30,30,.9)',
+	onSurface: 'rgba(255, 255, 255, 0.08)',
 	text: '#d7d8de',
-	caption: '#999',
+	caption: 'rgba(255,255,255,.7)',
 	transparent: 'transparent',
 	...defaultColors,
 }
