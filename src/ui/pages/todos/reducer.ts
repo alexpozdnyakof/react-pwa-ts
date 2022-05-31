@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createList, createTodo, Todo } from '../../../domain'
 import { Action } from './actions'
-import mix from './reorder/mix'
-import moveBetween, { moveBetweenCurry } from './reorder/move-between'
+import { moveBetweenCurry } from './reorder/move-between'
 import moveItem, { addByIndex, delByIndex } from './reorder/move-item'
 import { TodoPageState } from './state'
 
@@ -58,7 +56,11 @@ export default function TodoPageReducer(
 			if (pointIndex === -1) {
 				draft.points.push(action.payload)
 			} else {
-				draft.points[pointIndex] = action.payload
+				draft.points = addByIndex(
+					delByIndex(draft.points, pointIndex),
+					pointIndex,
+					action.payload
+				)
 			}
 
 			break

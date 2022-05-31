@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import { useCallback } from 'react'
 import { Todo } from '../../../../domain'
 import { Stack } from '../../../layout'
@@ -48,7 +49,6 @@ export default function TodoList({
 
 	return (
 		<Stack
-			space={2}
 			transform={isPreview ? 'scale(1.03)' : undefined}
 			backgroundColor={isPreview ? 'background' : 'transparent'}
 			borderStyle='solid'
@@ -86,17 +86,23 @@ export default function TodoList({
 					<Typography variant='list-title'>{title}</Typography>
 				</Stack>
 			</Block>
+			<Stack space={2}>
+				<Stack ml={-40} testId='todo-list'>
+					<AnimatePresence>
+						{todos
+							.filter(Boolean)
+							.map(todo => renderTodo(todo, id))}
+					</AnimatePresence>
+				</Stack>
 
-			<Stack space={0.5} ml={-40} testId='todo-list'>
-				{todos.filter(Boolean).map(todo => renderTodo(todo, id))}
+				<FormToggle
+					testId='todo-item-form'
+					onSubmit={text => dispatch(addTodo(text, id))}
+				>
+					<Button shape='circular'>Add a todo</Button>
+					<TitleForm placeholder='Type todo Title' />
+				</FormToggle>
 			</Stack>
-			<FormToggle
-				testId='todo-item-form'
-				onSubmit={text => dispatch(addTodo(text, id))}
-			>
-				<Button shape='circular'>Add a todo</Button>
-				<TitleForm placeholder='Type todo Title' />
-			</FormToggle>
 		</Stack>
 	)
 }
