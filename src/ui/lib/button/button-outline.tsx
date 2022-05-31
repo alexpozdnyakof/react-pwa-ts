@@ -1,6 +1,6 @@
 import getControlBoxShadow from '../../theme/control-box-shadow'
 import { Block, BlockProps } from '../block'
-import { ButtonProps } from './types'
+import { ButtonProps, ButtonShape } from './types'
 
 const baseButtonStyles = {
 	fontWeight: 'bold',
@@ -8,15 +8,26 @@ const baseButtonStyles = {
 	letterSpacing: -0.01,
 	maxWidth: 'max-content',
 	display: 'inline-block',
-	radius: 6,
 }
+
+const getButtonShape = (shape: ButtonShape) => {
+	const shapesMap: Record<ButtonShape, Partial<BlockProps>> = {
+		rounded: { radius: 6 },
+		circular: { radius: 12 },
+	}
+
+	return shapesMap[shape]
+}
+
 export default function OutlineButton({
 	children,
 	onClick,
+	shape,
 	testId = 'outlineButton',
 }: ButtonProps) {
 	const props = {
 		...baseButtonStyles,
+		...getButtonShape(shape!),
 		color: 'text',
 		boxShadow: getControlBoxShadow().default,
 		paddingLeft: 8,

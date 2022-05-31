@@ -6,9 +6,14 @@ import OutlineButton from './button-outline'
 export default function ButtonFactory({
 	children,
 	variant = 'outline',
+	shape = 'rounded',
 	...props
 }: ButtonFactoryProps) {
 	const SelectedButton = variant === 'outline' ? OutlineButton : LinkButton
 
-	return <SelectedButton {...props}>{children}</SelectedButton>
+	return (
+		<SelectedButton {...props} shape={shape}>
+			{children}
+		</SelectedButton>
+	)
 }

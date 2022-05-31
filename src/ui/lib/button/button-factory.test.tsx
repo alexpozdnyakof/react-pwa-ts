@@ -14,4 +14,19 @@ describe('Button Factory Component', () => {
 
 		expect(screen.getByTestId('linkButton')).toBeInTheDocument()
 	})
+
+	it('should render rounded button', () => {
+		const { getByTestId } = renderWithTheme(<Button shape='rounded' />)
+
+		expect(getByTestId('outlineButton')).toHaveStyle({
+			borderRadius: '6px',
+		})
+	})
+	it('should render circular button', () => {
+		const { getByTestId } = renderWithTheme(<Button shape='circular' />)
+
+		expect(getByTestId('outlineButton')).toHaveStyle({
+			borderRadius: '12px',
+		})
+	})
 })
