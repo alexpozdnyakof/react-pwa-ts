@@ -1,6 +1,15 @@
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
+import { TodoPageStateProvider } from '../pages/todos/context'
 import { darkTheme } from '../theme'
+
+function renderWithState(toRender: JSX.Element) {
+	return render(
+		<ThemeProvider theme={darkTheme}>
+			<TodoPageStateProvider>{toRender}</TodoPageStateProvider>
+		</ThemeProvider>
+	)
+}
 
 function renderWithTheme(toRender: JSX.Element) {
 	return render(<ThemeProvider theme={darkTheme}>{toRender}</ThemeProvider>)
@@ -24,4 +33,4 @@ function getHTMLElement<T>(Component: React.FC<T>, props: T): HTMLElement {
 	return getByTestId(testId)
 }
 
-export { renderWithTheme, getStyleObject, getHTMLElement }
+export { renderWithTheme, getStyleObject, getHTMLElement, renderWithState }
