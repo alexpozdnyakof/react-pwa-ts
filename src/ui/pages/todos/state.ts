@@ -1,8 +1,9 @@
-import { TodoList } from '../../../domain'
-import { DragItem } from './reorder'
+import { Box } from 'framer-motion'
+import { Todo, TodoList } from '../../../domain'
 
 export interface TodoPageState {
 	projectName: string
 	lists: Array<TodoList>
-	draggedItem: DragItem | null
+	draggedItem: ({ listId: string; todoId: string } & Box) | null
+	points: Array<Box & { todoId: string; listId: string }>
 }

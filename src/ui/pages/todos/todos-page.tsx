@@ -3,9 +3,7 @@ import { Block, Button, Typography } from '../../lib'
 import { addTodoList } from './actions'
 import { useTodoState } from './context'
 import { FormToggle, TitleForm } from './form'
-
 import { TodoList } from './todo-list'
-import { DragLayer } from './reorder/drag-layer'
 
 export default function TodosPage() {
 	const { state, dispatch } = useTodoState()
@@ -28,8 +26,8 @@ export default function TodosPage() {
 							<TitleForm placeholder='Type list title' mt={8} />
 						</FormToggle>
 					</Stack>
+
 					<Stack space={3} ml={-32}>
-						<DragLayer />
 						{state?.lists.map(list => (
 							<TodoList
 								{...list}

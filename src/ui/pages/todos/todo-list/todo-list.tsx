@@ -1,14 +1,10 @@
-import { useCallback, useRef } from 'react'
-import { useDrop } from 'react-dnd'
+import { useCallback } from 'react'
 import { Todo } from '../../../../domain'
 import { Stack } from '../../../layout'
 import { Block, Button, Icon, Typography } from '../../../lib'
-import { addTodo, completeTodo, moveList } from '../actions'
+import { addTodo, completeTodo } from '../actions'
 import { useTodoState } from '../context'
 import { FormToggle, TitleForm } from '../form'
-
-import { useItemDrag } from '../reorder/use-item-drag'
-import isHidden from './is-hidden'
 import TodoItem from './todo-item'
 
 type TodoListProps = {
@@ -27,46 +23,18 @@ export default function TodoList({
 	progress,
 	todos,
 	id,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	index,
 	isPreview = false,
 }: TodoListProps) {
-	const { draggedItem, dispatch } = useTodoState()
-
-	const handlerRef = useRef<HTMLDivElement>(null)
-	const listRef = useRef<HTMLDivElement>(null)
-	const { drag } = useItemDrag({
-		type: 'list',
-		id,
-		title,
-		todos,
-		index,
-		progress,
-	})
-
-	const [, drop] = useDrop({
-		accept: 'list',
-		hover() {
-			if (!draggedItem) {
-				return
-			}
-			if (draggedItem.type === 'list') {
-				if (draggedItem.id === id) {
-					return
-				}
-				dispatch(moveList(draggedItem.id, id))
-			}
-		},
-	})
-
-	drag(handlerRef)
-	drop(listRef)
+	const { dispatch } = useTodoState()
 
 	const renderTodo = useCallback(
-		(todo: Todo, columnId: string) => (
+		(todo: Todo, listId: string) => (
 			<TodoItem
 				key={todo.type.concat(todo.id.toString())}
 				todo={todo}
-				columnId={columnId}
+				listId={listId}
 			>
 				<TodoItem.Complete
 					complete={todo.done}
@@ -82,7 +50,6 @@ export default function TodoList({
 		<Stack
 			space={2}
 			transform={isPreview ? 'scale(1.03)' : undefined}
-			opacity={isHidden(draggedItem, 'list', id, isPreview) ? 0 : 1}
 			backgroundColor={isPreview ? 'background' : 'transparent'}
 			borderStyle='solid'
 			borderWidth={1}
@@ -91,7 +58,6 @@ export default function TodoList({
 			transition='all ease 150ms'
 			pb={16}
 			pl={32}
-			ref={listRef}
 			radius={8}
 		>
 			<Block
@@ -107,7 +73,6 @@ export default function TodoList({
 				}}
 			>
 				<Block
-					ref={handlerRef}
 					display='flex'
 					alignItems='center'
 					justifyContent='center'
@@ -122,17 +87,16 @@ export default function TodoList({
 				</Stack>
 			</Block>
 
+			<Stack space={0.5} ml={-40} testId='todo-list'>
+				{todos.filter(Boolean).map(todo => renderTodo(todo, id))}
+			</Stack>
 			<FormToggle
 				testId='todo-item-form'
 				onSubmit={text => dispatch(addTodo(text, id))}
 			>
-				<Button>Add a todo</Button>
+				<Button shape='circular'>Add a todo</Button>
 				<TitleForm placeholder='Type todo Title' />
 			</FormToggle>
-
-			<Stack space={0.5} ml={-2} testId='todo-list'>
-				{todos.filter(Boolean).map(todo => renderTodo(todo, id))}
-			</Stack>
 		</Stack>
 	)
 }

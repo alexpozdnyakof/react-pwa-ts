@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createList, createTodo, Todo } from '../../../domain'
 import { Action } from './actions'
-import moveItem from './reorder/move-item'
+import mix from './reorder/mix'
+import moveBetween, { moveBetweenCurry } from './reorder/move-between'
+import moveItem, { addByIndex, delByIndex } from './reorder/move-item'
 import { TodoPageState } from './state'
 
 const findItemIndexById = (items: Array<{ id: string }>, searchedId: string) =>
@@ -13,8 +16,6 @@ export default function TodoPageReducer(
 	draft: TodoPageState,
 	action: Action
 ): TodoPageState | void {
-	logger(action)
-
 	switch (action.type) {
 		case 'add_list': {
 			draft.lists.push(createList(action.payload))
@@ -43,75 +44,77 @@ export default function TodoPageReducer(
 
 			break
 		}
-		case 'reorder_todos': {
-			const listIndex = findItemIndexById(
-				draft.lists,
-				action.payload.listId
-			)
 
-			draft.lists[listIndex].todos.sort(
-				(todoX: Todo, todoY: Todo) =>
-					findItemIndexById(action.payload.todos, todoX.id) -
-					findItemIndexById(action.payload.todos, todoY.id)
-			)
-
-			break
-		}
 		case 'set_dragged_item': {
 			draft.draggedItem = action.payload
 			break
 		}
 
-		case 'move_list': {
-			const { draggedId, hoverId } = action.payload
-			const dragIndex = findItemIndexById(draft.lists, draggedId)
-			const hoverIndex = findItemIndexById(draft.lists, hoverId)
-			const result = moveItem(draft.lists, dragIndex, hoverIndex)
-			console.log({ result })
-			draft.lists = result
+		case 'add_point': {
+			const pointIndex = draft.points.findIndex(
+				item => item?.todoId === action.payload.todoId
+			)
+
+			if (pointIndex === -1) {
+				draft.points.push(action.payload)
+			} else {
+				draft.points[pointIndex] = action.payload
+			}
+
 			break
 		}
 		case 'move_todo': {
-			const {
-				draggedItemId,
-				hoveredItemId,
-				sourceColumnId,
-				targetColumnId,
-			} = action.payload
+			logger(action)
 
-			const sourceListIndex = findItemIndexById(
-				draft.lists,
-				sourceColumnId
+			const { y } = action.payload
+
+			const intersection = draft.points.find(
+				item => y > item.y.min && y < item.y.max
 			)
-			const targetListIndex = findItemIndexById(
-				draft.lists,
-				targetColumnId
-			)
-			if (!draft.lists[sourceListIndex].todos)
-				throw new Error(`${sourceListIndex} todos is empty`)
-			const dragIndex = findItemIndexById(
-				draft.lists[sourceListIndex].todos,
-				draggedItemId
-			)
-			if (!draft.lists[targetListIndex].todos)
-				throw new Error(`${sourceListIndex} todos is empty`)
-			const targetList = Object.create(draft.lists[targetListIndex])
-			console.log({ targetList })
 
-			const hoverIndex = hoveredItemId
-				? findItemIndexById(
-						draft.lists[targetListIndex].todos,
-						hoveredItemId
-				  )
-				: 0
+			if (intersection?.todoId) {
+				const fromListIndex = findItemIndexById(
+					draft.lists,
+					action.payload.listId
+				)
+				const toListIndex = findItemIndexById(
+					draft.lists,
+					intersection.listId
+				)
 
-			const item = draft.lists[sourceListIndex].todos[dragIndex]
-			draft.lists[sourceListIndex].todos.splice(dragIndex, 1)
+				const fromTodoIndex = findItemIndexById(
+					draft.lists[fromListIndex].todos,
+					action.payload.todoId
+				)
+				const targetTodoIndex = findItemIndexById(
+					draft.lists[toListIndex].todos,
+					intersection.todoId
+				)
 
-			draft.lists[targetListIndex].todos.splice(hoverIndex, 0, item)
+				if (intersection?.listId === action.payload.listId) {
+					draft.lists[fromListIndex].todos = moveItem(
+						draft.lists[fromListIndex].todos,
+						fromTodoIndex,
+						targetTodoIndex
+					)
+				} else {
+					// prettier-ignore
+					const [completeFrom, completeTo] = moveBetweenCurry(
+						draft.lists[fromListIndex].todos,
+						draft.lists[toListIndex].todos,
+					)(
+						fromTodoIndex,
+						targetTodoIndex
+					)
+
+					draft.lists[toListIndex].todos = completeTo
+					draft.lists[fromListIndex].todos = completeFrom
+				}
+			}
 
 			break
 		}
+
 		default: {
 			break
 		}
