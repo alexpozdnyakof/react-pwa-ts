@@ -1,6 +1,7 @@
 export type Color =
 	| 'action'
 	| 'actionHover'
+	| 'controlActive'
 	| 'background'
 	| 'surface'
 	| 'onSurface'
@@ -16,6 +17,7 @@ export type Color =
 
 export const COLOR_KEYS: Array<Color> = [
 	'action',
+	'controlActive',
 	'actionHover',
 	'background',
 	'surface',
@@ -36,6 +38,8 @@ const defaultColors = { white: '#fff', black: '#000', current: 'currentColor' }
 const DARK_COLORS: Record<Color, string> = {
 	action: '#34C759',
 	actionHover: 'rgb(40 246 129 / 25%)',
+	controlActive:
+		'linear-gradient(rgba(2, 212, 128, 0%), rgba(3, 214, 200, 100%)',
 	background: '#1a1a1a',
 	border: '#333333',
 	borderLight: '#555555',

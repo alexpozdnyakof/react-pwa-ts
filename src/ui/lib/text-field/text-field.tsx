@@ -38,7 +38,11 @@ const TextField = forwardRef(
 			outline='none'
 			focus={{ borderColor: 'borderLightFocus' }}
 			focusVisible={{
-				borderColor: 'borderLightFocus',
+				borderTopColor: 'borderLightFocus',
+				borderRightColor: 'borderLightFocus',
+				borderBottomColor: 'action',
+				borderLeftColor: 'borderLightFocus',
+
 				boxShadow: getControlBoxShadow().focus,
 			}}
 			transition='all ease 200ms'

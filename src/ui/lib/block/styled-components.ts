@@ -54,6 +54,7 @@ export const BaseBlock = styled.div(
 		hover,
 		focus,
 		focusVisible,
+		background,
 		...props
 	}: WithVisualTheme<Partial<BaseBlockProps>>) => ({
 		width,
@@ -63,6 +64,7 @@ export const BaseBlock = styled.div(
 		color: theme.getColor(color),
 		fontSize: theme.getTextSize(fontSize),
 		fontFamily: theme.getTextType(fontFamily),
+		background: theme.getColor(background),
 		'&:hover': {
 			backgroundColor: theme.getColor(hover?.backgroundColor),
 			borderColor: theme.getColor(hover?.borderColor),
@@ -74,6 +76,10 @@ export const BaseBlock = styled.div(
 		},
 		'&:focus-visible': {
 			borderColor: theme.getColor(focusVisible?.borderColor),
+			borderTopColor: theme.getColor(focusVisible?.borderTopColor),
+			borderRightColor: theme.getColor(focusVisible?.borderRightColor),
+			borderBottomColor: theme.getColor(focusVisible?.borderBottomColor),
+			borderLeftColor: theme.getColor(focusVisible?.borderLeftColor),
 			boxShadow: focusVisible?.boxShadow,
 		},
 		...props,

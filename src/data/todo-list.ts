@@ -15,7 +15,6 @@ export const TODO_LISTS: Array<TodoList> = [
 		].map(createTodo),
 		type: 'list',
 		id: nanoid(),
-		index: 0,
 	},
 	{
 		title: 'Android Production Bugs',
@@ -27,7 +26,6 @@ export const TODO_LISTS: Array<TodoList> = [
 		].map(createTodo),
 		type: 'list',
 		id: nanoid(),
-		index: 1,
 	},
 	{
 		title: 'Web Development Bugs',
@@ -39,7 +37,6 @@ export const TODO_LISTS: Array<TodoList> = [
 		].map(createTodo),
 		type: 'list',
 		id: nanoid(),
-		index: 2,
 	},
 	{
 		title: 'MacOS Bugs',
@@ -54,6 +51,5 @@ export const TODO_LISTS: Array<TodoList> = [
 		].map(createTodo),
 		type: 'list',
 		id: nanoid(),
-		index: 3,
 	},
 ]

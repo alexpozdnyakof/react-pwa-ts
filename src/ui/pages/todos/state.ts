@@ -1,5 +1,5 @@
 import { Box } from 'framer-motion'
-import { Todo, TodoList } from '../../../domain'
+import { TodoList } from '../../../domain'
 
 export interface TodoPageState {
 	projectName: string

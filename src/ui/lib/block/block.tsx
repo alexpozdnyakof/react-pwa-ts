@@ -40,6 +40,7 @@ const Block = forwardRef<
 			placeholder,
 			as = 'div',
 			testId = 'blockToTest',
+			src,
 			...unhandledProps
 		}: React.PropsWithChildren<Partial<BlockProps>>,
 		ref: ForwardedRef<any>
@@ -167,6 +168,7 @@ const Block = forwardRef<
 				as={as}
 				value={value}
 				placeholder={placeholder}
+				src={src}
 			>
 				{children}
 			</BaseBlock>

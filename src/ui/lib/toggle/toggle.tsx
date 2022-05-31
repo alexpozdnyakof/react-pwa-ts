@@ -20,9 +20,7 @@ export default function Toggle({ on, onClick }: ToggleProps) {
 			: getControlBoxShadow().default,
 		hover: {
 			boxShadow: getControlBoxShadow().action,
-			backgroundColor: on
-				? ('action' as Color)
-				: ('actionHover' as Color),
+			background: on ? ('action' as Color) : ('actionHover' as Color),
 		},
 		display: 'flex' as 'flex',
 		justifyContent: 'center' as 'center',

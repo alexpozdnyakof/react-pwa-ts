@@ -19,7 +19,12 @@ interface ElementSizeProps {
 interface ColorProps {
 	backgroundColor: Color
 	borderColor: Color
+	borderTopColor: Color
+	borderRightColor: Color
+	borderBottomColor: Color
+	borderLeftColor: Color
 	color: Color
+	background: Color
 }
 
 interface BorderProps {
@@ -102,7 +107,7 @@ interface GridProps {
 }
 
 interface ShowAs {
-	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg' | 'kbd'
+	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg' | 'kbd' | 'img'
 }
 
 interface EventHandlers {
@@ -127,7 +132,16 @@ interface BlockAttributes {
 interface Pseudo {
 	hover: Partial<ColorProps & BoxProps>
 	focus: Pick<ColorProps, 'borderColor'>
-	focusVisible: Pick<ColorProps, 'borderColor'> & { boxShadow: string }
+	focusVisible: Partial<
+		Pick<
+			ColorProps,
+			| 'borderColor'
+			| 'borderLeftColor'
+			| 'borderTopColor'
+			| 'borderRightColor'
+			| 'borderBottomColor'
+		> & { boxShadow: string }
+	>
 }
 
 type ReusableBlockProps = ElementSizeProps &
@@ -148,7 +162,7 @@ type BlockProps = WithTestId<
 		TextProps &
 		ShowAs &
 		EventHandlers &
-		Pseudo
+		Pseudo & { src: string }
 >
 
 export type {

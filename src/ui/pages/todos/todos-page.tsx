@@ -27,7 +27,7 @@ export default function TodosPage() {
 						</FormToggle>
 					</Stack>
 
-					<Stack space={3} ml={-32}>
+					<Stack space={3}>
 						{state?.lists.map(list => (
 							<TodoList
 								{...list}
