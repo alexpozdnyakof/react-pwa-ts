@@ -1,10 +1,10 @@
-const addByIndex = <T, V>(
+export const addByIndex = <T, V>(
 	arr: Array<T>,
 	index: number,
 	element: V
 ): Array<T | V> => [...arr.slice(0, index), element, ...arr.slice(index)]
 
-const delByIndex = <T>(arr: Array<T>, index: number): Array<T> => [
+export const delByIndex = <T>(arr: Array<T>, index: number): Array<T> => [
 	...arr.slice(0, index),
 	...arr.slice(index + 1),
 ]
