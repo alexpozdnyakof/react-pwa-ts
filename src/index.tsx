@@ -1,21 +1,22 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import AppProviders from './providers'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './styles.css'
-import { GlobalStyles } from './ui/styles'
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement!)
 
 root.render(
 	<React.StrictMode>
-		<AppProviders>
-			<App />
-			<GlobalStyles />
-		</AppProviders>
+		<Router>
+			<AppProviders>
+				<App />
+			</AppProviders>
+		</Router>
 	</React.StrictMode>
 )
 
