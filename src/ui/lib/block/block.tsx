@@ -166,7 +166,7 @@ const Block = forwardRef<
 				{...result}
 				ref={ref}
 				as={as}
-				value={value}
+				defaultValue={value}
 				placeholder={placeholder}
 				src={src}
 			>

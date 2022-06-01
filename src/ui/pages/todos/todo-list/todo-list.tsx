@@ -36,14 +36,14 @@ export default function TodoList({
 	)
 
 	return (
-		<Stack backgroundColor='background' space={1}>
+		<Stack backgroundColor='background' space={1} testId='todo-list'>
 			<Stack>
 				<Typography variant='caption'>{progress}</Typography>
 				<Typography variant='list-title'>{title}</Typography>
 			</Stack>
 
 			<Stack space={2}>
-				<Stack testId='todo-list' space={0.5} ml={-8}>
+				<Stack space={0.5} ml={-8}>
 					{todos.filter(Boolean).map(todo => renderTodo(todo))}
 				</Stack>
 

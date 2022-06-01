@@ -4,11 +4,9 @@ import TextField from './text-field'
 
 describe('Text Field', () => {
 	it('should handle key pressed', () => {
-		const onKeyDownFn = jest.fn(e => {
-			console.log({ e })
-		})
+		const onKeyDownFn = jest.fn()
 		const { getByTestId } = renderWithTheme(
-			<TextField onKeyDown={onKeyDownFn} />
+			<TextField onKeyDown={onKeyDownFn} value='123' />
 		)
 
 		fireEvent.keyDown(getByTestId('textfield'), { code: 'Enter' })

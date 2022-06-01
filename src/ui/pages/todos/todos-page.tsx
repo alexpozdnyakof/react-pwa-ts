@@ -10,7 +10,14 @@ export default function TodosPage() {
 
 	return (
 		<Container>
-			<Block m='0 auto' pt={48} pl={124} pr={124} pb={56}>
+			<Block
+				m='0 auto'
+				pt={48}
+				pl={124}
+				pr={124}
+				pb={56}
+				testId='todo-page'
+			>
 				<Stack space={4}>
 					<Stack space={1}>
 						<Typography variant='page-title'>
