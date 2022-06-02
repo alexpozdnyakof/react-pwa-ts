@@ -39,6 +39,7 @@ export interface BaseBlockProps
 	gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column-dense'
 	gridTemplateColumns: string
 	pointerEvents: 'none' | 'auto'
+	for: string
 }
 
 export const BaseBlock = styled.div(

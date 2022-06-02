@@ -108,7 +108,16 @@ interface GridProps {
 }
 
 interface ShowAs {
-	as: 'div' | 'span' | 'p' | 'button' | 'input' | 'svg' | 'kbd' | 'img'
+	as:
+		| 'div'
+		| 'span'
+		| 'p'
+		| 'button'
+		| 'input'
+		| 'svg'
+		| 'kbd'
+		| 'img'
+		| 'label'
 }
 
 interface EventHandlers {
@@ -155,15 +164,14 @@ type ReusableBlockProps = ElementSizeProps &
 	ColorProps & {
 		pointerEvents: 'none' | 'auto'
 	} & Pseudo &
-	BorderProps
+	BorderProps &
+	ShowAs
 
 type BlockProps = WithTestId<
 	ReusableBlockProps &
 		BorderProps &
 		TextProps &
-		ShowAs &
-		EventHandlers &
-		Pseudo & { src: string }
+		EventHandlers & { src: string; forId: string; id: string }
 >
 
 export type {

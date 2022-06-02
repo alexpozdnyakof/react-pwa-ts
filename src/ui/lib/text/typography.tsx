@@ -1,11 +1,14 @@
 import Text, { TextProps } from './text'
 
-type TypographyProps = React.PropsWithChildren<{
-	variant: 'page-title' | 'list-title' | 'caption' | 'todo-title'
-}>
+interface Props {
+	variant: 'page-title' | 'list-title' | 'caption' | 'todo-title' | 'label'
+}
 
-export default function Typography({ variant, children }: TypographyProps) {
-	const styles = {
+export default function Typography({
+	variant,
+	children,
+}: Props & React.PropsWithChildren<{}>) {
+	const styles: Record<Props['variant'], TextProps> = {
 		caption: {
 			size: 'small',
 			tone: 'caption',
@@ -32,7 +35,15 @@ export default function Typography({ variant, children }: TypographyProps) {
 			spacing: -0.01,
 			ml: 8,
 		},
-	}[variant] as TextProps
+		label: {
+			as: 'label',
+			size: 'body',
+			line: 20,
+			spacing: -0.01,
+		},
+	}
 
-	return <Text {...styles}>{children}</Text>
+	const variantStyle = styles[variant]
+
+	return <Text {...variantStyle}>{children}</Text>
 }

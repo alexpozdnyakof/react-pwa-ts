@@ -1,7 +1,6 @@
-import React from 'react'
+import { PropsWithChildren } from 'react'
 import { TextSize, TextTone, TextWeight } from '../../theme'
 import { Block, ReusableBlockProps } from '../block'
-import { WithTestId } from '../helpers'
 
 interface Props extends ReusableBlockProps {
 	size: TextSize
@@ -11,9 +10,10 @@ interface Props extends ReusableBlockProps {
 	mono: boolean
 	align: 'left' | 'center' | 'right'
 	spacing: number
+	testId: string
 }
 
-export type TextProps = React.PropsWithChildren<Partial<WithTestId<Props>>>
+export type TextProps = Partial<Props> & PropsWithChildren<{}>
 
 export default function Text({
 	size = 'body',

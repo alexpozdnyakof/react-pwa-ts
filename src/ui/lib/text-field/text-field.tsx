@@ -6,6 +6,7 @@ interface TextFieldProps {
 	value: string
 	placeholder: string
 	testId: string
+	id: string
 	ariaLabel: string
 	onKeyDown: EventHandlers['onKeyDown']
 	onChange: EventHandlers['onChange']
@@ -13,11 +14,12 @@ interface TextFieldProps {
 
 const TextField = forwardRef(
 	(
-		{ testId = 'textfield', ...props }: Partial<TextFieldProps>,
+		{ testId = 'textfield', id, ...props }: Partial<TextFieldProps>,
 		ref: ForwardedRef<HTMLInputElement>
 	) => (
 		<Block
 			testId={testId}
+			id={id}
 			as='input'
 			ref={ref}
 			{...props}
