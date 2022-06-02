@@ -41,7 +41,7 @@ const Block = forwardRef<
 			as = 'div',
 			testId = 'blockToTest',
 			src,
-			forId,
+			htmlFor,
 			...unhandledProps
 		}: React.PropsWithChildren<Partial<BlockProps>>,
 		ref: ForwardedRef<any>
@@ -170,7 +170,7 @@ const Block = forwardRef<
 				defaultValue={value}
 				placeholder={placeholder}
 				src={src}
-				for={forId}
+				htmlFor={htmlFor}
 			>
 				{children}
 			</BaseBlock>

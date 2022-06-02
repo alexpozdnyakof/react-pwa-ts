@@ -171,7 +171,7 @@ type BlockProps = WithTestId<
 	ReusableBlockProps &
 		BorderProps &
 		TextProps &
-		EventHandlers & { src: string; forId: string; id: string }
+		EventHandlers & { src: string; htmlFor: string; id: string }
 >
 
 export type {

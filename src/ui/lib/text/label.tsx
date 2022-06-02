@@ -1,17 +1,17 @@
 import { Block } from '../block'
 
 interface Props {
-	controlId: string
+	htmlFor: string
 	children: string
 	testId: string
 }
 
-export default function Label({ children, controlId, testId }: Partial<Props>) {
+export default function Label({ children, htmlFor, testId }: Partial<Props>) {
 	return (
 		<Block
 			as='label'
 			testId={testId}
-			forId={controlId}
+			htmlFor={htmlFor}
 			fontSize='body'
 			lineHeight={20}
 			letterSpacing={-0.01}
