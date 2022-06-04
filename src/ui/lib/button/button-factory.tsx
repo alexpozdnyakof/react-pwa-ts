@@ -1,19 +1,24 @@
-import React from 'react'
-import { ButtonFactoryProps } from './types'
+import { ReusableBlockProps } from '../block'
+import BaseButton, { BaseButtonProps } from './base-button'
 import LinkButton from './button-link'
 import OutlineButton from './button-outline'
+
+interface Props {
+	variant: 'outline' | 'link'
+}
 
 export default function ButtonFactory({
 	children,
 	variant = 'outline',
-	shape = 'rounded',
 	...props
-}: ButtonFactoryProps) {
-	const SelectedButton = variant === 'outline' ? OutlineButton : LinkButton
+}: Partial<BaseButtonProps> & Partial<ReusableBlockProps> & Partial<Props>) {
+	const variantMap: Record<Props['variant'], typeof BaseButton> = {
+		outline: OutlineButton,
+		link: LinkButton,
+	}
+	const SelectedButton = variantMap[variant]
 
-	return (
-		<SelectedButton {...props} shape={shape}>
-			{children}
-		</SelectedButton>
-	)
+	return <SelectedButton {...props}>{children}</SelectedButton>
 }
+
+export type { Props as ButtonFactoryProps }

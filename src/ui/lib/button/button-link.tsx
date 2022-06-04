@@ -1,23 +1,14 @@
-import { Block } from '../block'
-import { ButtonProps } from './types'
+import { ReusableBlockProps } from '../block'
+import BaseButton, { BaseButtonProps } from './base-button'
 
 export default function LinkButton({
 	children,
-	onClick,
 	testId = 'linkButton',
-}: ButtonProps) {
+	...props
+}: Partial<BaseButtonProps> & Partial<ReusableBlockProps>) {
 	return (
-		<Block
-			as='button'
-			color='action'
-			fontWeight='bold'
-			lineHeight={24}
-			letterSpacing={-0.01}
-			maxWidth='max-content'
-			onClick={onClick}
-			testId={testId}
-		>
+		<BaseButton {...props} testId={testId}>
 			{children}
-		</Block>
+		</BaseButton>
 	)
 }

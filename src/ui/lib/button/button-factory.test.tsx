@@ -3,8 +3,14 @@ import { renderWithTheme } from '../../helpers'
 import Button from './button-factory'
 
 describe('Button Factory Component', () => {
-	it('should render outline by default', () => {
-		renderWithTheme(<Button />)
+	it('should render succesfully', () => {
+		renderWithTheme(<Button testId='button' />)
+
+		expect(screen.getByTestId('button')).toBeInTheDocument()
+	})
+
+	it('should render outline button', () => {
+		renderWithTheme(<Button variant='outline' />)
 
 		expect(screen.getByTestId('outlineButton')).toBeInTheDocument()
 	})
@@ -13,20 +19,5 @@ describe('Button Factory Component', () => {
 		renderWithTheme(<Button variant='link' />)
 
 		expect(screen.getByTestId('linkButton')).toBeInTheDocument()
-	})
-
-	it('should render rounded button', () => {
-		const { getByTestId } = renderWithTheme(<Button shape='rounded' />)
-
-		expect(getByTestId('outlineButton')).toHaveStyle({
-			borderRadius: '6px',
-		})
-	})
-	it('should render circular button', () => {
-		const { getByTestId } = renderWithTheme(<Button shape='circular' />)
-
-		expect(getByTestId('outlineButton')).toHaveStyle({
-			borderRadius: '12px',
-		})
 	})
 })
