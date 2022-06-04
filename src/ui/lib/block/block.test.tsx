@@ -161,6 +161,30 @@ describe('Block Component', () => {
 		})
 	})
 
+	it('should set horizontal padding', () => {
+		const props: PaddingProps = {
+			px: 20,
+		}
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			paddingLeft: '20px',
+			paddingRight: '20px',
+		})
+	})
+
+	it('should set vertical padding', () => {
+		const props: PaddingProps = {
+			py: 20,
+		}
+		const result = renderBlockWithProps(props)
+
+		expect(result).toHaveStyle({
+			paddingTop: '20px',
+			paddingBottom: '20px',
+		})
+	})
+
 	it('should set text props', () => {
 		const props: Partial<TextProps> = {
 			fontSize: 'huge',

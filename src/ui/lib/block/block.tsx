@@ -29,6 +29,8 @@ const Block = forwardRef<
 			pr,
 			pb,
 			pl,
+			px,
+			py,
 			fontWeight,
 			lineHeight,
 			letterSpacing,
@@ -123,10 +125,36 @@ const Block = forwardRef<
 			transform: w => padding(w!),
 		})
 
+		styles.apply(px, {
+			property: 'paddingLeft',
+			transform: w => padding(w!),
+		})
+
+		styles.apply(px, {
+			property: 'paddingRight',
+			transform: w => padding(w!),
+		})
+
+		styles.apply(py, {
+			property: 'paddingTop',
+			transform: w => padding(w!),
+		})
+
+		styles.apply(py, {
+			property: 'paddingBottom',
+			transform: w => padding(w!),
+		})
+
 		styles.apply(p, {
 			property: 'padding',
 			transform: w => padding(w!),
 		})
+
+		styles.apply(p, {
+			property: 'padding',
+			transform: w => padding(w!),
+		})
+
 		styles.apply(fontWeight, {
 			property: 'fontWeight',
 			transform: w => weight(w!),

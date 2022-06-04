@@ -47,6 +47,8 @@ type PaddingProps = Partial<{
 	pr: ElementSpace
 	pb: ElementSpace
 	pl: ElementSpace
+	px: ElementSpace
+	py: ElementSpace
 }>
 
 interface BoxProps {
