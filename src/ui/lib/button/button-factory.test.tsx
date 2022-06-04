@@ -20,4 +20,10 @@ describe('Button Factory Component', () => {
 
 		expect(screen.getByTestId('linkButton')).toBeInTheDocument()
 	})
+
+	it('should render filled button', () => {
+		renderWithTheme(<Button variant='filled' />)
+
+		expect(screen.getByTestId('filledButton')).toBeInTheDocument()
+	})
 })

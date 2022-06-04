@@ -1,10 +1,11 @@
 import { ReusableBlockProps } from '../block'
 import BaseButton, { BaseButtonProps } from './base-button'
-import LinkButton from './button-link'
-import OutlineButton from './button-outline'
+import FilledButton from './v-filled'
+import LinkButton from './v-link'
+import OutlineButton from './v-outline'
 
 interface Props {
-	variant: 'outline' | 'link'
+	variant: 'outline' | 'link' | 'filled'
 }
 
 export default function ButtonFactory({
@@ -15,6 +16,7 @@ export default function ButtonFactory({
 	const variantMap: Record<Props['variant'], typeof BaseButton> = {
 		outline: OutlineButton,
 		link: LinkButton,
+		filled: FilledButton,
 	}
 	const SelectedButton = variantMap[variant]
 
