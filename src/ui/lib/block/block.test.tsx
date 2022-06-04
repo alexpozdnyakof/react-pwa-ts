@@ -238,4 +238,10 @@ describe('Block Component', () => {
 			rowGap: '20px',
 		})
 	})
+	it('should set id attribute', () => {
+		const id = 'block'
+		const result = renderBlockWithProps({ id })
+
+		expect(result).toHaveAttribute('id', id)
+	})
 })
