@@ -13,6 +13,8 @@ export default function Label({ children, htmlFor, testId }: Partial<Props>) {
 			testId={testId}
 			htmlFor={htmlFor}
 			fontSize='body'
+			fontWeight='semibold'
+			color='text'
 			lineHeight={20}
 			letterSpacing={-0.01}
 		>
