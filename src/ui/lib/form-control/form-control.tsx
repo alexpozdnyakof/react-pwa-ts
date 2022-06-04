@@ -1,17 +1,34 @@
-import { PropsWithChildren } from 'react'
+/* eslint-disable react/require-default-props */
+import { cloneElement, ReactElement } from 'react'
 import { Stack } from '../../layout'
+import { ReusableBlockProps } from '../block'
+import { TextField } from '../text-field'
+import Label from './label'
 
 interface Props {
-	testId: string
+	testId?: string
+	label?: string
+	id?: string
+	children: ReactElement<typeof TextField>
 }
 
 export default function FormControl({
 	testId,
+	label,
+	id,
 	children,
-}: Partial<Props> & PropsWithChildren<{}>) {
+	...blockProps
+}: Props & Partial<ReusableBlockProps>) {
 	return (
-		<Stack testId={testId} space={1}>
-			{children}
+		<Stack testId={testId} space={1} {...blockProps}>
+			{label && (
+				<Label htmlFor={id} testId='label'>
+					{label}
+				</Label>
+			)}
+			{cloneElement(children, { id } as any)}
 		</Stack>
 	)
 }
+
+export type { Props as FormControlProps }

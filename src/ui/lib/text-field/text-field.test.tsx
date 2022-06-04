@@ -46,4 +46,20 @@ describe('Text Field', () => {
 
 		expect(onChangeFn).toBeCalledTimes(1)
 	})
+
+	it('should append large size styles', () => {
+		const { getByTestId } = renderWithTheme(
+			<TextField testId='text-field' size='large' />
+		)
+
+		expect(getByTestId('text-field')).toHaveStyle({ height: '40px' })
+	})
+
+	it('should append medium size styles', () => {
+		const { getByTestId } = renderWithTheme(
+			<TextField testId='text-field' size='medium' />
+		)
+
+		expect(getByTestId('text-field')).toHaveStyle({ height: '32px' })
+	})
 })
