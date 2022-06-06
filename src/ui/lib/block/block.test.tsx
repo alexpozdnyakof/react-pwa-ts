@@ -244,4 +244,18 @@ describe('Block Component', () => {
 
 		expect(result).toHaveAttribute('id', id)
 	})
+
+	it('should set id attribute', () => {
+		const id = 'block'
+		const result = renderBlockWithProps({ id })
+
+		expect(result).toHaveAttribute('id', id)
+	})
+
+	it('should set name attribute', () => {
+		const name = 'block'
+		const result = renderBlockWithProps({ name })
+
+		expect(result).toHaveAttribute('name', name)
+	})
 })

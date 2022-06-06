@@ -12,6 +12,7 @@ interface Props {
 	onChange: EventHandlers['onChange']
 	ref: ForwardedRef<HTMLInputElement>
 	size: 'medium' | 'large'
+	name: string
 }
 
 function UnforwardedTextField({

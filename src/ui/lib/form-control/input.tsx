@@ -14,6 +14,8 @@ function UnforwardedInput({
 	onKeyDown,
 	onChange,
 	value,
+	size,
+	name,
 	ref,
 	...blockProps
 }: InputProps & Partial<ReusableBlockProps>) {
@@ -26,6 +28,8 @@ function UnforwardedInput({
 				testId={testId}
 				onKeyDown={onKeyDown}
 				onChange={onChange}
+				size={size}
+				name={name}
 			/>
 		</FormControl>
 	)

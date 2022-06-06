@@ -62,4 +62,13 @@ describe('Text Field', () => {
 
 		expect(getByTestId('text-field')).toHaveStyle({ height: '32px' })
 	})
+
+	it('should set name', () => {
+		const name = 'textfield'
+		const { getByTestId } = renderWithTheme(<TextField name={name} />)
+
+		const input = getByTestId('textfield') as HTMLInputElement
+
+		expect(input.name).toBe(name)
+	})
 })
