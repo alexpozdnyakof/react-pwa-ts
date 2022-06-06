@@ -16,7 +16,7 @@ function UnforwardedInput({
 	value,
 	size,
 	name,
-	type,
+	type = 'text',
 	ref,
 	...blockProps
 }: InputProps & Partial<ReusableBlockProps>) {
