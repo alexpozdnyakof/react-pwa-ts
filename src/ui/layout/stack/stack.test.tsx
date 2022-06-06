@@ -1,30 +1,29 @@
-import { screen } from '@testing-library/react'
-import { getHTMLElement } from '../../helpers'
+import { Block } from '../../lib'
 import Stack from './stack'
-import { StackProps } from './types'
-
-const renderStackComponent = (
-	props: StackProps,
-	result = {
-		...props,
-		children: <div>text</div>,
-	}
-) => getHTMLElement<StackProps>(Stack, result)
 
 describe('Text Component', () => {
 	it('should render correctly', () => {
-		renderStackComponent({ space: 0 })
+		const { getByTestId } = renderWithTheme(
+			<Stack testId='stack'>
+				<Block testId='stackChildren' />
+			</Stack>
+		)
 
-		const children = screen.getByText(/text/i)
-		expect(children).toBeInTheDocument()
+		expect(getByTestId('stack')).toBeInTheDocument()
+		expect(getByTestId('stackChildren')).toBeInTheDocument()
 	})
 
 	it('should set space', () => {
 		const space = 2
 		const spaceUnit = 8
-		const htmlElement = renderStackComponent({ space, spaceUnit })
 
-		expect(htmlElement).toHaveStyle({
+		const { getByTestId } = renderWithTheme(
+			<Stack testId='stack' space={space}>
+				<Block testId='stackChildren' />
+			</Stack>
+		)
+
+		expect(getByTestId('stack')).toHaveStyle({
 			gap: `${space * spaceUnit}px`,
 		})
 	})

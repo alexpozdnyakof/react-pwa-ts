@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from '../../helpers'
 import Surface from './surface'
 
 describe('Surface Component', () => {

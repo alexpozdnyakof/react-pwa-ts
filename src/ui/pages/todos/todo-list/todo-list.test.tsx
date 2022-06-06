@@ -1,5 +1,4 @@
 import { TODOS } from '../../../../data'
-import { renderWithState } from '../../../helpers'
 import TodoList from './todo-list'
 
 describe('TodoList', () => {

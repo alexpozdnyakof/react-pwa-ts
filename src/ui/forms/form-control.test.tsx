@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from '../helpers'
 import { TextField } from '../lib'
 
 import FormControl from './form-control'

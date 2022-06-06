@@ -1,5 +1,4 @@
 import { fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '../../helpers'
 import TextField from './text-field'
 
 describe('Text Field', () => {

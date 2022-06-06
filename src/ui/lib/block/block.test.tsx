@@ -1,9 +1,7 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { getHTMLElement } from '../../helpers'
+import { fireEvent } from '@testing-library/react'
 import { darkTheme } from '../../theme/theme'
 import Block from './block'
 import {
-	BlockProps,
 	ColorProps,
 	ElementSizeProps,
 	MarginProps,
@@ -11,17 +9,11 @@ import {
 	TextProps,
 } from './types'
 
-const renderBlockWithProps = (
-	props: Partial<BlockProps>,
-	result = { ...props, children: 'text' }
-) => getHTMLElement<React.PropsWithChildren<Partial<BlockProps>>>(Block, result)
-
 describe('Block Component', () => {
 	it('should render correctly', () => {
-		renderBlockWithProps({})
+		const { getByTestId } = renderWithTheme(<Block />)
 
-		const children = screen.getByText(/text/i)
-		expect(children).toBeInTheDocument()
+		expect(getByTestId('blockToTest')).toBeInTheDocument()
 	})
 
 	it('should set width and height', () => {
@@ -30,9 +22,9 @@ describe('Block Component', () => {
 			height: 50,
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			width: '100px',
 			height: '50px',
 		})
@@ -48,9 +40,9 @@ describe('Block Component', () => {
 			minWidth: 100,
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			width: '100%',
 			height: '100vh',
 			maxHeight: '100%',
@@ -67,9 +59,9 @@ describe('Block Component', () => {
 			borderColor: 'border',
 		} as ColorProps
 
-		const result = renderBlockWithProps(props as ColorProps)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			backgroundColor: darkTheme.getColor(props.backgroundColor),
 			borderColor: darkTheme.getColor(props.borderColor),
 			color: darkTheme.getColor(props.color),
@@ -81,8 +73,10 @@ describe('Block Component', () => {
 			borderWidth: 1,
 			radius: 3,
 		}
-		const result = renderBlockWithProps(props)
-		expect(result).toHaveStyle({
+
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
+
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			borderWidth: '1px',
 			borderRadius: '3px',
 		})
@@ -96,9 +90,9 @@ describe('Block Component', () => {
 			ml: 'auto',
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			marginTop: '0px',
 			marginRight: 'auto',
 			marginBottom: '10px',
@@ -114,13 +108,13 @@ describe('Block Component', () => {
 			ml: 'auto',
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			margin: '0px auto',
 		})
 
-		expect(result).not.toHaveStyle({
+		expect(getByTestId('blockToTest')).not.toHaveStyle({
 			marginTop: '0px',
 			marginRight: 'auto',
 			marginBottom: '10px',
@@ -136,9 +130,9 @@ describe('Block Component', () => {
 			pl: 0,
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			paddingTop: '0px',
 			paddingRight: '10px',
 			paddingBottom: '10px',
@@ -154,9 +148,9 @@ describe('Block Component', () => {
 			pb: 10,
 			pl: 0,
 		}
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			padding: '20px',
 		})
 	})
@@ -165,9 +159,10 @@ describe('Block Component', () => {
 		const props: PaddingProps = {
 			px: 20,
 		}
-		const result = renderBlockWithProps(props)
 
-		expect(result).toHaveStyle({
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
+
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			paddingLeft: '20px',
 			paddingRight: '20px',
 		})
@@ -177,9 +172,10 @@ describe('Block Component', () => {
 		const props: PaddingProps = {
 			py: 20,
 		}
-		const result = renderBlockWithProps(props)
 
-		expect(result).toHaveStyle({
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
+
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			paddingTop: '20px',
 			paddingBottom: '20px',
 		})
@@ -195,9 +191,9 @@ describe('Block Component', () => {
 			letterSpacing: -0.03,
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			fontSize: '28px',
 			fontWeight: '600',
 			lineHeight: '24px',
@@ -209,16 +205,16 @@ describe('Block Component', () => {
 	it('should trigger click handler', () => {
 		const onClick = jest.fn()
 
-		const result = renderBlockWithProps({ onClick })
-		fireEvent.click(result)
+		const { getByTestId } = renderWithTheme(<Block onClick={onClick} />)
 
+		fireEvent.click(getByTestId('blockToTest'))
 		expect(onClick).toBeCalled()
 	})
 	it('should trigger onkeydown callback', () => {
 		const onKeyDown = jest.fn()
 
-		const result = renderBlockWithProps({ onKeyDown })
-		fireEvent.keyDown(result)
+		const { getByTestId } = renderWithTheme(<Block onKeyDown={onKeyDown} />)
+		fireEvent.keyDown(getByTestId('blockToTest'))
 
 		expect(onKeyDown).toBeCalled()
 	})
@@ -230,9 +226,9 @@ describe('Block Component', () => {
 			rowGap: 20,
 		}
 
-		const result = renderBlockWithProps(props)
+		const { getByTestId } = renderWithTheme(<Block {...props} />)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('blockToTest')).toHaveStyle({
 			gap: '10px',
 			columnGap: '15px',
 			rowGap: '20px',
@@ -240,29 +236,24 @@ describe('Block Component', () => {
 	})
 	it('should set id attribute', () => {
 		const id = 'block'
-		const result = renderBlockWithProps({ id })
+		const { getByTestId } = renderWithTheme(<Block id={id} />)
 
-		expect(result).toHaveAttribute('id', id)
-	})
-
-	it('should set id attribute', () => {
-		const id = 'block'
-		const result = renderBlockWithProps({ id })
-
-		expect(result).toHaveAttribute('id', id)
+		expect(getByTestId('blockToTest')).toHaveAttribute('id', id)
 	})
 
 	it('should set name attribute', () => {
 		const name = 'block'
-		const result = renderBlockWithProps({ name })
 
-		expect(result).toHaveAttribute('name', name)
+		const { getByTestId } = renderWithTheme(<Block name={name} />)
+
+		expect(getByTestId('blockToTest')).toHaveAttribute('name', name)
 	})
 
 	it('should set type attribute', () => {
 		const type = 'text'
-		const result = renderBlockWithProps({ type })
 
-		expect(result).toHaveAttribute('type', type)
+		const { getByTestId } = renderWithTheme(<Block type={type} />)
+
+		expect(getByTestId('blockToTest')).toHaveAttribute('type', type)
 	})
 })

@@ -1,4 +1,3 @@
-import { renderWithTheme } from '../../helpers'
 import DARK_COLORS from '../../theme/colors'
 import Toggle from './toggle'
 

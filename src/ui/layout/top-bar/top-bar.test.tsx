@@ -1,4 +1,3 @@
-import { renderWithTheme } from '../../helpers'
 import TopBar from './top-bar'
 
 describe('TopBar', () => {

@@ -1,4 +1,3 @@
-import { renderWithTheme } from '../../helpers'
 import UserPic from './user-pic'
 
 describe('UserPic', () => {

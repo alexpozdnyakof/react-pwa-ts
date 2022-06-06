@@ -1,4 +1,3 @@
-import { renderWithTheme } from '../helpers'
 import { Block } from '../lib'
 import Center from './center'
 

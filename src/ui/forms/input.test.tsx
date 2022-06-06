@@ -1,4 +1,3 @@
-import { renderWithTheme } from '../../helpers'
 import Input from './input'
 
 describe('Input', () => {

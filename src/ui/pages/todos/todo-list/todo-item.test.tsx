@@ -1,6 +1,4 @@
 import { fireEvent } from '@testing-library/react'
-
-import { renderWithState } from '../../../helpers'
 import DARK_COLORS from '../../../theme/colors'
 import TodoItem from './todo-item'
 

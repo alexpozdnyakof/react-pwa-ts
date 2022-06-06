@@ -1,23 +1,22 @@
-import { getHTMLElement } from '../../helpers'
 import Icon from './icon'
 import { ICONS_LIB, ICON_SIZE } from './lib'
-import { IconProps } from './types'
-
-const renderIcon = (props: IconProps) => getHTMLElement<IconProps>(Icon, props)
 
 describe('Icon Component', () => {
 	it('should render correctly', () => {
-		const result = renderIcon({ icon: 'check' })
+		const { getByTestId } = renderWithTheme(<Icon icon='check' />)
 
-		expect(result.innerHTML).toBe(
+		expect(getByTestId('icon')).toBeInTheDocument()
+		expect(getByTestId('icon').innerHTML).toBe(
 			`<path d="${ICONS_LIB.check[0]}" fill="currentColor" stroke="currentColor"></path>`
 		)
 	})
 
 	it('should set size', () => {
-		const result = renderIcon({ size: 'small', icon: 'check' })
+		const { getByTestId } = renderWithTheme(
+			<Icon icon='check' size='small' />
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('icon')).toHaveStyle({
 			width: `${ICON_SIZE.small}px`,
 			height: `${ICON_SIZE.small}px`,
 			maxWidth: `${ICON_SIZE.small}px`,
@@ -26,9 +25,11 @@ describe('Icon Component', () => {
 	})
 
 	it('should set color', () => {
-		const result = renderIcon({ tone: 'current', icon: 'check' })
+		const { getByTestId } = renderWithTheme(
+			<Icon icon='check' tone='current' />
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('icon')).toHaveStyle({
 			color: 'currentColor',
 		})
 	})

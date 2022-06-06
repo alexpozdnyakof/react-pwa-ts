@@ -1,5 +1,4 @@
 import { fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '../../../helpers'
 import { Button } from '../../../lib'
 import ItemForm from './title-form'
 import FormToggle from './form-toggle'

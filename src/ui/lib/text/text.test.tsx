@@ -1,89 +1,91 @@
-import { screen } from '@testing-library/react'
-import React from 'react'
-import { getHTMLElement } from '../../helpers'
 import DARK_COLORS from '../../theme/colors'
-import Text, { TextProps } from './text'
+import Text from './text'
 
-const renderTextComponent = (
-	props: TextProps,
-	result = { ...props, children: 'text' }
-) => getHTMLElement<React.PropsWithChildren<TextProps>>(Text, result)
 describe('Text Component', () => {
 	it('should render correctly', () => {
-		renderTextComponent({})
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent'>text</Text>
+		)
 
-		const children = screen.getByText(/text/i)
-		expect(children).toBeInTheDocument()
+		expect(getByTestId('textComponent')).toBeInTheDocument()
+		expect(getByTestId('textComponent')).toHaveTextContent('text')
 	})
 
 	it('should set font size', () => {
-		const props: TextProps = {
-			size: 'medium',
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' size='medium'>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			fontSize: '15px',
 		})
 	})
 	it('should set font weight', () => {
-		const props: TextProps = {
-			weight: 'semibold',
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' weight='semibold'>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			fontWeight: '600',
 		})
 	})
 	it('should set tone', () => {
-		const props: TextProps = {
-			tone: 'action',
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' tone='action'>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			color: DARK_COLORS.action,
 		})
 	})
 	it('should set line height', () => {
-		const props: TextProps = {
-			line: 20,
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' line={20}>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			lineHeight: '20px',
 		})
 	})
 
 	it('should set font family', () => {
-		const props: TextProps = {
-			mono: true,
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' mono>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			fontFamily: 'monospace',
 		})
 	})
 	it('should set text algn', () => {
-		const props: TextProps = {
-			align: 'right',
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' align='right'>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			textAlign: 'right',
 		})
 	})
 	it('should set spacing', () => {
-		const props: TextProps = {
-			spacing: -0.03,
-		}
-		const result = renderTextComponent(props)
+		const { getByTestId } = renderWithTheme(
+			<Text testId='textComponent' spacing={-0.03}>
+				text
+			</Text>
+		)
 
-		expect(result).toHaveStyle({
+		expect(getByTestId('textComponent')).toHaveStyle({
 			letterSpacing: '-0.03em',
 		})
 	})
