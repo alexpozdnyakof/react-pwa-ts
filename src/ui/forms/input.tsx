@@ -1,6 +1,8 @@
 import { ForwardedRef, forwardRef } from 'react'
-import { ReusableBlockProps } from '../block'
-import { TextField, TextFieldProps } from '../text-field'
+import { TextField } from '../lib'
+import { ReusableBlockProps } from '../lib/block'
+import { TextFieldProps } from '../lib/text-field'
+
 import FormControl, { FormControlProps } from './form-control'
 
 type InputProps = Omit<FormControlProps, 'children'> &
@@ -16,7 +18,7 @@ function UnforwardedInput({
 	value,
 	size,
 	name,
-	type,
+	type = 'text',
 	ref,
 	...blockProps
 }: InputProps & Partial<ReusableBlockProps>) {

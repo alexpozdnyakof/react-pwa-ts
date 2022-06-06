@@ -1,8 +1,9 @@
 /* eslint-disable react/require-default-props */
 import { cloneElement, ReactElement } from 'react'
-import { Stack } from '../../layout'
-import { ReusableBlockProps } from '../block'
-import { TextField } from '../text-field'
+import { Stack } from '../layout'
+import { TextField } from '../lib'
+import { ReusableBlockProps } from '../lib/block'
+
 import Label from './label'
 
 interface Props {
