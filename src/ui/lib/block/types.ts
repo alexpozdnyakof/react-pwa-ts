@@ -129,7 +129,7 @@ interface EventHandlers {
 	onChange: <T>(e?: React.KeyboardEvent<T>) => void
 	onMouseEnter: <T>(e?: React.MouseEvent<T>) => void
 	onMouseLeave: <T>(e?: React.MouseEvent<T>) => void
-	onSubmit: <T>(e?: React.FormEvent<T>) => void
+	onSubmit: (event: React.FormEvent) => void
 }
 
 interface AnimationProps {

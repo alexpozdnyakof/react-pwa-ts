@@ -3,7 +3,7 @@ import { Block } from '../lib'
 import { ReusableBlockProps } from '../lib/block'
 
 interface Props {
-	onSubmit: <T>(e?: FormEvent<T>) => void
+	onSubmit: (event: FormEvent) => void
 	testId: string
 }
 
