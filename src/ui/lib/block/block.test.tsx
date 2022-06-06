@@ -258,4 +258,11 @@ describe('Block Component', () => {
 
 		expect(result).toHaveAttribute('name', name)
 	})
+
+	it('should set type attribute', () => {
+		const type = 'text'
+		const result = renderBlockWithProps({ type })
+
+		expect(result).toHaveAttribute('type', type)
+	})
 })

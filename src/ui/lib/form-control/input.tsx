@@ -16,11 +16,17 @@ function UnforwardedInput({
 	value,
 	size,
 	name,
+	type,
 	ref,
 	...blockProps
 }: InputProps & Partial<ReusableBlockProps>) {
 	return (
-		<FormControl id={id} label={label} {...blockProps}>
+		<FormControl
+			id={id}
+			label={label}
+			{...blockProps}
+			testId='form-control-input'
+		>
 			<TextField
 				ref={ref}
 				placeholder={placeholder}
@@ -30,6 +36,7 @@ function UnforwardedInput({
 				onChange={onChange}
 				size={size}
 				name={name}
+				type={type}
 			/>
 		</FormControl>
 	)

@@ -178,6 +178,7 @@ type BlockProps = WithTestId<
 			htmlFor: string
 			id: string
 			name: string
+			type: 'text' | 'password' | 'email'
 		}
 >
 

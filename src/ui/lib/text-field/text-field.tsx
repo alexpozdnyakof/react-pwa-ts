@@ -13,6 +13,7 @@ interface Props {
 	ref: ForwardedRef<HTMLInputElement>
 	size: 'medium' | 'large'
 	name: string
+	type: 'text' | 'password' | 'email'
 }
 
 function UnforwardedTextField({
@@ -20,6 +21,8 @@ function UnforwardedTextField({
 	id,
 	ref,
 	size = 'medium',
+	name,
+	type,
 	...props
 }: Partial<Props>) {
 	const styles = {
@@ -49,7 +52,8 @@ function UnforwardedTextField({
 	return (
 		<Block
 			as='input'
-			{...{ ...props, ...styles, ...sizeMap[size], ref, id, testId }}
+			// eslint-disable-next-line prettier/prettier
+			{...{ ...props, ...styles, ...sizeMap[size], ref, id, testId, name, type }}
 			focus={{ borderColor: 'borderLightFocus' }}
 			focusVisible={{
 				boxShadow: getControlBoxShadow().focus,
