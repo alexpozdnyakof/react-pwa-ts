@@ -62,4 +62,12 @@ describe('BaseButton', () => {
 
 		expect(onClickCallback).toHaveBeenCalled()
 	})
+
+	it('should render button with submit type', () => {
+		const { getByTestId } = renderWithTheme(
+			<BaseButton testId='base-button' type='submit' />
+		)
+
+		expect(getByTestId('base-button')).toHaveAttribute('type', 'submit')
+	})
 })

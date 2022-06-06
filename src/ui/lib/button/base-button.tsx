@@ -5,6 +5,7 @@ interface Props {
 	children: string
 	size: 'medium' | 'large'
 	shape: 'rounded' | 'circular'
+	type: 'button' | 'submit' | 'reset'
 	stretched: boolean
 	onClick: <T>(e?: React.MouseEvent<T>) => void
 }
@@ -17,6 +18,7 @@ export default function BaseButton({
 	shape = 'rounded',
 	stretched = false,
 	color = 'action',
+	type,
 	...blockProps
 }: Partial<Props> & Partial<ReusableBlockProps>) {
 	const shapesMap: Record<Props['shape'], Partial<BlockProps>> = {
@@ -49,7 +51,13 @@ export default function BaseButton({
 	} as Partial<BlockProps>
 
 	return (
-		<Block as='button' testId={testId} {...styles} onClick={onClick}>
+		<Block
+			as='button'
+			testId={testId}
+			type={type}
+			{...styles}
+			onClick={onClick}
+		>
 			{children}
 		</Block>
 	)
