@@ -6,7 +6,7 @@ import Input from './input'
 describe('Form', () => {
 	it('should render succesfully', () => {
 		const { getByTestId } = renderWithTheme(
-			<Form testId='form'>
+			<Form testId='form' onSubmit={jest.fn(e => e.preventDefault())}>
 				<Input testId='input' />
 			</Form>
 		)
@@ -15,7 +15,7 @@ describe('Form', () => {
 		expect(getByTestId('input')).toBeInTheDocument()
 	})
 	it('should trigger onSubmit callback after form submitted', () => {
-		const onSubmit = jest.fn()
+		const onSubmit = jest.fn(e => e.preventDefault())
 
 		const { getByTestId } = renderWithTheme(
 			<Form testId='form' onSubmit={onSubmit}>
@@ -29,7 +29,7 @@ describe('Form', () => {
 	})
 
 	it('should trigger onSubmit callback after submit button clicked', () => {
-		const onSubmit = jest.fn()
+		const onSubmit = jest.fn(e => e.preventDefault())
 
 		const { getByTestId } = renderWithTheme(
 			<Form testId='form' onSubmit={onSubmit}>

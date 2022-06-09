@@ -70,4 +70,12 @@ describe('Text Field', () => {
 
 		expect(input.name).toBe(name)
 	})
+
+	it('should be invalid', () => {
+		const { getByTestId } = renderWithTheme(<TextField invalid />)
+
+		const input = getByTestId('textfield') as HTMLInputElement
+
+		expect(input).not.toBeValid()
+	})
 })

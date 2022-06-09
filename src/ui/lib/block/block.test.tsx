@@ -256,4 +256,10 @@ describe('Block Component', () => {
 
 		expect(getByTestId('blockToTest')).toHaveAttribute('type', type)
 	})
+
+	it('should be invalid', () => {
+		const { getByTestId } = renderWithTheme(<Block invalid />)
+
+		expect(getByTestId('blockToTest')).not.toBeValid()
+	})
 })

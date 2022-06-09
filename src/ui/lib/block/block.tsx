@@ -44,6 +44,7 @@ const Block = forwardRef<
 			testId = 'blockToTest',
 			src,
 			htmlFor,
+			invalid,
 			...unhandledProps
 		}: React.PropsWithChildren<Partial<BlockProps>>,
 		ref: ForwardedRef<any>
@@ -191,6 +192,7 @@ const Block = forwardRef<
 		return (
 			<BaseBlock
 				aria-label={ariaLabel}
+				aria-invalid={invalid}
 				data-testid={testId}
 				{...result}
 				ref={ref}
