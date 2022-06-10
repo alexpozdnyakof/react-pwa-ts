@@ -13,7 +13,14 @@ export default function Form({
 	children,
 }: Partial<Props> & PropsWithChildren<{}> & Partial<ReusableBlockProps>) {
 	return (
-		<Block as='form' testId={testId} onSubmit={onSubmit}>
+		<Block
+			as='form'
+			testId={testId}
+			onSubmit={(event: FormEvent) => {
+				event.preventDefault()
+				if (onSubmit) onSubmit(event)
+			}}
+		>
 			{children}
 		</Block>
 	)
