@@ -1,21 +1,18 @@
-/* eslint-disable react/require-default-props */
 import { Block } from '../lib'
 
 interface Props {
-	htmlFor?: string
 	children: string
+	// eslint-disable-next-line react/require-default-props
 	testId?: string
 }
 
-export default function Label({ children, htmlFor, testId }: Props) {
+export default function Error({ children, testId }: Props) {
 	return (
 		<Block
-			as='label'
 			testId={testId}
-			htmlFor={htmlFor}
 			fontSize='body'
-			fontWeight='semibold'
-			color='text'
+			fontWeight='normal'
+			color='error'
 			lineHeight={20}
 			letterSpacing={-0.01}
 		>

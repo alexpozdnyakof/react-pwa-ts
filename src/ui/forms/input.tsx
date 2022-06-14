@@ -20,6 +20,7 @@ function UnforwardedInput({
 	name,
 	type = 'text',
 	ref,
+	errors,
 	...blockProps
 }: InputProps & Partial<ReusableBlockProps>) {
 	return (
@@ -27,6 +28,7 @@ function UnforwardedInput({
 			id={id}
 			label={label}
 			{...blockProps}
+			errors={errors}
 			testId='form-control-input'
 		>
 			<TextField

@@ -182,7 +182,7 @@ type BlockProps = WithTestId<
 			name: string
 			type: 'text' | 'password' | 'email' | 'button' | 'submit' | 'reset'
 		} & {
-			invalid: true | undefined
+			invalid: boolean
 		}
 >
 

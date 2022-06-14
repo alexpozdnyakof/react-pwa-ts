@@ -14,7 +14,7 @@ interface Props {
 	size: 'medium' | 'large'
 	name: string
 	type: 'text' | 'password' | 'email'
-	invalid: true | undefined
+	invalid: boolean
 }
 
 function UnforwardedTextField({

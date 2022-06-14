@@ -43,4 +43,20 @@ describe('FormControl', () => {
 
 		expect(field).toHaveFocus()
 	})
+
+	it('should render errors', () => {
+		const errors = [
+			{ type: 'required', message: 'required error' },
+			{ type: 'pattern', message: 'pattern error' },
+		]
+		const { getByText } = renderWithTheme(
+			<FormControl errors={errors}>
+				<TextField />
+			</FormControl>
+		)
+
+		errors.forEach(error => {
+			expect(getByText(error.message)).toBeInTheDocument()
+		})
+	})
 })

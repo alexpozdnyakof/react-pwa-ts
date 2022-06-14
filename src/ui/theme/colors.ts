@@ -14,6 +14,7 @@ export type Color =
 	| 'white'
 	| 'black'
 	| 'current'
+	| 'error'
 
 export const COLOR_KEYS: Array<Color> = [
 	'action',
@@ -31,6 +32,7 @@ export const COLOR_KEYS: Array<Color> = [
 	'white',
 	'black',
 	'current',
+	'error',
 ]
 
 const defaultColors = { white: '#fff', black: '#000', current: 'currentColor' }
@@ -49,6 +51,7 @@ const DARK_COLORS: Record<Color, string> = {
 	text: '#d7d8de',
 	caption: 'rgba(255,255,255,.7)',
 	transparent: 'transparent',
+	error: '#d4442e',
 	...defaultColors,
 }
 

@@ -45,8 +45,6 @@ export interface BaseBlockProps
 export const BaseBlock = styled.div(
 	({
 		theme,
-		width,
-		height,
 		backgroundColor,
 		borderColor,
 		color,
@@ -58,8 +56,6 @@ export const BaseBlock = styled.div(
 		background,
 		...props
 	}: WithVisualTheme<Partial<BaseBlockProps>>) => ({
-		width,
-		height,
 		backgroundColor: theme.getColor(backgroundColor),
 		borderColor: theme.getColor(borderColor),
 		color: theme.getColor(color),

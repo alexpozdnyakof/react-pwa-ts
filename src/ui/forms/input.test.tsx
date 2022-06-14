@@ -6,12 +6,14 @@ describe('Input', () => {
 		const placeholder = 'placeholder'
 		const value = 'value'
 		const id = 'id'
+		const errors = [{ type: 'required', message: 'required error' }]
 		const { getByTestId, getByText } = renderWithTheme(
 			<Input
 				label={label}
 				placeholder={placeholder}
 				value={value}
 				id={id}
+				errors={errors}
 			/>
 		)
 
@@ -24,5 +26,6 @@ describe('Input', () => {
 		)
 		expect(getByTestId('textfield')).toHaveAttribute('value', value)
 		expect(getByTestId('textfield')).toHaveAttribute('id', id)
+		expect(getByText(errors[0].message)).toBeInTheDocument()
 	})
 })

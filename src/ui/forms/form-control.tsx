@@ -4,13 +4,16 @@ import { Stack } from '../layout'
 import { TextField } from '../lib'
 import { ReusableBlockProps } from '../lib/block'
 
+import Error from './error'
 import Label from './label'
+import { ControlError } from './validators'
 
 interface Props {
 	testId?: string
 	label?: string
 	id?: string
 	children: ReactElement<typeof TextField>
+	errors?: Array<ControlError>
 }
 
 export default function FormControl({
@@ -18,6 +21,7 @@ export default function FormControl({
 	label,
 	id,
 	children,
+	errors = [],
 	...blockProps
 }: Props & Partial<ReusableBlockProps>) {
 	return (
@@ -28,6 +32,9 @@ export default function FormControl({
 				</Label>
 			)}
 			{cloneElement(children, { id } as any)}
+			{errors.map(error => (
+				<Error key={'name_'.concat(error.type)}>{error.message}</Error>
+			))}
 		</Stack>
 	)
 }
