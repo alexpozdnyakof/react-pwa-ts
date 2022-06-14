@@ -47,6 +47,7 @@ rules:
             ],
         'react/function-component-definition': 0,
         'no-sequences': 'off',
+        'no-underscore-dangle': 'off',
     }
 
 ignorePatterns: ['service-worker.ts', 'serviceWorkerRegistration.ts']
